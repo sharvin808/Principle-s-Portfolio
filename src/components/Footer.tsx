@@ -1,0 +1,58 @@
+import { Heart } from 'lucide-react';
+import type { Profile } from '@/lib/types';
+
+interface FooterProps {
+  profile: Profile;
+}
+
+export default function Footer({ profile }: FooterProps) {
+  const currentYear = new Date().getFullYear();
+
+  return (
+    <footer className="border-t py-12 px-4 md:px-8" style={{ borderColor: 'var(--border-color)' }}>
+      <div className="max-w-7xl mx-auto">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+          {/* Name */}
+          <div className="text-center md:text-left">
+            <h3
+              className="text-xl font-semibold text-heading"
+              style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+            >
+              {profile.name || 'Academic Portfolio'}
+            </h3>
+            <p className="text-muted text-sm mt-1">
+              {profile.designation}
+              {profile.institution ? ` • ${profile.institution}` : ''}
+            </p>
+          </div>
+
+          {/* Quick Links */}
+          <div className="flex flex-wrap justify-center gap-6 text-sm text-muted">
+            {['About', 'Publications', 'Awards', 'Contact'].map((item) => (
+              <a
+                key={item}
+                href={`#${item.toLowerCase()}`}
+                className="hover:text-gold transition-colors"
+              >
+                {item}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        {/* Divider */}
+        <div className="my-8 border-t" style={{ borderColor: 'var(--border-color)' }} />
+
+        {/* Copyright */}
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted">
+          <p>
+            © {currentYear} {profile.name || 'Academic Portfolio'}. All rights reserved.
+          </p>
+          <p className="flex items-center gap-1.5">
+            Crafted with <Heart size={14} className="text-gold" fill="currentColor" /> for academia
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+}
