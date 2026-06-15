@@ -11,10 +11,11 @@ interface HeroSectionProps {
 
 export default function HeroSection({ profile }: HeroSectionProps) {
   const scrollToContent = () => {
-    const aboutSection = document.getElementById('about');
-    if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: 'smooth' });
-    }
+    // Scroll past the Hero section (which is 100vh tall)
+    window.scrollTo({
+      top: window.innerHeight - 80, // account for navbar
+      behavior: 'smooth'
+    });
   };
 
   // Staggered text animation variants
@@ -127,7 +128,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
                   color: '#D4AF37',
                   border: '1px solid rgba(212, 175, 55, 0.2)',
                 }}>
-                Welcome to my Academic Portfolio
+                Hello I'm 
               </span>
             </motion.div>
 

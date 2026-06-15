@@ -29,39 +29,66 @@ export default function Navbar() {
   // Show navbar only after scrolling past hero
   useEffect(() => {
     const handleScroll = () => {
+      // Navbar only visible if scrolled past hero (85% of viewport height)
       setVisible(window.scrollY > window.innerHeight * 0.85);
     };
+    
+    // Check initially
+    handleScroll();
+    
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
-  // Track active section via Intersection Observer
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { rootMargin: '-30% 0px -60% 0px' }
-    );
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace('#', '');
+      if (hash) {
+        setActiveSection(hash);
+      } else {
+        // If no hash, check if we're past hero section
+        if (window.scrollY > window.innerHeight * 0.5) {
+          setActiveSection('about');
+        } else {
+          setActiveSection('');
+        }
+      }
+    };
 
-    NAV_ITEMS.forEach(({ id }) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
+    const handleScroll = () => {
+      const hash = window.location.hash.replace('#', '');
+      if (!hash && window.scrollY > window.innerHeight * 0.5) {
+        setActiveSection('about');
+      }
+    };
 
-    return () => observer.disconnect();
+    handleHashChange();
+    window.addEventListener('hashchange', handleHashChange);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   const scrollTo = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-      setMobileOpen(false);
-    }
+    window.location.hash = id;
+    setActiveSection(id);
+    
+    // Scroll to the specific section to make sure it's visible below the Hero
+    setTimeout(() => {
+      const contentEl = document.getElementById(id);
+      if (contentEl) {
+        const yOffset = -80;
+        const y = contentEl.getBoundingClientRect().top + window.scrollY + yOffset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    }, 50);
+    
+    setMobileOpen(false);
   };
 
   return (
@@ -78,7 +105,11 @@ export default function Navbar() {
             <div className="flex items-center justify-between h-16">
               {/* Logo / Name */}
               <button
-                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                onClick={() => {
+                  window.location.hash = 'about';
+                  setActiveSection('about');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
                 className="text-lg font-semibold text-heading cursor-pointer hover:opacity-80 transition-opacity"
                 style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
               >

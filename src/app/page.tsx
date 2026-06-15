@@ -7,20 +7,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import BackToTop from '@/components/ui/BackToTop';
 
-// Sections
-import HeroSection from '@/components/sections/HeroSection';
-import AboutMeSection from '@/components/sections/AboutMeSection';
-import QualificationSection from '@/components/sections/QualificationSection';
-import ExperienceSection from '@/components/sections/ExperienceSection';
-import ResearchProjectSection from '@/components/sections/ResearchProjectSection';
-import ConsultancySection from '@/components/sections/ConsultancySection';
-import PublicationsSection from '@/components/sections/PublicationsSection';
-import AwardsAchievementsSection from '@/components/sections/AwardsAchievementsSection';
-import PaperPresentationsSection from '@/components/sections/PaperPresentationsSection';
-import ResearchInterestsSection from '@/components/sections/ResearchInterestsSection';
-import GallerySection from '@/components/sections/GallerySection';
-import InternationalExposureSection from '@/components/sections/InternationalExposureSection';
-import ReviewerSection from '@/components/sections/ReviewerSection';
+import InteractiveContent from '@/components/InteractiveContent';
 
 // Enable dynamic rendering
 export const dynamic = 'force-dynamic';
@@ -106,21 +93,8 @@ export default async function Home() {
       {/* Sticky Navigation (displays after hero scroll) */}
       <Navbar />
 
-      {/* Main Sections */}
       <main className="flex-grow">
-        <HeroSection profile={profile} />
-        <AboutMeSection aboutMe={aboutMe} />
-        <QualificationSection qualification={qualification} />
-        <ExperienceSection experience={experience} />
-        <ResearchProjectSection researchProject={researchProject} />
-        <ConsultancySection consultancy={consultancy} />
-        <PublicationsSection publications={publications} />
-        <AwardsAchievementsSection awardsAchievements={awardsAchievements} />
-        <PaperPresentationsSection paperPresentations={paperPresentations} />
-        <ResearchInterestsSection researchInterests={researchInterests} />
-        <GallerySection gallery={gallery} />
-        <InternationalExposureSection internationalExposure={internationalExposure} />
-        <ReviewerSection reviewer={reviewer} />
+        <InteractiveContent data={data} />
       </main>
 
       {/* Footer */}
