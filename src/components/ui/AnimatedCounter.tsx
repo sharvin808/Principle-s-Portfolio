@@ -19,11 +19,14 @@ export default function AnimatedCounter({
   duration = 2,
 }: AnimatedCounterProps) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
+  const isInView = useInView(ref, { once: false });
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    if (!isInView) return;
+    if (!isInView) {
+      setCount(0);
+      return;
+    }
 
     let startTime: number;
     let animationFrame: number;

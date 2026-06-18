@@ -9,7 +9,7 @@ export default function Footer({ profile }: FooterProps) {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t py-12 px-4 md:px-8" style={{ borderColor: 'var(--border-color)' }}>
+    <footer className="bg-oxford-theme border-t py-12 px-4 md:px-8" style={{ borderColor: 'var(--border-color)' }}>
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Name */}
@@ -28,13 +28,18 @@ export default function Footer({ profile }: FooterProps) {
 
           {/* Quick Links */}
           <div className="flex flex-wrap justify-center gap-6 text-sm text-muted">
-            {['About', 'Publications', 'Awards', 'Contact'].map((item) => (
+            {[
+              { label: 'Home', href: '#about' },
+              { label: 'Publications', href: '#publications' },
+              { label: 'Projects', href: '#research-project' },
+              { label: 'Contact', href: '#contact' },
+            ].map((item) => (
               <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
+                key={item.label}
+                href={item.href}
                 className="hover:text-gold transition-colors"
               >
-                {item}
+                {item.label}
               </a>
             ))}
           </div>

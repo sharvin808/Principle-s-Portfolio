@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
+import { createContext, useContext, useEffect, type ReactNode } from 'react';
 
 interface ThemeContextType {
   isDark: boolean;
@@ -17,44 +17,14 @@ export function useTheme() {
 }
 
 export default function ThemeProvider({ children }: { children: ReactNode }) {
-  const [isDark, setIsDark] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
   useEffect(() => {
-    setMounted(true);
-    const stored = localStorage.getItem('theme');
-    if (stored === 'dark') {
-      setIsDark(true);
-      document.documentElement.classList.add('dark');
-    } else if (stored === 'light') {
-      setIsDark(false);
-      document.documentElement.classList.remove('dark');
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      setIsDark(true);
-      document.documentElement.classList.add('dark');
-    }
+    // Force light mode on mount
+    document.documentElement.classList.remove('dark');
+    localStorage.removeItem('theme');
   }, []);
 
-  const toggle = () => {
-    setIsDark((prev) => {
-      const next = !prev;
-      if (next) {
-        document.documentElement.classList.add('dark');
-        localStorage.setItem('theme', 'dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-        localStorage.setItem('theme', 'light');
-      }
-      return next;
-    });
-  };
-
-  if (!mounted) {
-    return <>{children}</>;
-  }
-
   return (
-    <ThemeContext.Provider value={{ isDark, toggle }}>
+    <ThemeContext.Provider value={{ isDark: false, toggle: () => {} }}>
       {children}
     </ThemeContext.Provider>
   );

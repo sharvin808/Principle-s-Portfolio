@@ -17,7 +17,7 @@ export default function ReviewerSection({ reviewer }: ReviewerSectionProps) {
       id="reviewer"
       title="Editorial & Reviewer Roles"
       subtitle="Contributions to academic journals and publications"
-      dark
+      theme="tan"
     >
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {reviewer.map((item, index) => (
@@ -32,24 +32,24 @@ export default function ReviewerSection({ reviewer }: ReviewerSectionProps) {
                 </div>
                 <div>
                   <h3
-                    className="text-base font-bold text-heading leading-tight"
+                    className="text-lg font-bold text-heading leading-tight"
                     style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
                   >
                     {item.journalName}
                   </h3>
                   {item.publisher && (
-                    <p className="text-xs text-muted mt-0.5">{item.publisher}</p>
+                    <p className="text-sm text-muted mt-0.5">{item.publisher}</p>
                   )}
                 </div>
               </div>
               
               <div className="mt-auto pt-4 border-t border-border/10 flex items-center justify-between">
-                <span className="flex items-center gap-1.5 text-sm font-medium text-foreground/80">
+                <span className="flex items-center gap-1.5 text-base font-medium text-foreground/80">
                   <UserCheck size={14} className="text-gold" />
                   {item.role || 'Reviewer'}
                 </span>
                 {item.year && (
-                  <span className="text-xs font-mono text-muted">
+                  <span className="text-sm font-mono text-muted">
                     {item.year}
                   </span>
                 )}

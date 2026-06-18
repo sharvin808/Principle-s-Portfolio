@@ -9,7 +9,7 @@ interface SectionWrapperProps {
   subtitle?: string;
   children: ReactNode;
   className?: string;
-  dark?: boolean;
+  theme?: 'oxford' | 'tan';
 }
 
 export default function SectionWrapper({
@@ -18,16 +18,18 @@ export default function SectionWrapper({
   subtitle,
   children,
   className = '',
-  dark = false,
+  theme = 'oxford',
 }: SectionWrapperProps) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const isInView = useInView(ref, { once: false, margin: '-100px' });
+
+  const themeClass = theme === 'oxford' ? 'bg-oxford-theme' : 'bg-tan-theme';
 
   return (
     <section
       id={id}
       ref={ref}
-      className={`py-20 md:py-28 px-4 md:px-8 ${dark ? 'bg-surface-alt' : ''} ${className}`}
+      className={`py-20 md:py-28 px-4 md:px-8 ${themeClass} ${className}`}
     >
       <div className="max-w-7xl mx-auto">
         {title && (

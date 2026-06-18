@@ -15,6 +15,7 @@ export default function AboutMeSection({ aboutMe }: AboutMeSectionProps) {
       id="about"
       title="About"
       subtitle="A distinguished academic career dedicated to excellence in education and research"
+      theme="tan"
     >
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Biography Card */}
@@ -72,7 +73,7 @@ export default function AboutMeSection({ aboutMe }: AboutMeSectionProps) {
                   Academic Vision
                 </h3>
               </div>
-              <p className="text-foreground/70 leading-relaxed text-sm">
+              <p className="text-foreground/70 leading-relaxed">
                 {aboutMe.vision || (
                   <span className="text-muted italic">Vision statement from Google Sheets.</span>
                 )}

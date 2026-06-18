@@ -18,6 +18,7 @@ import {
   type InternationalExposure,
   type Reviewer,
   type SheetData,
+  type ContactMe,
 } from './types';
 
 import { fetchFromVisualizationAPI } from './googleSheets';
@@ -40,6 +41,8 @@ const SHEET_GIDS: Record<string, string> = {
   gallery: process.env.NEXT_PUBLIC_GID_GALLERY || '',
   'international exposure': process.env.NEXT_PUBLIC_GID_INTERNATIONAL_EXPOSURE || '',
   reviewer: process.env.NEXT_PUBLIC_GID_REVIEWER || '',
+  'contact me': process.env.NEXT_PUBLIC_GID_CONTACT_ME || '',
+  instagram: process.env.NEXT_PUBLIC_GID_INSTAGRAM || '',
 };
 
 
@@ -51,6 +54,36 @@ async function fetchSheetTab(sheetName: string): Promise<string[][]> {
   }
 
   return fetchFromVisualizationAPI(SHEET_ID, gid);
+}
+
+// Helper to transform Google Drive share links into direct image download links,
+// and make sure any image URLs are clean.
+function parseImageUrl(url: string): string {
+  if (!url) return '';
+  const trimmed = url.trim();
+
+  // Detect Google Drive sharing links
+  if (trimmed.includes('drive.google.com')) {
+    let fileId = '';
+    
+    // Pattern: /file/d/[FILE_ID]/view
+    const fileDMatch = trimmed.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+    if (fileDMatch && fileDMatch[1]) {
+      fileId = fileDMatch[1];
+    } else {
+      // Pattern: ?id=[FILE_ID]
+      const idParamMatch = trimmed.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+      if (idParamMatch && idParamMatch[1]) {
+        fileId = idParamMatch[1];
+      }
+    }
+    
+    if (fileId) {
+      return `https://lh3.googleusercontent.com/d/${fileId}`;
+    }
+  }
+  
+  return trimmed;
 }
 
 // ---------------------------------------------------------------------------
@@ -86,12 +119,16 @@ export async function getProfile(): Promise<Profile> {
   const rows = await fetchSheetTab('profile');
   const objects = rowsToObjects<any>(rows);
   const raw = objects[0] || {};
+  
+  // Support flexible header names for profile photo
+  const rawPhotoUrl = raw.photourl || raw.photo || raw.image || raw.profilephoto || raw.picture || raw.photolink || raw.imageurl || '';
+
   return {
     name: raw.name || '',
     designation: raw.designation || '',
     department: raw.department || '',
     institution: raw.institution || '',
-    photoUrl: raw.photourl || '',
+    photoUrl: parseImageUrl(rawPhotoUrl),
     tagline: raw.tagline || '',
   };
 }
@@ -157,7 +194,7 @@ export async function getConsultancy(): Promise<Consultancy[]> {
     description: row[5] || '',
   }));
 }
-  
+
 export async function getPublications(): Promise<Publication[]> {
   const rows = await fetchSheetTab('publications');
   return objectsToTypedList<Publication>(rowsToObjects<any>(rows));
@@ -198,11 +235,15 @@ export async function getResearchInterests(): Promise<ResearchInterest[]> {
 export async function getGallery(): Promise<GalleryImage[]> {
   const rows = await fetchSheetTab('gallery');
   const objects = rowsToObjects<any>(rows);
-  return objects.map((raw) => ({
-    imageUrl: raw.imageurl || '',
-    caption: raw.caption || '',
-    category: raw.category || '',
-  }));
+  return objects.map((raw) => {
+    // Support flexible header names for gallery images
+    const rawImageUrl = raw.imageurl || raw.image || raw.url || raw.photo || raw.link || '';
+    return {
+      imageUrl: parseImageUrl(rawImageUrl),
+      caption: raw.caption || '',
+      category: raw.category || '',
+    };
+  });
 }
 
 export async function getInternationalExposure(): Promise<InternationalExposure[]> {
@@ -228,6 +269,33 @@ export async function getReviewer(): Promise<Reviewer[]> {
   }));
 }
 
+export async function getContactme(): Promise<ContactMe> {
+  const rows = await fetchSheetTab('contact me');
+  const objects = rowsToObjects<any>(rows);
+  const raw = objects[0] || {};
+
+  let instagramUrl = raw.instagram || raw.instagramurl || '';
+
+  // Defensively fetch from the separate Instagram tab if GID is provided
+  if (process.env.NEXT_PUBLIC_GID_INSTAGRAM) {
+    try {
+      const instaRows = await fetchSheetTab('instagram');
+      const instaObjects = rowsToObjects<any>(instaRows);
+      const instaRaw = instaObjects[0] || {};
+      instagramUrl = instaRaw.url || instaRaw.link || instaRaw.instagram || instagramUrl;
+    } catch (error) {
+      console.warn('Could not fetch separate Instagram tab:', error);
+    }
+  }
+
+  return {
+    officeLocation: raw.officelocation || raw.office || raw.location || '',
+    emailId: raw.emailid || raw.email || raw.emailaddress || '',
+    linkedin: raw.linkedin || raw.linkedinurl || '',
+    instagram: instagramUrl,
+  };
+}
+
 // ---------------------------------------------------------------------------
 // Fetch All Data at Once
 // ---------------------------------------------------------------------------
@@ -247,6 +315,7 @@ export async function getAllData(): Promise<SheetData> {
     gallery,
     internationalExposure,
     reviewer,
+    contactMe,
   ] = await Promise.all([
     getProfile(),
     getAboutMe(),
@@ -261,6 +330,7 @@ export async function getAllData(): Promise<SheetData> {
     getGallery(),
     getInternationalExposure(),
     getReviewer(),
+    getContactme(),
   ]);
 
   return {
@@ -277,6 +347,7 @@ export async function getAllData(): Promise<SheetData> {
     gallery,
     internationalExposure,
     reviewer,
+    contactMe,
   };
 }
 

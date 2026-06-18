@@ -66,7 +66,7 @@ export default function Particles() {
         // Draw
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(212, 175, 55, ${p.opacity})`;
+        ctx.fillStyle = `rgba(212, 201, 179, ${p.opacity})`;
         ctx.fill();
       });
 
@@ -81,7 +81,7 @@ export default function Particles() {
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(212, 175, 55, ${0.06 * (1 - dist / 120)})`;
+            ctx.strokeStyle = `rgba(212, 201, 179, ${0.06 * (1 - dist / 120)})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }

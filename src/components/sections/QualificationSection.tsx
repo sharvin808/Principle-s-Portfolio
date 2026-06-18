@@ -17,7 +17,7 @@ export default function QualificationSection({ qualification }: QualificationSec
       id="education"
       title="Education"
       subtitle="Academic qualifications and scholarly foundation"
-      dark
+      theme="oxford"
     >
       <div className="relative">
         {/* Timeline line */}
@@ -45,18 +45,18 @@ export default function QualificationSection({ qualification }: QualificationSec
                       >
                         <GraduationCap size={20} style={{ color: 'var(--color-gold)' }} />
                       </div>
-                      <span className="text-sm font-medium text-gold">{edu.year}</span>
+                      <span className="text-base font-medium text-gold">{edu.year}</span>
                     </div>
                     <h3
-                      className="text-lg font-semibold text-heading mb-1"
+                      className="text-xl font-semibold text-heading mb-1"
                       style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
                     >
                       {edu.degree}
                     </h3>
-                    <p className="text-sm font-medium text-foreground/80">{edu.field}</p>
-                    <p className="text-sm text-muted mt-1">{edu.institution}</p>
+                    <p className="text-base font-medium text-foreground/80">{edu.field}</p>
+                    <p className="text-base text-muted mt-1">{edu.institution}</p>
                     {edu.description && (
-                      <p className="text-sm text-foreground/60 mt-3 leading-relaxed">
+                      <p className="text-base text-foreground/60 mt-3 leading-relaxed">
                         {edu.description}
                       </p>
                     )}

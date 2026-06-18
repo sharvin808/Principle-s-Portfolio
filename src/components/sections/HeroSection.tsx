@@ -49,9 +49,56 @@ export default function HeroSection({ profile }: HeroSectionProps) {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(ellipse at 70% 50%, rgba(212, 175, 55, 0.06) 0%, transparent 60%)',
+            'radial-gradient(ellipse at 70% 50%, rgba(240, 231, 213, 0.08) 0%, transparent 60%)',
         }}
       />
+
+      {/* Vertical Design Line */}
+      <div 
+        className="hidden lg:block absolute top-0 bottom-0 w-[0.50in] bg-[#F0E7D5] z-0 pointer-events-none"
+        style={{ left: 'calc(6vw + 22vh)' }}
+      />
+
+      {/* Horizontal Design Line */}
+      <div 
+        className="hidden lg:block absolute left-0 right-0 h-[0.50in] bg-[#F0E7D5] z-0 pointer-events-none"
+        style={{ bottom: '140px' }}
+      />
+
+      {/* Large Image on Left (Desktop Absolute, Mobile Inline) */}
+      <motion.div
+        initial={{ opacity: 0, x: -40 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.9, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+        className="hidden lg:flex absolute left-[6vw] bottom-0 w-[45vw] h-[92vh] items-end justify-start z-10 pointer-events-none"
+      >
+        <div className="relative w-full h-full flex items-end">
+          {profile.photoUrl ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={profile.photoUrl}
+              alt={profile.name || 'Principal Portrait'}
+              className="w-full h-full object-contain object-left-bottom pointer-events-none"
+              style={{
+                maskImage: 'linear-gradient(to right, black 80%, transparent 98%)',
+                WebkitMaskImage: 'linear-gradient(to right, black 80%, transparent 98%)'
+              }}
+            />
+          ) : (
+            <div className="w-full h-[75vh] flex items-center justify-center bg-[#212842]/50 rounded-2xl m-8">
+              <div className="text-center text-[#F0E7D5]/50">
+                <div
+                  className="text-8xl mb-4"
+                  style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+                >
+                  {(profile.name || 'P').charAt(0)}
+                </div>
+                <p className="text-sm">Portrait Placeholder</p>
+              </div>
+            </div>
+          )}
+        </div>
+      </motion.div>
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 lg:px-12 w-full">
@@ -61,56 +108,34 @@ export default function HeroSection({ profile }: HeroSectionProps) {
             initial={{ opacity: 0, x: -40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.9, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="flex justify-center lg:justify-end order-2 lg:order-1"
+            className="flex justify-center lg:justify-start order-2 lg:order-1 w-full"
           >
-            <motion.div
-              animate={{
-                y: [0, -10, 0],
-              }}
-              transition={{
-                duration: 5,
-                repeat: Infinity,
-                ease: 'easeInOut',
-              }}
-              className="relative"
-            >
-              {/* Gold accent frame */}
-              <div className="absolute -inset-1.5 rounded-2xl bg-gradient-to-br from-gold via-gold-dark to-transparent opacity-40" />
-              <div className="absolute -inset-0.5 rounded-2xl bg-gradient-to-br from-gold/30 to-transparent" />
-
-              {/* Portrait */}
-              <div className="portrait-frame relative w-72 h-80 md:w-80 md:h-96 lg:w-[340px] lg:h-[420px]">
-                {profile.photoUrl ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={profile.photoUrl}
-                    alt={profile.name || 'Principal Portrait'}
-                    className="w-full h-full object-cover"
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center bg-navy-light/50">
-                    <div className="text-center text-white/40">
-                      <div
-                        className="text-6xl mb-2"
-                        style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
-                      >
-                        {(profile.name || 'P').charAt(0)}
-                      </div>
-                      <p className="text-xs">Portrait</p>
+            {/* On mobile: show the image normally in flow */}
+            <div className="relative w-full h-[50vh] md:h-[60vh] lg:hidden">
+              {profile.photoUrl ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={profile.photoUrl}
+                  alt={profile.name || 'Principal Portrait'}
+                  className="w-full h-full object-contain object-bottom"
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center bg-[#212842]/50 rounded-2xl">
+                  <div className="text-center text-[#F0E7D5]/50">
+                    <div
+                      className="text-6xl mb-2"
+                      style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+                    >
+                      {(profile.name || 'P').charAt(0)}
                     </div>
+                    <p className="text-xs">Portrait</p>
                   </div>
-                )}
-              </div>
+                </div>
+              )}
+            </div>
 
-              {/* Soft glow behind */}
-              <div
-                className="absolute -inset-8 rounded-3xl pointer-events-none"
-                style={{
-                  background:
-                    'radial-gradient(ellipse, rgba(212, 175, 55, 0.08) 0%, transparent 70%)',
-                }}
-              />
-            </motion.div>
+            {/* On desktop: just an empty spacer to keep grid alignment */}
+            <div className="hidden lg:block w-full h-[75vh]" />
           </motion.div>
 
           {/* RIGHT — Text */}
@@ -120,23 +145,13 @@ export default function HeroSection({ profile }: HeroSectionProps) {
             animate="visible"
             className="text-center lg:text-left order-1 lg:order-2"
           >
-            {/* Greeting line */}
-            <motion.div variants={itemVariants}>
-              <span className="inline-block px-4 py-1.5 rounded-full text-xs font-medium tracking-widest uppercase mb-6"
-                style={{
-                  background: 'rgba(212, 175, 55, 0.12)',
-                  color: '#D4AF37',
-                  border: '1px solid rgba(212, 175, 55, 0.2)',
-                }}>
-                Hello I'm 
-              </span>
-            </motion.div>
+
 
 
             {/* Name */}
             <motion.h1
               variants={itemVariants}
-              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight"
+              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-[#F0E7D5] leading-tight"
               style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
             >
               {profile.name || (
@@ -152,7 +167,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
               <div
                 className="h-0.5 w-20 rounded-full"
                 style={{
-                  background: 'linear-gradient(90deg, #D4AF37, #E5C158, transparent)',
+                  background: 'linear-gradient(90deg, #F0E7D5, #F7F2E8, transparent)',
                 }}
               />
             </motion.div>
@@ -160,7 +175,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
             {/* Designation */}
             <motion.p
               variants={itemVariants}
-              className="text-xl md:text-2xl font-medium text-gradient-gold"
+              className="text-xl md:text-2xl font-medium bg-gradient-to-r from-[#F0E7D5] to-[#F7F2E8] bg-clip-text text-transparent"
             >
               {profile.designation || 'Designation'}
             </motion.p>
@@ -168,7 +183,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
             {/* Department */}
             <motion.p
               variants={itemVariants}
-              className="mt-3 text-lg text-white/70"
+              className="mt-3 text-lg text-[#F0E7D5]/75"
             >
               {profile.department || 'Department'}
             </motion.p>
@@ -176,7 +191,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
             {/* Institution */}
             <motion.p
               variants={itemVariants}
-              className="mt-1 text-base text-white/50"
+              className="mt-1 text-base text-[#F0E7D5]/60"
             >
               {profile.institution || 'Institution'}
             </motion.p>
@@ -185,7 +200,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
             {profile.tagline && (
               <motion.p
                 variants={itemVariants}
-                className="mt-6 text-base text-white/60 max-w-lg mx-auto lg:mx-0 leading-relaxed italic"
+                className="mt-6 text-base text-[#F0E7D5]/70 max-w-lg mx-auto lg:mx-0 leading-relaxed italic"
                 style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
               >
                 &ldquo;{profile.tagline}&rdquo;
@@ -204,8 +219,8 @@ export default function HeroSection({ profile }: HeroSectionProps) {
         onClick={scrollToContent}
       >
         <motion.p
-          className="text-white/40 text-xs tracking-widest uppercase mb-3"
-          animate={{ opacity: [0.4, 0.8, 0.4] }}
+          className="text-[#F0E7D5] text-xs font-semibold tracking-widest uppercase mb-3"
+          animate={{ opacity: [0.6, 1, 0.6] }}
           transition={{ duration: 2, repeat: Infinity }}
         >
           Scroll to explore
@@ -218,7 +233,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
             ease: 'easeInOut',
           }}
         >
-          <ChevronDown size={24} className="text-gold" />
+          <ChevronDown size={24} className="text-[#F0E7D5]" />
         </motion.div>
       </motion.div>
     </section>

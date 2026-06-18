@@ -66,7 +66,7 @@ export default function PublicationsSection({ publications }: PublicationsSectio
       id="publications"
       title="Publications"
       subtitle="Contributions to scholarly research and academic knowledge"
-      dark
+      theme="tan"
     >
       {/* Counters */}
       <ScrollReveal className="mb-12">
@@ -145,7 +145,7 @@ export default function PublicationsSection({ publications }: PublicationsSectio
         </div>
 
         {/* Results count */}
-        <p className="text-sm text-muted mt-3">
+        <p className="text-base text-muted mt-3">
           Showing {paginated.length} of {filtered.length} publications
         </p>
       </ScrollReveal>
@@ -171,20 +171,20 @@ export default function PublicationsSection({ publications }: PublicationsSectio
 
                 {/* Content */}
                 <div className="flex-1 min-w-0">
-                  <h4 className="text-base font-semibold text-heading leading-snug">
+                  <h4 className="text-lg font-semibold text-heading leading-snug">
                     {pub.title}
                   </h4>
-                  <p className="text-sm text-foreground/70 mt-1.5">
+                  <p className="text-base text-foreground/70 mt-1.5">
                     {pub.authors}
                   </p>
-                  <p className="text-sm text-muted mt-1 italic">
+                  <p className="text-base text-muted mt-1 italic">
                     {pub.journal}
                   </p>
 
                   {/* Tags row */}
                   <div className="flex flex-wrap items-center gap-2 mt-3">
                     {pub.type && (
-                      <span className="text-xs px-2.5 py-0.5 rounded-full font-medium"
+                      <span className="text-sm px-2.5 py-0.5 rounded-full font-medium"
                         style={{
                           background: 'var(--surface-alt)',
                           color: 'var(--muted)',
@@ -207,7 +207,7 @@ export default function PublicationsSection({ publications }: PublicationsSectio
                         href={pub.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-xs text-gold hover:underline"
+                        className="inline-flex items-center gap-1 text-sm text-gold hover:underline"
                       >
                         View Paper <ExternalLink size={12} />
                       </a>

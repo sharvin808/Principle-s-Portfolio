@@ -3,10 +3,7 @@ import { getAllData } from '@/lib/sheets';
 import { getPersonSchema, getPublicationsSchema } from '@/lib/structured-data';
 
 // Components
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import BackToTop from '@/components/ui/BackToTop';
-
 import InteractiveContent from '@/components/InteractiveContent';
 
 // Enable dynamic rendering
@@ -42,7 +39,7 @@ export default async function Home() {
 
   if (!sheetId) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-navy p-6 text-white text-center">
+      <div className="min-h-screen flex items-center justify-center bg-[#212842] p-6 text-white text-center">
         <div className="max-w-md card-premium border-gold/30 bg-midnight-light/50">
           <h1 className="text-2xl font-serif text-gold font-bold mb-4">Configuration Required</h1>
           <p className="text-sm text-white/70 leading-relaxed mb-6">
@@ -90,15 +87,9 @@ export default async function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(publicationsSchema) }}
       />
 
-      {/* Sticky Navigation (displays after hero scroll) */}
-      <Navbar />
-
       <main className="flex-grow">
         <InteractiveContent data={data} />
       </main>
-
-      {/* Footer */}
-      <Footer profile={profile} />
 
       {/* Back to top button */}
       <BackToTop />

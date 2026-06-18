@@ -2,29 +2,38 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Moon, Sun, Menu, X } from 'lucide-react';
-import { useTheme } from './ThemeProvider';
+import { Menu, X, ChevronDown } from 'lucide-react';
 
-const NAV_ITEMS = [
-  { id: 'about', label: 'About' },
-  { id: 'education', label: 'Qualification' },
-  { id: 'experience', label: 'Experience' },
+export const SCROLL_ITEMS: { id: string; label: string }[] = [];
+
+export const EXTRA_ITEMS = [
+  { id: 'publications', label: 'Publications' },
   { id: 'research-project', label: 'Projects' },
   { id: 'consultancy', label: 'Consultancy' },
-  { id: 'publications', label: 'Publications' },
-  { id: 'awards-achievements', label: 'Awards' },
   { id: 'paper-presentations', label: 'Presentations' },
-  { id: 'research-interests', label: 'Interests' },
-  { id: 'gallery', label: 'Gallery' },
-  { id: 'international-exposure', label: 'Intl Exposure' },
-  { id: 'reviewer', label: 'Reviewer' },
+  { id: 'reviewer', label: 'Reviewers' },
 ];
 
-export default function Navbar() {
+export const CONTACT_ITEM = { id: 'contact', label: 'Contact Me' };
+
+interface NavbarProps {
+  activeSection: string;
+  setActiveSection: (id: string) => void;
+  selectedExtraSection: string | null;
+  setSelectedExtraSection: (id: string | null) => void;
+}
+
+export default function Navbar({
+  activeSection,
+  setActiveSection,
+  selectedExtraSection,
+  setSelectedExtraSection,
+}: NavbarProps) {
   const [visible, setVisible] = useState(false);
-  const [activeSection, setActiveSection] = useState('');
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { isDark, toggle } = useTheme();
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const isExtraActive = EXTRA_ITEMS.some((item) => item.id === activeSection);
 
   // Show navbar only after scrolling past hero
   useEffect(() => {
@@ -43,50 +52,65 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash.replace('#', '');
-      if (hash) {
-        setActiveSection(hash);
-      } else {
-        // If no hash, check if we're past hero section
-        if (window.scrollY > window.innerHeight * 0.5) {
-          setActiveSection('about');
-        } else {
-          setActiveSection('');
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 200; // offset for nav header height + padding
+      
+      // Check if we are at the bottom of the page
+      const isAtBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 100;
+      if (isAtBottom) {
+        setActiveSection(selectedExtraSection ? selectedExtraSection : 'contact');
+        return;
+      }
+
+      // Check which section we are in
+      const itemsToCheck = selectedExtraSection
+        ? EXTRA_ITEMS.filter((item) => item.id === selectedExtraSection)
+        : [...SCROLL_ITEMS, CONTACT_ITEM];
+
+      for (const item of itemsToCheck) {
+        const el = document.getElementById(item.id);
+        if (el) {
+          const top = el.offsetTop;
+          const height = el.offsetHeight;
+          if (scrollPosition >= top && scrollPosition < top + height) {
+            setActiveSection(item.id);
+            break;
+          }
         }
       }
     };
 
-    const handleScroll = () => {
-      const hash = window.location.hash.replace('#', '');
-      if (!hash && window.scrollY > window.innerHeight * 0.5) {
-        setActiveSection('about');
-      }
-    };
-
-    handleHashChange();
-    window.addEventListener('hashchange', handleHashChange);
+    // Run initially
+    handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
-    
-    return () => {
-      window.removeEventListener('hashchange', handleHashChange);
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [selectedExtraSection, setActiveSection]);
 
   const scrollTo = (id: string) => {
-    window.location.hash = id;
-    setActiveSection(id);
+    const isExtra = EXTRA_ITEMS.some((item) => item.id === id);
     
-    // Scroll to the specific section to make sure it's visible below the Hero
+    if (isExtra) {
+      setSelectedExtraSection(id);
+    } else {
+      setSelectedExtraSection(null);
+    }
+
+    setActiveSection(id);
+    window.location.hash = id;
+    
+    // Scroll to the specific section or top
     setTimeout(() => {
-      const contentEl = document.getElementById(id);
-      if (contentEl) {
-        const yOffset = -80;
-        const y = contentEl.getBoundingClientRect().top + window.scrollY + yOffset;
-        window.scrollTo({ top: y, behavior: 'smooth' });
+      if (id === 'about') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        const contentEl = document.getElementById(id);
+        if (contentEl) {
+          const yOffset = -80;
+          const y = contentEl.getBoundingClientRect().top + window.scrollY + yOffset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
       }
-    }, 50);
+    }, 150);
     
     setMobileOpen(false);
   };
@@ -102,69 +126,72 @@ export default function Navbar() {
           className="fixed top-0 left-0 right-0 z-50 glass"
         >
           <div className="max-w-7xl mx-auto px-4 md:px-8">
-            <div className="flex items-center justify-between h-16">
+            <div className="flex items-center justify-between h-20">
               {/* Logo / Name */}
               <button
                 onClick={() => {
-                  window.location.hash = 'about';
+                  setSelectedExtraSection(null);
                   setActiveSection('about');
+                  window.location.hash = 'about';
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                className="text-lg font-semibold text-heading cursor-pointer hover:opacity-80 transition-opacity"
+                className="text-xl font-bold text-heading cursor-pointer hover:opacity-80 transition-opacity"
                 style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
               >
                 <span className="text-gradient-gold">Portfolio</span>
               </button>
 
               {/* Desktop Nav Items */}
-              <div className="hidden md:flex items-center gap-1">
-                {NAV_ITEMS.map(({ id, label }) => (
+              <div className="hidden md:flex items-center gap-2">
+                {EXTRA_ITEMS.map(({ id, label }) => (
                   <button
                     key={id}
                     onClick={() => scrollTo(id)}
-                    className={`relative px-3.5 py-2 text-sm font-medium rounded-lg transition-colors duration-200 cursor-pointer ${
+                    className={`relative px-4 py-2 text-base font-semibold rounded-lg transition-colors duration-200 cursor-pointer ${
                       activeSection === id
-                        ? 'text-gold'
-                        : 'text-foreground/70 hover:text-foreground'
+                        ? 'text-foreground'
+                        : 'text-foreground/70 hover:text-foreground hover:bg-surface-alt/30'
                     }`}
                   >
-                    {label}
                     {activeSection === id && (
                       <motion.div
-                        layoutId="active-nav"
-                        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-5 h-0.5 rounded-full"
-                        style={{ background: 'var(--color-gold)' }}
+                        layoutId="active-pill"
+                        className="absolute inset-0 bg-surface-alt shadow-[0_2px_8px_-2px_rgba(0,0,0,0.08)] border border-border/10 rounded-lg -z-10"
                         transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                       />
                     )}
+                    <span className="relative z-10">{label}</span>
                   </button>
                 ))}
 
-                {/* Theme toggle */}
+                {/* Contact Item */}
                 <button
-                  onClick={toggle}
-                  className="ml-3 w-9 h-9 rounded-lg flex items-center justify-center text-foreground/70 hover:text-foreground transition-colors cursor-pointer"
-                  aria-label="Toggle dark mode"
+                  onClick={() => scrollTo(CONTACT_ITEM.id)}
+                  className={`relative px-4 py-2 text-base font-semibold rounded-lg transition-colors duration-200 cursor-pointer ${
+                    activeSection === CONTACT_ITEM.id && !selectedExtraSection
+                      ? 'text-foreground'
+                      : 'text-foreground/70 hover:text-foreground hover:bg-surface-alt/30'
+                  }`}
                 >
-                  {isDark ? <Sun size={18} /> : <Moon size={18} />}
+                  {activeSection === CONTACT_ITEM.id && !selectedExtraSection && (
+                    <motion.div
+                      layoutId="active-pill"
+                      className="absolute inset-0 bg-surface-alt shadow-[0_2px_8px_-2px_rgba(0,0,0,0.08)] border border-border/10 rounded-lg -z-10"
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                  <span className="relative z-10">{CONTACT_ITEM.label}</span>
                 </button>
               </div>
 
               {/* Mobile controls */}
               <div className="flex md:hidden items-center gap-2">
                 <button
-                  onClick={toggle}
-                  className="w-9 h-9 rounded-lg flex items-center justify-center text-foreground/70 cursor-pointer"
-                  aria-label="Toggle dark mode"
-                >
-                  {isDark ? <Sun size={18} /> : <Moon size={18} />}
-                </button>
-                <button
                   onClick={() => setMobileOpen(!mobileOpen)}
-                  className="w-9 h-9 rounded-lg flex items-center justify-center text-foreground/70 cursor-pointer"
+                  className="w-10 h-10 rounded-lg flex items-center justify-center text-foreground cursor-pointer hover:bg-surface-alt/30 transition-colors"
                   aria-label="Toggle menu"
                 >
-                  {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+                  {mobileOpen ? <X size={24} /> : <Menu size={24} />}
                 </button>
               </div>
             </div>
@@ -177,22 +204,35 @@ export default function Navbar() {
                   animate={{ opacity: 1, height: 'auto' }}
                   exit={{ opacity: 0, height: 0 }}
                   transition={{ duration: 0.3 }}
-                  className="md:hidden overflow-hidden pb-4"
+                  className="md:hidden overflow-y-auto max-h-[80vh] pb-4 px-2"
                 >
-                  <div className="flex flex-col gap-1">
-                    {NAV_ITEMS.map(({ id, label }) => (
+                  <div className="flex flex-col gap-1.5">
+                    {EXTRA_ITEMS.map(({ id, label }) => (
                       <button
                         key={id}
                         onClick={() => scrollTo(id)}
-                        className={`text-left px-4 py-2.5 rounded-lg text-sm font-medium transition-colors cursor-pointer ${
+                        className={`text-left px-4 py-3 rounded-lg text-base font-semibold transition-all cursor-pointer ${
                           activeSection === id
-                            ? 'text-gold bg-gold-muted'
-                            : 'text-foreground/70 hover:text-foreground hover:bg-surface-alt'
+                            ? 'text-foreground bg-surface-alt shadow-sm border border-border/10'
+                            : 'text-foreground/70 hover:text-foreground hover:bg-surface-alt/40'
                         }`}
                       >
                         {label}
                       </button>
                     ))}
+
+                    <div className="border-t border-border/10 my-1 pt-1.5">
+                      <button
+                        onClick={() => scrollTo(CONTACT_ITEM.id)}
+                        className={`w-full text-left px-4 py-3 rounded-lg text-base font-semibold transition-all cursor-pointer ${
+                          activeSection === CONTACT_ITEM.id && !selectedExtraSection
+                            ? 'text-foreground bg-surface-alt shadow-sm border border-border/10'
+                            : 'text-foreground/70 hover:text-foreground hover:bg-surface-alt/40'
+                        }`}
+                      >
+                        {CONTACT_ITEM.label}
+                      </button>
+                    </div>
                   </div>
                 </motion.div>
               )}

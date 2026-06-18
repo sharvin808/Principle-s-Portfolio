@@ -7,9 +7,13 @@ import type { AwardAchievement } from '@/lib/types';
 
 interface AwardsAchievementsSectionProps {
   awardsAchievements: AwardAchievement[];
+  theme?: 'oxford' | 'tan';
 }
 
-export default function AwardsAchievementsSection({ awardsAchievements }: AwardsAchievementsSectionProps) {
+export default function AwardsAchievementsSection({ 
+  awardsAchievements, 
+  theme = 'tan' 
+}: AwardsAchievementsSectionProps) {
   if (!awardsAchievements || awardsAchievements.length === 0) return null;
 
   return (
@@ -17,6 +21,7 @@ export default function AwardsAchievementsSection({ awardsAchievements }: Awards
       id="awards-achievements"
       title="Awards & Recognitions"
       subtitle="Honors, fellowships, and academic accolades received throughout the career"
+      theme={theme}
     >
       <div className="relative max-w-3xl mx-auto">
         {/* Timeline line */}
@@ -44,23 +49,23 @@ export default function AwardsAchievementsSection({ awardsAchievements }: Awards
 
                 <div className="card-premium">
                   <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
-                    <span className="text-xs font-semibold text-gold font-mono bg-gold-muted px-2.5 py-1 rounded-md">
+                    <span className="text-sm font-semibold text-gold font-mono bg-gold-muted px-2.5 py-1 rounded-md">
                       {award.year}
                     </span>
-                    <span className="text-xs text-muted font-medium">
+                    <span className="text-sm text-muted font-medium">
                       {award.organization}
                     </span>
                   </div>
 
                   <h3
-                    className="text-lg font-bold text-heading leading-snug mb-2"
+                    className="text-xl font-bold text-heading leading-snug mb-2"
                     style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
                   >
                     {award.name}
                   </h3>
 
                   {award.description && (
-                    <p className="text-sm text-foreground/70 leading-relaxed">
+                    <p className="text-base text-foreground/70 leading-relaxed">
                       {award.description}
                     </p>
                   )}

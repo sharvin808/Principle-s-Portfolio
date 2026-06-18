@@ -33,6 +33,7 @@ export default function GallerySection({ gallery }: GallerySectionProps) {
       id="gallery"
       title="Academic Achievements Gallery"
       subtitle="Memorable moments, award ceremonies, guest visits, and campus activities"
+      theme="tan"
     >
       {/* Category filters */}
       {categories.length > 1 && (

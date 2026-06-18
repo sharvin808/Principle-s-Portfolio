@@ -102,6 +102,13 @@ export interface Reviewer {
   role: string;
 }
 
+export interface ContactMe {
+  officeLocation: string;
+  emailId: string;
+  linkedin: string;
+  instagram: string;
+}
+
 // Combined data type for the entire sheet
 export interface SheetData {
   profile: Profile;
@@ -117,4 +124,5 @@ export interface SheetData {
   gallery: GalleryImage[];
   internationalExposure: InternationalExposure[];
   reviewer: Reviewer[];
+  contactMe: ContactMe;
 }
