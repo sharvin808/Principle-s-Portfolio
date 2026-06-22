@@ -91,8 +91,6 @@ export interface InternationalExposure {
   country: string;
   university: string;
   purpose: string;
-  duration: string;
-  year: string;
 }
 
 export interface Reviewer {

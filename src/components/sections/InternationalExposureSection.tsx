@@ -3,9 +3,9 @@
 import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import SectionWrapper from '../ui/SectionWrapper';
-import ScrollReveal from '../ui/ScrollReveal';
-import { Globe2, Building, Calendar, Target, Compass, Map as MapIcon, List as ListIcon, ChevronRight } from 'lucide-react';
+import { Building, Target, Compass, ChevronRight } from 'lucide-react';
 import type { InternationalExposure } from '@/lib/types';
+import { COUNTRIES_DATA } from '@/lib/countries';
 
 interface InternationalExposureSectionProps {
   internationalExposure: InternationalExposure[];
@@ -73,10 +73,16 @@ function getCountryCode(country: string): string {
   const normalized = country.trim().toLowerCase();
   
   if (COUNTRY_CODES[normalized]) return COUNTRY_CODES[normalized];
+  if (COUNTRIES_DATA[normalized]) return COUNTRIES_DATA[normalized].code;
   
   for (const [name, code] of Object.entries(COUNTRY_CODES)) {
     if (normalized.includes(name) || name.includes(normalized)) {
       return code;
+    }
+  }
+  for (const [name, data] of Object.entries(COUNTRIES_DATA)) {
+    if (normalized.includes(name) || name.includes(normalized)) {
+      return data.code;
     }
   }
   return '';
@@ -95,7 +101,7 @@ function getArcPath(x1: number, y1: number, x2: number, y2: number): string {
 }
 
 export default function InternationalExposureSection({ internationalExposure }: InternationalExposureSectionProps) {
-  const [viewMode, setViewMode] = useState<'map' | 'timeline'>('map');
+
   const [activeCountryCode, setActiveCountryCode] = useState<string>('');
 
   // Group and process exposure items by country code
@@ -136,6 +142,14 @@ export default function InternationalExposureSection({ internationalExposure }: 
   // Pre-calculate fallback coordinates for dynamic locations relative to home base in India
   const getDynamicCoords = (code: string, index: number) => {
     if (MAP_COORDINATES[code]) return MAP_COORDINATES[code];
+    
+    // Check our comprehensive dictionary
+    const globalData = Object.values(COUNTRIES_DATA).find(c => c.code === code);
+    if (globalData) {
+      return { x: globalData.x, y: globalData.y, labelOffset: { x: 0, y: 20 } };
+    }
+
+    // Ultimate fallback if not found anywhere
     const angle = (index * 2 * Math.PI) / (countriesWithData.length || 1);
     return {
       x: 446 + Math.cos(angle) * 100,
@@ -180,35 +194,11 @@ export default function InternationalExposureSection({ internationalExposure }: 
           🗺️ {internationalExposure.length} Collaboration{internationalExposure.length > 1 ? 's' : ''} Worldwide
         </p>
 
-        {/* View Switcher */}
-        <div className="flex items-center gap-2 bg-gold-muted/30 p-1.5 rounded-xl border border-gold/15">
-          <button
-            onClick={() => setViewMode('map')}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 cursor-pointer ${
-              viewMode === 'map'
-                ? 'bg-gold text-background shadow-sm'
-                : 'text-foreground/80 hover:text-foreground hover:bg-gold-muted/20'
-            }`}
-          >
-            <MapIcon size={16} />
-            <span>Interactive Hub</span>
-          </button>
-          <button
-            onClick={() => setViewMode('timeline')}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 cursor-pointer ${
-              viewMode === 'timeline'
-                ? 'bg-gold text-background shadow-sm'
-                : 'text-foreground/80 hover:text-foreground hover:bg-gold-muted/20'
-            }`}
-          >
-            <ListIcon size={16} />
-            <span>Timeline View</span>
-          </button>
-        </div>
+
       </div>
 
       {/* Main Content Layout */}
-      {viewMode === 'map' ? (
+
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           {/* Left Panel: SVG Map Connection Graph (Desktop) / Tab selector (Mobile) */}
           <div className="lg:col-span-8 flex flex-col justify-between bg-surface border border-border/80 rounded-2xl p-6 shadow-xl overflow-hidden min-h-[400px] lg:min-h-[500px]">
@@ -298,7 +288,6 @@ export default function InternationalExposureSection({ internationalExposure }: 
                         className="animate-dash transition-all duration-300"
                         style={{
                           opacity: isActive ? 1 : 0.7,
-                          filter: isActive ? 'drop-shadow(0 0 3px rgba(33, 40, 66, 0.4))' : 'none',
                         }}
                       />
                     </g>
@@ -325,7 +314,8 @@ export default function InternationalExposureSection({ internationalExposure }: 
                           fill="none"
                           stroke={isHome ? '#212842' : '#212842'}
                           strokeWidth="1.5"
-                          className="animate-pulse-ring origin-center"
+                          className="animate-pulse-ring"
+                          style={{ transformOrigin: '0px 0px' }}
                         />
                       )}
 
@@ -335,7 +325,8 @@ export default function InternationalExposureSection({ internationalExposure }: 
                         fill={isHome ? '#faf3e3' : '#ffffff'}
                         stroke={isHome ? '#212842' : isActive ? '#212842' : 'rgba(33, 40, 66, 0.3)'}
                         strokeWidth={isActive || isHome ? 2.5 : 1.2}
-                        className="transition-all duration-300 shadow-md group-hover:scale-110 origin-center group-hover:stroke-[#212842]"
+                        className="transition-all duration-300 group-hover:scale-110 group-hover:stroke-[#212842]"
+                        style={{ transformOrigin: '0px 0px' }}
                       />
 
                       {/* Flag Image / Home center dot */}
@@ -368,10 +359,8 @@ export default function InternationalExposureSection({ internationalExposure }: 
                         y={coord.labelOffset?.y || (isHome ? 20 : 22)}
                         textAnchor="middle"
                         className={`text-[8.5px] font-mono font-bold tracking-wider uppercase transition-colors duration-300 pointer-events-none ${
-                          isHome
-                            ? 'fill-[#212842] font-extrabold'
-                            : isActive
-                            ? 'fill-[#212842] font-extrabold scale-105 origin-top'
+                          isHome || isActive
+                            ? 'fill-[#212842]'
                             : 'fill-[#6B7280]/80 group-hover:fill-[#212842]'
                         }`}
                       >
@@ -412,7 +401,7 @@ export default function InternationalExposureSection({ internationalExposure }: 
 
           {/* Right Panel: Academic Log Panel */}
           <div className="lg:col-span-4 flex">
-            <div className="card-premium w-full flex flex-col relative overflow-hidden group">
+            <div className="card-premium w-full flex flex-col relative overflow-hidden group min-h-[400px] lg:min-h-[500px]">
               {/* Compass Watermark Background Decoration */}
               <div className="absolute -bottom-12 -right-12 text-gold opacity-[0.03] group-hover:opacity-[0.05] pointer-events-none group-hover:rotate-45 transition-all duration-1000 ease-out">
                 <Compass size={220} />
@@ -457,13 +446,6 @@ export default function InternationalExposureSection({ internationalExposure }: 
                           key={`collab-${index}`}
                           className="relative pl-4 border-l-2 border-gold/45 hover:border-gold transition-colors duration-300"
                         >
-                          {/* Year Tag */}
-                          {item.year && (
-                            <div className="inline-block text-xs font-mono font-bold text-gold bg-gold-muted px-2.5 py-0.5 rounded mb-2">
-                              {item.year}
-                            </div>
-                          )}
-
                           {/* University */}
                           <h4 className="text-base font-bold text-heading flex items-start gap-2 mb-2.5">
                             <Building size={16} className="mt-0.5 flex-shrink-0 text-gold" />
@@ -478,12 +460,7 @@ export default function InternationalExposureSection({ internationalExposure }: 
                                 <span><strong>Purpose:</strong> {item.purpose}</span>
                               </div>
                             )}
-                            {item.duration && (
-                              <div className="flex items-start gap-2">
-                                <Calendar size={14} className="mt-0.5 flex-shrink-0 text-gold/70" />
-                                <span><strong>Duration:</strong> {item.duration}</span>
-                              </div>
-                            )}
+
                           </div>
                         </div>
                       ))}
@@ -505,94 +482,7 @@ export default function InternationalExposureSection({ internationalExposure }: 
             </div>
           </div>
         </div>
-      ) : (
-        /* Timeline View: Chronological list of collaborations */
-        <div className="relative max-w-4xl mx-auto py-6">
-          {/* Vertical central spine line */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-gold via-gold/40 to-transparent transform -translate-x-1/2" />
 
-          <div className="space-y-12">
-            {internationalExposure.map((item, index) => {
-              const code = getCountryCode(item.country);
-              const isEven = index % 2 === 0;
-
-              return (
-                <ScrollReveal
-                  key={`timeline-${index}`}
-                  delay={index * 0.08}
-                  direction={isEven ? 'left' : 'right'}
-                  className={`relative flex flex-col md:flex-row items-stretch ${
-                    isEven ? 'md:flex-row-reverse' : ''
-                  }`}
-                >
-                  {/* Timeline Center Node */}
-                  <div className="absolute left-4 md:left-1/2 transform -translate-x-1/2 flex items-center justify-center z-20">
-                    <div className="w-10 h-10 rounded-full bg-surface border-2 border-gold shadow-md flex items-center justify-center overflow-hidden hover:scale-110 transition-transform duration-300">
-                      {code ? (
-                        <img
-                          src={getFlagUrl(code)}
-                          alt={item.country}
-                          className="w-full h-full object-cover scale-110"
-                          onError={(e) => {
-                            (e.target as HTMLElement).style.display = 'none';
-                          }}
-                        />
-                      ) : (
-                        <Globe2 size={16} className="text-gold" />
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Left Side Content (Desktop) / Empty on Mobile */}
-                  <div className="w-full md:w-1/2 pr-0 md:pr-12 md:pl-0 pl-14 text-left md:text-right flex flex-col justify-center items-start md:items-end">
-                    <span className="text-sm font-bold text-gold font-mono bg-gold-muted px-2.5 py-1 rounded-md mb-2 md:mb-1.5">
-                      {item.year || 'Collab'}
-                    </span>
-                    <div className="flex items-center gap-2 mb-2 md:flex-row-reverse">
-                      {code && (
-                        <img
-                          src={getFlagUrl(code)}
-                          alt={item.country}
-                          className="w-5 h-3.5 object-cover rounded shadow-sm border border-border/40"
-                        />
-                      )}
-                      <span className="text-base font-semibold text-heading">{item.country}</span>
-                    </div>
-                  </div>
-
-                  {/* Right Side Content (Desktop) */}
-                  <div className="w-full md:w-1/2 pl-14 md:pl-12 md:pr-0 mt-3 md:mt-0 flex">
-                    <div className="card-premium w-full hover:border-gold hover:shadow-md transition-all duration-300">
-                      <h3
-                        className="text-lg font-bold text-heading leading-snug mb-3 flex items-start gap-2"
-                        style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
-                      >
-                        <Building size={16} className="mt-1 flex-shrink-0 text-gold" />
-                        {item.university}
-                      </h3>
-
-                      <div className="space-y-2 text-base text-foreground/80">
-                        {item.purpose && (
-                          <div className="flex items-start gap-2">
-                            <Target size={14} className="mt-0.5 flex-shrink-0 text-gold/70" />
-                            <span><strong>Purpose:</strong> {item.purpose}</span>
-                          </div>
-                        )}
-                        {item.duration && (
-                          <div className="flex items-start gap-2">
-                            <Calendar size={14} className="mt-0.5 flex-shrink-0 text-gold/70" />
-                            <span><strong>Duration:</strong> {item.duration}</span>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </ScrollReveal>
-              );
-            })}
-          </div>
-        </div>
-      )}
     </SectionWrapper>
   );
 }
