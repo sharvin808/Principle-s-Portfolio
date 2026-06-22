@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { playfair, inter } from '@/lib/fonts';
 import ThemeProvider from '@/components/ThemeProvider';
+import { LoadingProvider } from '@/components/ui/LoadingContext';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -20,7 +21,11 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col">
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <LoadingProvider>
+            {children}
+          </LoadingProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -2,6 +2,7 @@
 
 import { useRef, ReactNode } from 'react';
 import { motion, useInView, type Variant } from 'framer-motion';
+import { useLoading } from './LoadingContext';
 
 interface ScrollRevealProps {
   children: ReactNode;
@@ -22,6 +23,8 @@ export default function ScrollReveal({
 }: ScrollRevealProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once, margin: '-80px' });
+  const isLoading = useLoading();
+  const shouldAnimate = isInView && !isLoading;
 
   const directionMap: Record<string, Variant> = {
     up: { y: 40, x: 0 },
@@ -36,7 +39,7 @@ export default function ScrollReveal({
     <motion.div
       ref={ref}
       initial={{ opacity: 0, ...initial }}
-      animate={isInView ? { opacity: 1, x: 0, y: 0 } : {}}
+      animate={shouldAnimate ? { opacity: 1, x: 0, y: 0 } : {}}
       transition={{
         duration,
         delay,

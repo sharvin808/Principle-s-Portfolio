@@ -3,6 +3,7 @@
 import { motion, type Variants } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import Particles from '../ui/Particles';
+import { useLoading } from '../ui/LoadingContext';
 import type { Profile } from '@/lib/types';
 
 interface HeroSectionProps {
@@ -129,6 +130,8 @@ function renderHonorsText(text: string, itemVariants: Variants) {
 }
 
 export default function HeroSection({ profile }: HeroSectionProps) {
+  const isLoading = useLoading();
+
   const scrollToContent = () => {
     // Scroll past the Hero section (which is 100vh tall)
     window.scrollTo({
@@ -187,7 +190,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
       {/* Large Image on Left (Desktop Absolute, Mobile Inline) */}
       <motion.div
         initial={{ opacity: 0, x: -40 }}
-        animate={{ opacity: 1, x: 0 }}
+        animate={!isLoading ? { opacity: 1, x: 0 } : { opacity: 0, x: -40 }}
         transition={{ duration: 0.9, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
         className="hidden lg:flex absolute left-[6vw] bottom-0 w-[45vw] h-[92vh] items-end justify-start z-10 pointer-events-none"
       >
@@ -225,7 +228,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
           {/* LEFT — Portrait */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
-            animate={{ opacity: 1, x: 0 }}
+            animate={!isLoading ? { opacity: 1, x: 0 } : { opacity: 0, x: -40 }}
             transition={{ duration: 0.9, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="flex justify-center lg:justify-start order-2 lg:order-1 w-full"
           >
@@ -261,7 +264,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
           <motion.div
             variants={containerVariants}
             initial="hidden"
-            animate="visible"
+            animate={!isLoading ? "visible" : "hidden"}
             className="text-center lg:text-left order-1 lg:order-2"
           >
 
@@ -331,7 +334,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
       {/* Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        animate={!isLoading ? { opacity: 1 } : { opacity: 0 }}
         transition={{ delay: 2, duration: 1 }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center cursor-pointer"
         onClick={scrollToContent}

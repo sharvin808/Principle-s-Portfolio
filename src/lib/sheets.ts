@@ -65,7 +65,7 @@ function parseImageUrl(url: string): string {
   // Detect Google Drive sharing links
   if (trimmed.includes('drive.google.com')) {
     let fileId = '';
-
+    
     // Pattern: /file/d/[FILE_ID]/view
     const fileDMatch = trimmed.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
     if (fileDMatch && fileDMatch[1]) {
@@ -77,12 +77,12 @@ function parseImageUrl(url: string): string {
         fileId = idParamMatch[1];
       }
     }
-
+    
     if (fileId) {
       return `https://lh3.googleusercontent.com/d/${fileId}`;
     }
   }
-
+  
   return trimmed;
 }
 
@@ -128,10 +128,10 @@ export async function getProfile(): Promise<Profile> {
   const rows = await fetchSheetTab('profile');
   const objects = rowsToObjects<any>(rows);
   const raw = objects[0] || {};
-
+  
   // Support flexible header names for profile photo
   const rawPhotoUrl = raw.photourl || raw.photo || raw.image || raw.profilephoto || raw.picture || raw.photolink || raw.imageurl || '';
-
+  
   // Support flexible header names for other honors
   const rawOtherHonors = raw.otherhonors || raw.other_honors || raw.honors || raw.otherhonours || raw.honours || '';
 
