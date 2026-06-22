@@ -4,14 +4,16 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown } from 'lucide-react';
 
-export const SCROLL_ITEMS: { id: string; label: string }[] = [];
+export const SCROLL_ITEMS = [
+  { id: 'international-exposure', label: 'International Exposure' },
+];
 
 export const EXTRA_ITEMS = [
   { id: 'publications', label: 'Publications' },
   { id: 'research-project', label: 'Projects' },
   { id: 'consultancy', label: 'Consultancy' },
   { id: 'paper-presentations', label: 'Presentations' },
-  { id: 'reviewer', label: 'Reviewers' },
+  { id: 'reviewer', label: 'Reviewer' },
 ];
 
 export const CONTACT_ITEM = { id: 'contact', label: 'Contact Me' };
@@ -135,10 +137,10 @@ export default function Navbar({
                   window.location.hash = 'about';
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                className="text-xl font-bold text-heading cursor-pointer hover:opacity-80 transition-opacity"
+                className="text-2xl md:text-3xl font-bold text-heading cursor-pointer hover:opacity-80 transition-opacity"
                 style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
               >
-                <span className="text-gradient-gold">Portfolio</span>
+                <span className="text-gradient-gold">Fr.SMD</span>
               </button>
 
               {/* Desktop Nav Items */}
@@ -147,7 +149,7 @@ export default function Navbar({
                   <button
                     key={id}
                     onClick={() => scrollTo(id)}
-                    className={`relative px-4 py-2 text-base font-semibold rounded-lg transition-colors duration-200 cursor-pointer ${
+                    className={`relative px-2 lg:px-4 py-2 text-sm lg:text-base font-semibold rounded-lg transition-colors duration-200 cursor-pointer ${
                       activeSection === id
                         ? 'text-foreground'
                         : 'text-foreground/70 hover:text-foreground hover:bg-surface-alt/30'
@@ -164,10 +166,31 @@ export default function Navbar({
                   </button>
                 ))}
 
+                {SCROLL_ITEMS.map(({ id, label }) => (
+                  <button
+                    key={id}
+                    onClick={() => scrollTo(id)}
+                    className={`relative px-2 lg:px-4 py-2 text-sm lg:text-base font-semibold rounded-lg transition-colors duration-200 cursor-pointer ${
+                      activeSection === id && !selectedExtraSection
+                        ? 'text-foreground'
+                        : 'text-foreground/70 hover:text-foreground hover:bg-surface-alt/30'
+                    }`}
+                  >
+                    {activeSection === id && !selectedExtraSection && (
+                      <motion.div
+                        layoutId="active-pill"
+                        className="absolute inset-0 bg-surface-alt shadow-[0_2px_8px_-2px_rgba(0,0,0,0.08)] border border-border/10 rounded-lg -z-10"
+                        transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                      />
+                    )}
+                    <span className="relative z-10">{label}</span>
+                  </button>
+                ))}
+
                 {/* Contact Item */}
                 <button
                   onClick={() => scrollTo(CONTACT_ITEM.id)}
-                  className={`relative px-4 py-2 text-base font-semibold rounded-lg transition-colors duration-200 cursor-pointer ${
+                  className={`relative px-2 lg:px-4 py-2 text-sm lg:text-base font-semibold rounded-lg transition-colors duration-200 cursor-pointer ${
                     activeSection === CONTACT_ITEM.id && !selectedExtraSection
                       ? 'text-foreground'
                       : 'text-foreground/70 hover:text-foreground hover:bg-surface-alt/30'
@@ -213,6 +236,20 @@ export default function Navbar({
                         onClick={() => scrollTo(id)}
                         className={`text-left px-4 py-3 rounded-lg text-base font-semibold transition-all cursor-pointer ${
                           activeSection === id
+                            ? 'text-foreground bg-surface-alt shadow-sm border border-border/10'
+                            : 'text-foreground/70 hover:text-foreground hover:bg-surface-alt/40'
+                        }`}
+                      >
+                        {label}
+                      </button>
+                    ))}
+
+                    {SCROLL_ITEMS.map(({ id, label }) => (
+                      <button
+                        key={id}
+                        onClick={() => scrollTo(id)}
+                        className={`text-left px-4 py-3 rounded-lg text-base font-semibold transition-all cursor-pointer ${
+                          activeSection === id && !selectedExtraSection
                             ? 'text-foreground bg-surface-alt shadow-sm border border-border/10'
                             : 'text-foreground/70 hover:text-foreground hover:bg-surface-alt/40'
                         }`}

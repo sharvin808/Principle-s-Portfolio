@@ -107,6 +107,7 @@ export interface ContactMe {
   emailId: string;
   linkedin: string;
   instagram: string;
+  twitter?: string;
 }
 
 // Combined data type for the entire sheet

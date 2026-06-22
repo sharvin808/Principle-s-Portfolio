@@ -86,6 +86,15 @@ function parseImageUrl(url: string): string {
   return trimmed;
 }
 
+function parseExternalUrl(url: string): string {
+  if (!url) return '';
+  const trimmed = url.trim();
+  if (trimmed.startsWith('http://') || trimmed.startsWith('https://') || trimmed.startsWith('mailto:') || trimmed.startsWith('tel:')) {
+    return trimmed;
+  }
+  return `https://${trimmed}`;
+}
+
 // ---------------------------------------------------------------------------
 // Row-to-Object Mapper
 // ---------------------------------------------------------------------------
@@ -294,8 +303,9 @@ export async function getContactme(): Promise<ContactMe> {
   return {
     officeLocation: raw.officelocation || raw.office || raw.location || '',
     emailId: raw.emailid || raw.email || raw.emailaddress || '',
-    linkedin: raw.linkedin || raw.linkedinurl || '',
-    instagram: instagramUrl,
+    linkedin: parseExternalUrl(raw.linkedin || raw.linkedinurl || ''),
+    instagram: parseExternalUrl(instagramUrl),
+    twitter: parseExternalUrl(raw.twitter || raw.twitterurl || raw.x || raw.xurl || ''),
   };
 }
 

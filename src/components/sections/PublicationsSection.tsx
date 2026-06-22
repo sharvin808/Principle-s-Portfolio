@@ -65,7 +65,7 @@ export default function PublicationsSection({ publications }: PublicationsSectio
     <SectionWrapper
       id="publications"
       title="Publications"
-      subtitle="Contributions to scholarly research and academic knowledge"
+      subtitle="Scopus/WoS Indexed Journals"
       theme="tan"
     >
       {/* Counters */}

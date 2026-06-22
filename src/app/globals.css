@@ -34,7 +34,7 @@
 :root {
   --background: #faf3e3;
   --foreground: #212842;
-  --surface: #FFFFFF;
+  --surface: #f0e7d5;
   --surface-alt: #fcefd2;
   --heading: #212842;
   --muted: #6B7280;
@@ -96,7 +96,7 @@
 .bg-tan-theme {
   --background: #fcefd2;
   --foreground: #151b2e;
-  --surface: #FFFFFF;
+  --surface: #f0e7d5;
   --surface-alt: #faf3e3;
   --heading: #151b2e;
   --muted: #6B7280;
@@ -481,7 +481,7 @@ body {
 
 .pagination-btn.active {
   background: var(--color-gold);
-  color: #151b2e;
+  color: var(--background);
   border-color: var(--color-gold);
 }
 
