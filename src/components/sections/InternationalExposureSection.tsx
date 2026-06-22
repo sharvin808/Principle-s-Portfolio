@@ -223,8 +223,8 @@ export default function InternationalExposureSection({ internationalExposure }: 
                     onClick={() => setActiveCountryCode(code)}
                     className={`flex items-center gap-2.5 px-4 py-2.5 rounded-xl border snap-align-start flex-shrink-0 transition-all duration-300 cursor-pointer ${
                       isActive
-                        ? 'bg-[#212842] text-[#FAF7F0] border-[#212842] shadow-md scale-95'
-                        : 'bg-surface text-[#6B7280] border-border hover:border-[#212842]/50 hover:bg-[#FAF7F0]'
+                        ? 'bg-[#212842] text-[#faf3e3] border-[#212842] shadow-md scale-95'
+                        : 'bg-surface text-[#6B7280] border-border hover:border-[#212842]/50 hover:bg-[#faf3e3]'
                     }`}
                   >
                     <img
@@ -239,12 +239,12 @@ export default function InternationalExposureSection({ internationalExposure }: 
             </div>
 
             {/* Desktop Map Canvas */}
-            <div className="relative w-full h-auto aspect-[640/374] flex items-center justify-center bg-[#F0E7D5] rounded-xl overflow-hidden border border-border/60 shadow-inner" style={{ aspectRatio: '640/374' }}>
+            <div className="relative w-full h-auto aspect-[640/374] flex items-center justify-center bg-[#fcefd2] rounded-xl overflow-hidden border border-border/60 shadow-inner" style={{ aspectRatio: '640/374' }}>
               {/* Subtle radial shadow/glow at the edges to blend the map */}
               <div
                 className="absolute inset-0 pointer-events-none z-10"
                 style={{
-                  background: 'radial-gradient(circle at 50% 50%, rgba(240, 231, 213, 0) 60%, rgba(240, 231, 213, 0.4) 100%)',
+                  background: 'radial-gradient(circle at 50% 50%, rgba(252, 239, 210, 0) 60%, rgba(252, 239, 210, 0.4) 100%)',
                 }}
               />
 
@@ -332,7 +332,7 @@ export default function InternationalExposureSection({ internationalExposure }: 
                       {/* Outer Ring */}
                       <circle
                         r={isHome ? 9 : 12}
-                        fill={isHome ? '#FAF7F0' : '#ffffff'}
+                        fill={isHome ? '#faf3e3' : '#ffffff'}
                         stroke={isHome ? '#212842' : isActive ? '#212842' : 'rgba(33, 40, 66, 0.3)'}
                         strokeWidth={isActive || isHome ? 2.5 : 1.2}
                         className="transition-all duration-300 shadow-md group-hover:scale-110 origin-center group-hover:stroke-[#212842]"
@@ -394,8 +394,8 @@ export default function InternationalExposureSection({ internationalExposure }: 
                     onClick={() => setActiveCountryCode(code)}
                     className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg border text-sm font-semibold transition-all duration-300 cursor-pointer ${
                       isActive
-                        ? 'bg-[#212842] text-[#FAF7F0] border-[#212842] shadow-sm'
-                        : 'bg-surface text-[#6B7280] border-border hover:text-[#212842] hover:border-[#212842]/50 hover:bg-[#FAF7F0]'
+                        ? 'bg-[#212842] text-[#faf3e3] border-[#212842] shadow-sm'
+                        : 'bg-surface text-[#6B7280] border-border hover:text-[#212842] hover:border-[#212842]/50 hover:bg-[#faf3e3]'
                     }`}
                   >
                     <img

@@ -122,14 +122,17 @@ export async function getProfile(): Promise<Profile> {
   
   // Support flexible header names for profile photo
   const rawPhotoUrl = raw.photourl || raw.photo || raw.image || raw.profilephoto || raw.picture || raw.photolink || raw.imageurl || '';
+  
+  // Support flexible header names for other honors
+  const rawOtherHonors = raw.otherhonors || raw.other_honors || raw.honors || raw.otherhonours || raw.honours || '';
 
   return {
     name: raw.name || '',
     designation: raw.designation || '',
-    department: raw.department || '',
     institution: raw.institution || '',
     photoUrl: parseImageUrl(rawPhotoUrl),
     tagline: raw.tagline || '',
+    otherHonors: rawOtherHonors || '',
   };
 }
 

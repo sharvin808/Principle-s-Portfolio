@@ -9,6 +9,125 @@ interface HeroSectionProps {
   profile: Profile;
 }
 
+const HIGHLIGHT_WORDS = [
+  "executive director",
+  "Honorary Professor",
+  "Honorary (Principal Fellow)",
+  "Vice President",
+  "Director"
+];
+
+function renderLine(line: string, idx: number, itemVariants: Variants) {
+  const sortedWords = [...HIGHLIGHT_WORDS].sort((a, b) => b.length - a.length);
+  const regex = new RegExp(`(${sortedWords.map(w => w.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')).join('|')})`, 'gi');
+  const parts = line.split(regex);
+
+  return (
+    <motion.div
+      key={idx}
+      variants={itemVariants}
+      className="text-sm md:text-base text-[#fcefd2]/70 leading-relaxed text-center lg:text-left"
+    >
+      {parts.map((part, pIdx) => {
+        const isMatch = HIGHLIGHT_WORDS.some(word => 
+          part.toLowerCase() === word.toLowerCase()
+        );
+        if (isMatch) {
+          return (
+            <span key={pIdx} className="font-bold text-[#fcefd2]">
+              {part}
+            </span>
+          );
+        }
+        return <span key={pIdx}>{part}</span>;
+      })}
+    </motion.div>
+  );
+}
+
+function renderHonorsText(text: string, itemVariants: Variants) {
+  if (!text) return null;
+
+  // Split by newlines first to respect existing line breaks
+  const initialLines = text.split(/[\r\n]+/).map(l => l.trim()).filter(Boolean);
+  const finalLines: string[] = [];
+
+  const sortedWords = [...HIGHLIGHT_WORDS].sort((a, b) => b.length - a.length);
+
+  initialLines.forEach(line => {
+    const lowerLine = line.toLowerCase();
+    const covered = new Array(line.length).fill(false);
+    const splitPoints: number[] = [];
+
+    // Find all matches for each keyword
+    sortedWords.forEach(word => {
+      const lowerWord = word.toLowerCase();
+      let startIdx = 0;
+      while ((startIdx = lowerLine.indexOf(lowerWord, startIdx)) !== -1) {
+        const endIdx = startIdx + lowerWord.length;
+        
+        // Check if any character in this match is already covered
+        let isCovered = false;
+        for (let i = startIdx; i < endIdx; i++) {
+          if (covered[i]) {
+            isCovered = true;
+            break;
+          }
+        }
+
+        if (!isCovered) {
+          // Mark characters as covered
+          for (let i = startIdx; i < endIdx; i++) {
+            covered[i] = true;
+          }
+          // Record the split point
+          splitPoints.push(startIdx);
+        }
+        
+        startIdx += 1;
+      }
+    });
+
+    // Sort split points ascending
+    splitPoints.sort((a, b) => a - b);
+
+    // If no split points, add the whole line
+    if (splitPoints.length === 0) {
+      finalLines.push(line);
+      return;
+    }
+
+    // Split line by the split points
+    let currentStart = 0;
+    for (let i = 0; i < splitPoints.length; i++) {
+      const splitPoint = splitPoints[i];
+      if (splitPoint > currentStart) {
+        const precedingSegment = line.substring(currentStart, splitPoint).trim();
+        const cleaned = precedingSegment.replace(/[,;\s]+$/, '');
+        if (cleaned) {
+          finalLines.push(cleaned);
+        }
+      }
+      currentStart = splitPoint;
+    }
+    
+    // Add the final segment
+    if (currentStart < line.length) {
+      const remainingSegment = line.substring(currentStart).trim();
+      const cleaned = remainingSegment.replace(/[,;\s]+$/, '');
+      if (cleaned) {
+        finalLines.push(cleaned);
+      }
+    }
+  });
+
+  return (
+    <div className="mt-3.5 flex flex-col gap-1.5">
+      {finalLines.map((line, idx) => renderLine(line, idx, itemVariants))}
+    </div>
+  );
+}
+
 export default function HeroSection({ profile }: HeroSectionProps) {
   const scrollToContent = () => {
     // Scroll past the Hero section (which is 100vh tall)
@@ -49,20 +168,20 @@ export default function HeroSection({ profile }: HeroSectionProps) {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(ellipse at 70% 50%, rgba(240, 231, 213, 0.08) 0%, transparent 60%)',
+            'radial-gradient(ellipse at 70% 50%, rgba(252, 239, 210, 0.08) 0%, transparent 60%)',
         }}
       />
 
       {/* Vertical Design Line */}
       <div 
-        className="hidden lg:block absolute top-0 bottom-0 w-[0.50in] bg-[#F0E7D5] z-0 pointer-events-none"
+        className="hidden lg:block absolute top-0 bottom-0 w-[0.50in] bg-[#fcefd2] z-0 pointer-events-none"
         style={{ left: 'calc(6vw + 22vh)' }}
       />
 
       {/* Horizontal Design Line */}
       <div 
-        className="hidden lg:block absolute left-0 right-0 h-[0.50in] bg-[#F0E7D5] z-0 pointer-events-none"
-        style={{ bottom: '140px' }}
+        className="hidden lg:block absolute left-0 right-0 h-[0.50in] bg-[#fcefd2] z-0 pointer-events-none"
+        style={{ bottom: '120px' }}
       />
 
       {/* Large Image on Left (Desktop Absolute, Mobile Inline) */}
@@ -86,7 +205,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
             />
           ) : (
             <div className="w-full h-[75vh] flex items-center justify-center bg-[#212842]/50 rounded-2xl m-8">
-              <div className="text-center text-[#F0E7D5]/50">
+              <div className="text-center text-[#fcefd2]/50">
                 <div
                   className="text-8xl mb-4"
                   style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
@@ -121,7 +240,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
                 />
               ) : (
                 <div className="w-full h-full flex items-center justify-center bg-[#212842]/50 rounded-2xl">
-                  <div className="text-center text-[#F0E7D5]/50">
+                  <div className="text-center text-[#fcefd2]/50">
                     <div
                       className="text-6xl mb-2"
                       style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
@@ -151,7 +270,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
             {/* Name */}
             <motion.h1
               variants={itemVariants}
-              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-[#F0E7D5] leading-tight"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] xl:text-[3.25rem] font-bold text-[#fcefd2] leading-tight whitespace-nowrap"
               style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
             >
               {profile.name || (
@@ -167,7 +286,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
               <div
                 className="h-0.5 w-20 rounded-full"
                 style={{
-                  background: 'linear-gradient(90deg, #F0E7D5, #F7F2E8, transparent)',
+                  background: 'linear-gradient(90deg, #fcefd2, #F7F2E8, transparent)',
                 }}
               />
             </motion.div>
@@ -175,32 +294,31 @@ export default function HeroSection({ profile }: HeroSectionProps) {
             {/* Designation */}
             <motion.p
               variants={itemVariants}
-              className="text-xl md:text-2xl font-medium bg-gradient-to-r from-[#F0E7D5] to-[#F7F2E8] bg-clip-text text-transparent"
+              className="text-xl md:text-2xl font-medium bg-gradient-to-r from-[#fcefd2] to-[#F7F2E8] bg-clip-text text-transparent"
             >
               {profile.designation || 'Designation'}
-            </motion.p>
-
-            {/* Department */}
-            <motion.p
-              variants={itemVariants}
-              className="mt-3 text-lg text-[#F0E7D5]/75"
-            >
-              {profile.department || 'Department'}
             </motion.p>
 
             {/* Institution */}
             <motion.p
               variants={itemVariants}
-              className="mt-1 text-base text-[#F0E7D5]/60"
+              className="mt-2 text-base md:text-lg text-[#fcefd2]/70"
             >
               {profile.institution || 'Institution'}
             </motion.p>
+
+            {/* Other Honors */}
+            {profile.otherHonors && (
+              <div className="w-full">
+                {renderHonorsText(profile.otherHonors, itemVariants)}
+              </div>
+            )}
 
             {/* Tagline */}
             {profile.tagline && (
               <motion.p
                 variants={itemVariants}
-                className="mt-6 text-base text-[#F0E7D5]/70 max-w-lg mx-auto lg:mx-0 leading-relaxed italic"
+                className="mt-6 text-base text-[#fcefd2]/70 max-w-lg mx-auto lg:mx-0 leading-relaxed italic"
                 style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
               >
                 &ldquo;{profile.tagline}&rdquo;
@@ -219,7 +337,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
         onClick={scrollToContent}
       >
         <motion.p
-          className="text-[#F0E7D5] text-xs font-semibold tracking-widest uppercase mb-3"
+          className="text-[#fcefd2] text-xs font-semibold tracking-widest uppercase mb-3"
           animate={{ opacity: [0.6, 1, 0.6] }}
           transition={{ duration: 2, repeat: Infinity }}
         >
@@ -233,7 +351,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
             ease: 'easeInOut',
           }}
         >
-          <ChevronDown size={24} className="text-[#F0E7D5]" />
+          <ChevronDown size={24} className="text-[#fcefd2]" />
         </motion.div>
       </motion.div>
     </section>

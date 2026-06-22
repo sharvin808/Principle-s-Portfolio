@@ -6,10 +6,10 @@
 export interface Profile {
   name: string;
   designation: string;
-  department: string;
   institution: string;
   photoUrl: string;
   tagline: string;
+  otherHonors: string;
 }
 
 export interface AboutMe {
