@@ -36,6 +36,8 @@ export default function ResearchInterestsSection({
       title="Research Interests"
       subtitle="Core areas of academic focus and ongoing research"
       theme={theme}
+    
+      cutout="top-right"
     >
       <div 
         ref={containerRef}
@@ -104,7 +106,7 @@ export default function ResearchInterestsSection({
                   </h3>
                 </div>
                 {interest.description && (
-                  <p className="text-base text-foreground/70 leading-relaxed">
+                  <p className="text-lg text-foreground/70 leading-relaxed">
                     {interest.description}
                   </p>
                 )}

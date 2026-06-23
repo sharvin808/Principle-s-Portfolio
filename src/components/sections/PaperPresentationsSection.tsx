@@ -47,8 +47,10 @@ export default function PaperPresentationsSection({ paperPresentations }: PaperP
       id="paper-presentations"
       title="Paper Presentations"
       subtitle="Presentations at national and international conferences"
-      theme="tan"
+      theme="oxford"
       className="noise-texture"
+    
+      cutout="top-left"
     >
       {/* Stats ribbon / interactive tabs */}
       <ScrollReveal>

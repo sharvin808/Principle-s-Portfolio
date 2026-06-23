@@ -165,8 +165,10 @@ export default function InternationalExposureSection({ internationalExposure }: 
     <SectionWrapper
       id="international-exposure"
       title="International Exposure"
-      subtitle="Global academic collaborations, visiting roles, and research presentations"
-      theme="tan"
+      //subtitle="Global academic collaborations, visiting roles, and research presentations"
+      theme="oxford"
+    
+      cutout="top-left"
     >
       <style>{`
         @keyframes dash {
@@ -201,7 +203,7 @@ export default function InternationalExposureSection({ internationalExposure }: 
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           {/* Left Panel: SVG Map Connection Graph (Desktop) / Tab selector (Mobile) */}
-          <div className="lg:col-span-8 flex flex-col justify-between bg-surface border border-border/80 rounded-2xl p-6 shadow-xl overflow-hidden min-h-[400px] lg:min-h-[500px]">
+          <div className="lg:col-span-8 flex flex-col justify-between bg-beige-card border border-border/80 rounded-2xl p-6 shadow-xl overflow-hidden min-h-[400px] lg:min-h-[500px]">
             {/* Mobile Tab Swiper */}
             <div className="flex lg:hidden overflow-x-auto pb-4 gap-3 scrollbar-none snap-x mb-4">
               {countriesWithData.filter(c => c !== 'in').map((code) => {
@@ -213,8 +215,8 @@ export default function InternationalExposureSection({ internationalExposure }: 
                     onClick={() => setActiveCountryCode(code)}
                     className={`flex items-center gap-2.5 px-4 py-2.5 rounded-xl border snap-align-start flex-shrink-0 transition-all duration-300 cursor-pointer ${
                       isActive
-                        ? 'bg-[#212842] text-[#faf3e3] border-[#212842] shadow-md scale-95'
-                        : 'bg-surface text-[#6B7280] border-border hover:border-[#212842]/50 hover:bg-[#faf3e3]'
+                        ? 'bg-[#2F4F4F] text-[#faf3e3] border-[#2F4F4F] shadow-md scale-95'
+                        : 'bg-[#dad7cd] text-[#1C422D] border-border hover:border-[#2F4F4F]/50 hover:bg-[#faf3e3]'
                     }`}
                   >
                     <img
@@ -229,12 +231,12 @@ export default function InternationalExposureSection({ internationalExposure }: 
             </div>
 
             {/* Desktop Map Canvas */}
-            <div className="relative w-full h-auto aspect-[640/374] flex items-center justify-center bg-[#fcefd2] rounded-xl overflow-hidden border border-border/60 shadow-inner" style={{ aspectRatio: '640/374' }}>
+            <div className="relative w-full h-auto aspect-[640/374] flex items-center justify-center bg-[#dad7cd] rounded-xl overflow-hidden border border-border/60 shadow-inner" style={{ aspectRatio: '640/374' }}>
               {/* Subtle radial shadow/glow at the edges to blend the map */}
               <div
                 className="absolute inset-0 pointer-events-none z-10"
                 style={{
-                  background: 'radial-gradient(circle at 50% 50%, rgba(252, 239, 210, 0) 60%, rgba(252, 239, 210, 0.4) 100%)',
+                  background: 'radial-gradient(circle at 50% 50%, rgba(218, 215, 205, 0) 60%, rgba(218, 215, 205, 0.4) 100%)',
                 }}
               />
 
@@ -251,7 +253,7 @@ export default function InternationalExposureSection({ internationalExposure }: 
                 className="absolute inset-0 w-full h-full z-20 select-none"
               >
                 {/* Lat/Long Gridlines */}
-                <g stroke="rgba(33, 40, 66, 0.08)" strokeWidth="0.5" strokeDasharray="3 6" fill="none">
+                <g stroke="rgba(47, 79, 79, 0.08)" strokeWidth="0.5" strokeDasharray="3 6" fill="none">
                   <line x1="10" y1="90" x2="630" y2="90" />
                   <line x1="10" y1="187" x2="630" y2="187" />
                   <line x1="10" y1="280" x2="630" y2="280" />
@@ -283,7 +285,7 @@ export default function InternationalExposureSection({ internationalExposure }: 
                       <path
                         d={pathD}
                         fill="none"
-                        stroke="#212842"
+                        stroke="#2F4F4F"
                         strokeWidth={isActive ? 2.5 : 1.6}
                         className="animate-dash transition-all duration-300"
                         style={{
@@ -312,7 +314,7 @@ export default function InternationalExposureSection({ internationalExposure }: 
                         <circle
                           r="18"
                           fill="none"
-                          stroke={isHome ? '#212842' : '#212842'}
+                          stroke={isHome ? '#2F4F4F' : '#2F4F4F'}
                           strokeWidth="1.5"
                           className="animate-pulse-ring"
                           style={{ transformOrigin: '0px 0px' }}
@@ -323,9 +325,9 @@ export default function InternationalExposureSection({ internationalExposure }: 
                       <circle
                         r={isHome ? 9 : 12}
                         fill={isHome ? '#faf3e3' : '#ffffff'}
-                        stroke={isHome ? '#212842' : isActive ? '#212842' : 'rgba(33, 40, 66, 0.3)'}
+                        stroke={isHome ? '#2F4F4F' : isActive ? '#2F4F4F' : 'rgba(47, 79, 79, 0.3)'}
                         strokeWidth={isActive || isHome ? 2.5 : 1.2}
-                        className="transition-all duration-300 group-hover:scale-110 group-hover:stroke-[#212842]"
+                        className="transition-all duration-300 group-hover:scale-110 group-hover:stroke-[#2F4F4F]"
                         style={{ transformOrigin: '0px 0px' }}
                       />
 
@@ -339,7 +341,7 @@ export default function InternationalExposureSection({ internationalExposure }: 
                       >
                         <div className="w-full h-full flex items-center justify-center rounded-full overflow-hidden">
                           {isHome ? (
-                            <div className="w-3 h-3 bg-[#212842] rounded-full shadow-inner animate-pulse" />
+                            <div className="w-3 h-3 bg-[#2F4F4F] rounded-full shadow-inner animate-pulse" />
                           ) : (
                             <img
                               src={getFlagUrl(code)}
@@ -360,8 +362,8 @@ export default function InternationalExposureSection({ internationalExposure }: 
                         textAnchor="middle"
                         className={`text-[8.5px] font-mono font-bold tracking-wider uppercase transition-colors duration-300 pointer-events-none ${
                           isHome || isActive
-                            ? 'fill-[#212842]'
-                            : 'fill-[#6B7280]/80 group-hover:fill-[#212842]'
+                            ? 'fill-[#2F4F4F]'
+                            : 'fill-[#6B7280]/80 group-hover:fill-[#2F4F4F]'
                         }`}
                       >
                         {isHome ? 'Base: India' : code}
@@ -383,8 +385,8 @@ export default function InternationalExposureSection({ internationalExposure }: 
                     onClick={() => setActiveCountryCode(code)}
                     className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg border text-sm font-semibold transition-all duration-300 cursor-pointer ${
                       isActive
-                        ? 'bg-[#212842] text-[#faf3e3] border-[#212842] shadow-sm'
-                        : 'bg-surface text-[#6B7280] border-border hover:text-[#212842] hover:border-[#212842]/50 hover:bg-[#faf3e3]'
+                        ? 'bg-[#2F4F4F] text-[#faf3e3] border-[#2F4F4F] shadow-sm'
+                        : 'bg-[#dad7cd] text-[#1C422D] border-border hover:text-[#2F4F4F] hover:border-[#2F4F4F]/50 hover:bg-[#faf3e3]'
                     }`}
                   >
                     <img
@@ -453,7 +455,7 @@ export default function InternationalExposureSection({ internationalExposure }: 
                           </h4>
 
                           {/* Details */}
-                          <div className="space-y-2 text-base text-foreground/80">
+                          <div className="space-y-2 text-lg text-foreground/80">
                             {item.purpose && (
                               <div className="flex items-start gap-2">
                                 <Target size={14} className="mt-0.5 flex-shrink-0 text-gold/70" />

@@ -18,6 +18,8 @@ export default function QualificationSection({ qualification }: QualificationSec
       title="Education"
       subtitle="Academic qualifications and scholarly foundation"
       theme="oxford"
+    
+      cutout="top-right"
     >
       <div className="relative">
         {/* Timeline line */}
@@ -53,10 +55,10 @@ export default function QualificationSection({ qualification }: QualificationSec
                     >
                       {edu.degree}
                     </h3>
-                    <p className="text-base font-medium text-foreground/80">{edu.field}</p>
-                    <p className="text-base text-muted mt-1">{edu.institution}</p>
+                    <p className="text-lg font-medium text-foreground/80">{edu.field}</p>
+                    <p className="text-lg text-muted mt-1">{edu.institution}</p>
                     {edu.description && (
-                      <p className="text-base text-foreground/60 mt-3 leading-relaxed">
+                      <p className="text-lg text-foreground/60 mt-3 leading-relaxed">
                         {edu.description}
                       </p>
                     )}

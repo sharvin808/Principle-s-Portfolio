@@ -14,95 +14,99 @@
   --color-heading: var(--heading);
   --color-muted: var(--muted);
   --color-border: var(--border-color);
-  
+
   --color-navy: var(--color-navy);
   --color-navy-light: var(--color-navy-light);
   --color-navy-mid: var(--color-navy-mid);
   --color-midnight: var(--color-midnight);
   --color-midnight-light: var(--color-midnight-light);
-  
+
   --color-gold: var(--color-gold);
   --color-gold-light: var(--color-gold-light);
   --color-gold-dark: var(--color-gold-dark);
   --color-gold-muted: var(--color-gold-muted);
-  
+
   --font-heading: var(--font-playfair);
   --font-body: var(--font-inter);
 }
 
 /* Light Mode Base */
 :root {
-  --background: #faf3e3;
-  --foreground: #212842;
-  --surface: #f0e7d5;
-  --surface-alt: #fcefd2;
-  --heading: #212842;
+  --background: #dad7cd;
+  --page-background: #dad7cd;
+  --page-heading: #1C422D;
+  --foreground: #2F4F4F;
+  --surface: #dad7cd;
+  --surface-alt: #dad7cd;
+  --heading: #2F4F4F;
   --muted: #6B7280;
-  --border-color: rgba(33, 40, 66, 0.12);
-  
-  --color-navy: #212842;
+  --border-color: rgba(47, 79, 79, 0.12);
+
+  --color-navy: #2F4F4F;
   --color-navy-light: #2d3655;
   --color-navy-mid: #1b2238;
-  --color-midnight: #151b2e;
+  --color-midnight: #1C422D;
   --color-midnight-light: #181e32;
-  
-  --color-gold: #212842;
+
+  --color-gold: #2F4F4F;
   --color-gold-light: #2d3655;
-  --color-gold-dark: #151b2e;
-  --color-gold-muted: rgba(33, 40, 66, 0.1);
+  --color-gold-dark: #1C422D;
+  --color-gold-muted: rgba(47, 79, 79, 0.1);
 }
 
 /* Dark Mode Base */
 :root.dark {
-  --background: #151b2e;
-  --foreground: #faf3e3;
-  --surface: #212842;
+  --background: #1C422D;
+  --page-background: #1C422D;
+  --page-heading: #dad7cd;
+  --foreground: #dad7cd;
+  --surface: #2F4F4F;
   --surface-alt: #2a3150;
-  --heading: #fcefd2;
+  --heading: #dad7cd;
   --muted: #A3B1C6;
-  --border-color: rgba(252, 239, 210, 0.15);
-  
-  --color-navy: #212842;
+  --border-color: rgba(218, 215, 205, 0.15);
+
+  --color-navy: #2F4F4F;
   --color-navy-light: #2d3655;
   --color-navy-mid: #1b2238;
-  --color-midnight: #151b2e;
+  --color-midnight: #1C422D;
   --color-midnight-light: #181e32;
-  
-  --color-gold: #fcefd2;
+
+  --color-gold: #dad7cd;
   --color-gold-light: #F7F2E8;
   --color-gold-dark: #D4C9B3;
-  --color-gold-muted: rgba(252, 239, 210, 0.15);
+  --color-gold-muted: rgba(218, 215, 205, 0.15);
 }
 
 /* Scoped Section Themes */
 .bg-oxford-theme {
-  --background: #151b2e;
-  --foreground: #fcefd2;
-  --surface: #212842;
+  --background: #1C422D;
+  --foreground: #dad7cd;
+  --surface: #2F4F4F;
   --surface-alt: #2a3150;
-  --heading: #fcefd2;
-  --muted: rgba(252, 239, 210, 0.7);
-  --border-color: rgba(252, 239, 210, 0.15);
-  
-  --color-gold: #fcefd2;
+  --heading: #dad7cd;
+  --muted: rgba(218, 215, 205, 0.7);
+  --border-color: rgba(218, 215, 205, 0.15);
+
+  --color-gold: #dad7cd;
   --color-gold-light: #F7F2E8;
   --color-gold-dark: #D4C9B3;
-  --color-gold-muted: rgba(252, 239, 210, 0.15);
+  --color-gold-muted: rgba(218, 215, 205, 0.15);
 
   background-color: var(--background);
   color: var(--foreground);
 }
 
 .bg-tan-theme {
-  --background: #fcefd2;
-  --foreground: #151b2e;
-  --surface: #f0e7d5;
+  --background: #dad7cd;
+  --foreground: #1C422D;
+  --surface: #dad7cd;
   --surface-alt: #faf3e3;
-  --heading: #151b2e;
+  --heading: #1C422D;
   --muted: #6B7280;
   --border-color: rgba(21, 27, 46, 0.15);
-  
-  --color-gold: #151b2e;
+
+  --color-gold: #1C422D;
   --color-gold-light: #1b2238;
   --color-gold-dark: #0e1220;
   --color-gold-muted: rgba(21, 27, 46, 0.08);
@@ -152,8 +156,10 @@ body {
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .scrollbar-none {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 /* =============================================================================
@@ -164,14 +170,14 @@ body {
   background: rgba(21, 27, 46, 0.85);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border-bottom: 1px solid rgba(252, 239, 210, 0.1);
+  border-bottom: 1px solid rgba(218, 215, 205, 0.1);
   box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.03);
 }
 
 :root:not(.dark) .glass {
   background: rgba(250, 247, 240, 0.88);
-  border-bottom: 1px solid rgba(33, 40, 66, 0.08);
-  box-shadow: 0 10px 30px -10px rgba(33, 40, 66, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  border-bottom: 1px solid rgba(47, 79, 79, 0.08);
+  box-shadow: 0 10px 30px -10px rgba(47, 79, 79, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.6);
 }
 
 /* =============================================================================
@@ -201,17 +207,19 @@ body {
    ============================================================================= */
 
 .card-premium {
-  background-color: #f0E7D5;
-  color: #151b2e;
-  --foreground: #151b2e;
-  --heading: #151b2e;
-  --color-heading: #151b2e;
+  background-color: #dad7cd;
+  --surface: #dad7cd;
+  --surface-alt: #e3dcc8;
+  color: #1C422D;
+  --foreground: #1C422D;
+  --heading: #1C422D;
+  --color-heading: #1C422D;
   --muted: #4b5563;
   --border-color: rgba(21, 27, 46, 0.15);
-  --color-gold: #212842;
+  --color-gold: #2F4F4F;
   --color-gold-light: #2d3655;
-  --color-gold-dark: #151b2e;
-  --color-gold-muted: rgba(33, 40, 66, 0.12);
+  --color-gold-dark: #1C422D;
+  --color-gold-muted: rgba(47, 79, 79, 0.12);
   border: 1px solid var(--border-color);
   border-radius: 16px;
   padding: 2rem;
@@ -253,12 +261,10 @@ body {
    ============================================================================= */
 
 .skeleton {
-  background: linear-gradient(
-    90deg,
-    var(--surface) 25%,
-    var(--surface-alt) 50%,
-    var(--surface) 75%
-  );
+  background: linear-gradient(90deg,
+      var(--surface) 25%,
+      var(--surface-alt) 50%,
+      var(--surface) 75%);
   background-size: 200% 100%;
   animation: skeleton-shimmer 1.5s ease-in-out infinite;
   border-radius: 8px;
@@ -268,6 +274,7 @@ body {
   0% {
     background-position: 200% 0;
   }
+
   100% {
     background-position: -200% 0;
   }
@@ -278,7 +285,7 @@ body {
    ============================================================================= */
 
 .hero-gradient {
-  background: linear-gradient(135deg, #2d3655 0%, #212842 40%, #151b2e 100%);
+  background: linear-gradient(135deg, #2d3655 0%, #2F4F4F 40%, #1C422D 100%);
 }
 
 /* =============================================================================
@@ -366,7 +373,7 @@ body {
 
 .filter-btn.active {
   background: var(--color-gold);
-  color: #151b2e;
+  color: #1C422D;
   border-color: var(--color-gold);
   font-weight: 600;
 }
@@ -390,7 +397,7 @@ body {
 
 .doi-badge:hover {
   background: var(--color-gold);
-  color: #151b2e;
+  color: #1C422D;
 }
 
 /* =============================================================================
@@ -409,8 +416,8 @@ body {
 }
 
 .status-badge.granted {
-  background: rgba(33, 40, 66, 0.15);
-  color: #212842;
+  background: rgba(47, 79, 79, 0.15);
+  color: #2F4F4F;
 }
 
 .status-badge.filed {
@@ -424,8 +431,8 @@ body {
 }
 
 .status-badge.completed {
-  background: rgba(33, 40, 66, 0.15);
-  color: #212842;
+  background: rgba(47, 79, 79, 0.15);
+  color: #2F4F4F;
 }
 
 /* =============================================================================
@@ -525,21 +532,23 @@ body {
   position: relative;
   border-radius: 20px;
   overflow: hidden;
-  background-color: #f0E7D5;
-  color: #151b2e;
-  --foreground: #151b2e;
-  --heading: #151b2e;
-  --color-heading: #151b2e;
+  background-color: #dad7cd;
+  --surface: #dad7cd;
+  --surface-alt: #e3dcc8;
+  color: #1C422D;
+  --foreground: #1C422D;
+  --heading: #1C422D;
+  --color-heading: #1C422D;
   --muted: #4b5563;
   --border-color: rgba(21, 27, 46, 0.15);
-  --color-gold: #212842;
+  --color-gold: #2F4F4F;
   --color-gold-light: #2d3655;
-  --color-gold-dark: #151b2e;
-  --color-gold-muted: rgba(33, 40, 66, 0.12);
+  --color-gold-dark: #1C422D;
+  --color-gold-muted: rgba(47, 79, 79, 0.12);
   border: 1px solid var(--border-color);
   transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              box-shadow 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              border-color 0.35s ease;
+    box-shadow 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    border-color 0.35s ease;
   min-height: 220px;
   display: flex;
   flex-direction: column;
@@ -596,7 +605,7 @@ body {
   transform: translateY(100%);
   opacity: 0;
   transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              opacity 0.35s ease;
+    opacity 0.35s ease;
   z-index: 10;
 }
 
@@ -714,17 +723,19 @@ body {
   display: flex;
   border-radius: 0 16px 16px 0;
   overflow: hidden;
-  background-color: #f0E7D5;
-  color: #151b2e;
-  --foreground: #151b2e;
-  --heading: #151b2e;
-  --color-heading: #151b2e;
+  background-color: #dad7cd;
+  --surface: #dad7cd;
+  --surface-alt: #e3dcc8;
+  color: #1C422D;
+  --foreground: #1C422D;
+  --heading: #1C422D;
+  --color-heading: #1C422D;
   --muted: #4b5563;
   --border-color: rgba(21, 27, 46, 0.15);
-  --color-gold: #212842;
+  --color-gold: #2F4F4F;
   --color-gold-light: #2d3655;
-  --color-gold-dark: #151b2e;
-  --color-gold-muted: rgba(33, 40, 66, 0.12);
+  --color-gold-dark: #1C422D;
+  --color-gold-muted: rgba(47, 79, 79, 0.12);
   border: 1px solid var(--border-color);
   border-left: none;
   transition: transform 0.35s ease, box-shadow 0.35s ease;
@@ -871,4 +882,19 @@ body {
   pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   background-size: 256px 256px;
+}
+.bg-beige-card {
+  background-color: #dad7cd !important;
+  --surface: #dad7cd;
+  --surface-alt: #e3dcc8;
+  color: #1C422D;
+  --foreground: #1C422D;
+  --heading: #1C422D;
+  --color-heading: #1C422D;
+  --muted: #4b5563;
+  --border-color: rgba(21, 27, 46, 0.15);
+  --color-gold: #2F4F4F;
+  --color-gold-light: #2d3655;
+  --color-gold-dark: #1C422D;
+  --color-gold-muted: rgba(47, 79, 79, 0.12);
 }

@@ -20,8 +20,10 @@ export default function AwardsAchievementsSection({
     <SectionWrapper
       id="awards-achievements"
       title="Awards & Recognitions"
-      subtitle="Honors, fellowships, and academic accolades received throughout the career"
+      //subtitle="Honors, fellowships, and academic accolades received throughout the career"
       theme={theme}
+    
+      cutout="top-right"
     >
       <div className="relative max-w-3xl mx-auto">
         {/* Timeline line */}
@@ -65,7 +67,7 @@ export default function AwardsAchievementsSection({
                   </h3>
 
                   {award.description && (
-                    <p className="text-base text-foreground/70 leading-relaxed">
+                    <p className="text-lg text-foreground/70 leading-relaxed">
                       {award.description}
                     </p>
                   )}

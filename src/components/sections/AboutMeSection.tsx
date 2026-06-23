@@ -14,8 +14,9 @@ export default function AboutMeSection({ aboutMe }: AboutMeSectionProps) {
     <SectionWrapper
       id="about"
       title="About"
-      subtitle="A distinguished academic career dedicated to excellence in education and research"
-      theme="tan"
+      subtitle="Dedicated to Excellence in Education & Research"
+      theme="oxford"
+      cutout="top-left"
     >
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Biography Card */}
@@ -35,7 +36,7 @@ export default function AboutMeSection({ aboutMe }: AboutMeSectionProps) {
                 Biography
               </h3>
             </div>
-            <div className="text-foreground/80 leading-relaxed space-y-4">
+            <div className="text-lg text-foreground/80 leading-relaxed space-y-4">
               {aboutMe.biography ? (
                 aboutMe.biography.split('\n').filter(Boolean).map((para, i) => (
                   <p key={i}>{para}</p>
@@ -48,7 +49,7 @@ export default function AboutMeSection({ aboutMe }: AboutMeSectionProps) {
             {/* Introduction */}
             {aboutMe.introduction && (
               <div className="mt-6 pt-6" style={{ borderTop: '1px solid var(--border-color)' }}>
-                <p className="text-foreground/70 leading-relaxed">{aboutMe.introduction}</p>
+                <p className="text-lg text-foreground/70 leading-relaxed">{aboutMe.introduction}</p>
               </div>
             )}
           </div>
@@ -73,7 +74,7 @@ export default function AboutMeSection({ aboutMe }: AboutMeSectionProps) {
                   Academic Vision
                 </h3>
               </div>
-              <p className="text-foreground/70 leading-relaxed">
+              <p className="text-lg text-foreground/70 leading-relaxed">
                 {aboutMe.vision || (
                   <span className="text-muted italic">Vision statement from Google Sheets.</span>
                 )}

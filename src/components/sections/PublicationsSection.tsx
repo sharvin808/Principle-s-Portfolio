@@ -66,7 +66,9 @@ export default function PublicationsSection({ publications }: PublicationsSectio
       id="publications"
       title="Publications"
       subtitle="Scopus/WoS Indexed Journals"
-      theme="tan"
+      theme="oxford"
+    
+      cutout="top-left"
     >
       {/* Counters */}
       <ScrollReveal className="mb-12">
@@ -145,7 +147,7 @@ export default function PublicationsSection({ publications }: PublicationsSectio
         </div>
 
         {/* Results count */}
-        <p className="text-base text-muted mt-3">
+        <p className="text-lg text-muted mt-3">
           Showing {paginated.length} of {filtered.length} publications
         </p>
       </ScrollReveal>
@@ -174,10 +176,10 @@ export default function PublicationsSection({ publications }: PublicationsSectio
                   <h4 className="text-lg font-semibold text-heading leading-snug">
                     {pub.title}
                   </h4>
-                  <p className="text-base text-foreground/70 mt-1.5">
+                  <p className="text-lg text-foreground/70 mt-1.5">
                     {pub.authors}
                   </p>
-                  <p className="text-base text-muted mt-1 italic">
+                  <p className="text-lg text-muted mt-1 italic">
                     {pub.journal}
                   </p>
 

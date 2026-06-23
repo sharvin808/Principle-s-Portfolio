@@ -137,10 +137,10 @@ export default function Navbar({
                   window.location.hash = 'about';
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                className="text-2xl md:text-3xl font-bold text-heading cursor-pointer hover:opacity-80 transition-opacity"
+                className="-ml-4 md:-ml-10 lg:-ml-16 xl:-ml-24 text-2xl md:text-3xl font-bold text-heading cursor-pointer hover:opacity-80 transition-opacity"
                 style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
               >
-                <span className="text-gradient-gold">Fr.SMD</span>
+                <span className="text-gradient-gold">SMD</span>
               </button>
 
               {/* Desktop Nav Items */}
@@ -149,7 +149,7 @@ export default function Navbar({
                   <button
                     key={id}
                     onClick={() => scrollTo(id)}
-                    className={`relative px-2 lg:px-4 py-2 text-sm lg:text-base font-semibold rounded-lg transition-colors duration-200 cursor-pointer ${
+                    className={`relative px-2 lg:px-4 py-2 text-base lg:text-lg font-semibold rounded-lg transition-colors duration-200 cursor-pointer ${
                       activeSection === id
                         ? 'text-foreground'
                         : 'text-foreground/70 hover:text-foreground hover:bg-surface-alt/30'
@@ -170,7 +170,7 @@ export default function Navbar({
                   <button
                     key={id}
                     onClick={() => scrollTo(id)}
-                    className={`relative px-2 lg:px-4 py-2 text-sm lg:text-base font-semibold rounded-lg transition-colors duration-200 cursor-pointer ${
+                    className={`relative px-2 lg:px-4 py-2 text-base lg:text-lg font-semibold rounded-lg transition-colors duration-200 cursor-pointer ${
                       activeSection === id && !selectedExtraSection
                         ? 'text-foreground'
                         : 'text-foreground/70 hover:text-foreground hover:bg-surface-alt/30'
@@ -190,7 +190,7 @@ export default function Navbar({
                 {/* Contact Item */}
                 <button
                   onClick={() => scrollTo(CONTACT_ITEM.id)}
-                  className={`relative px-2 lg:px-4 py-2 text-sm lg:text-base font-semibold rounded-lg transition-colors duration-200 cursor-pointer ${
+                  className={`relative px-2 lg:px-4 py-2 text-base lg:text-lg font-semibold rounded-lg transition-colors duration-200 cursor-pointer ${
                     activeSection === CONTACT_ITEM.id && !selectedExtraSection
                       ? 'text-foreground'
                       : 'text-foreground/70 hover:text-foreground hover:bg-surface-alt/30'
@@ -234,7 +234,7 @@ export default function Navbar({
                       <button
                         key={id}
                         onClick={() => scrollTo(id)}
-                        className={`text-left px-4 py-3 rounded-lg text-base font-semibold transition-all cursor-pointer ${
+                        className={`text-left px-4 py-3 rounded-lg text-lg font-semibold transition-all cursor-pointer ${
                           activeSection === id
                             ? 'text-foreground bg-surface-alt shadow-sm border border-border/10'
                             : 'text-foreground/70 hover:text-foreground hover:bg-surface-alt/40'
@@ -248,7 +248,7 @@ export default function Navbar({
                       <button
                         key={id}
                         onClick={() => scrollTo(id)}
-                        className={`text-left px-4 py-3 rounded-lg text-base font-semibold transition-all cursor-pointer ${
+                        className={`text-left px-4 py-3 rounded-lg text-lg font-semibold transition-all cursor-pointer ${
                           activeSection === id && !selectedExtraSection
                             ? 'text-foreground bg-surface-alt shadow-sm border border-border/10'
                             : 'text-foreground/70 hover:text-foreground hover:bg-surface-alt/40'
@@ -261,7 +261,7 @@ export default function Navbar({
                     <div className="border-t border-border/10 my-1 pt-1.5">
                       <button
                         onClick={() => scrollTo(CONTACT_ITEM.id)}
-                        className={`w-full text-left px-4 py-3 rounded-lg text-base font-semibold transition-all cursor-pointer ${
+                        className={`w-full text-left px-4 py-3 rounded-lg text-lg font-semibold transition-all cursor-pointer ${
                           activeSection === CONTACT_ITEM.id && !selectedExtraSection
                             ? 'text-foreground bg-surface-alt shadow-sm border border-border/10'
                             : 'text-foreground/70 hover:text-foreground hover:bg-surface-alt/40'
