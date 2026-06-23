@@ -37,8 +37,10 @@ export default function ContactSection({ contactMe }: ContactSectionProps) {
     <SectionWrapper
       id="contact"
       title="Contact Me"
-      subtitle="Get in touch for academic collaborations, research inquiries, or speaking engagements"
+      //subtitle="Get in touch for academic collaborations, research inquiries, or speaking engagements"
       theme="oxford"
+    
+      cutout="top-right"
     >
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
         {/* Contact Info Card */}
@@ -111,7 +113,7 @@ export default function ContactSection({ contactMe }: ContactSectionProps) {
               >
                 Profiles & Networks
               </h3>
-              <p className="text-foreground/70 text-base leading-relaxed mb-8">
+              <p className="text-foreground/70 text-lg leading-relaxed mb-8">
                 Connect with me on professional and academic platforms to stay updated with my latest research, publications, and professional activities.
               </p>
               
@@ -123,7 +125,7 @@ export default function ContactSection({ contactMe }: ContactSectionProps) {
                     href={contactMe.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2.5 px-5 py-3 rounded-xl border border-[#212842] bg-[#212842] text-[#faf3e3] text-base font-semibold hover:bg-transparent hover:text-[#212842] hover:border-[#212842] transition-colors duration-200"
+                    className="flex items-center gap-2.5 px-5 py-3 rounded-xl border border-[#2F4F4F] bg-[#2F4F4F] text-[#faf3e3] text-base font-semibold hover:bg-transparent hover:text-[#2F4F4F] hover:border-[#2F4F4F] transition-colors duration-200"
                   >
                     <svg
                       className="w-4.5 h-4.5 fill-current shrink-0"
@@ -142,7 +144,7 @@ export default function ContactSection({ contactMe }: ContactSectionProps) {
                     href={contactMe.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2.5 px-5 py-3 rounded-xl border border-[#212842] bg-[#212842] text-[#faf3e3] text-base font-semibold hover:bg-transparent hover:text-[#212842] hover:border-[#212842] transition-colors duration-200"
+                    className="flex items-center gap-2.5 px-5 py-3 rounded-xl border border-[#2F4F4F] bg-[#2F4F4F] text-[#faf3e3] text-base font-semibold hover:bg-transparent hover:text-[#2F4F4F] hover:border-[#2F4F4F] transition-colors duration-200"
                   >
                     <svg
                       className="w-4.5 h-4.5 fill-current shrink-0"
@@ -161,7 +163,7 @@ export default function ContactSection({ contactMe }: ContactSectionProps) {
                     href={contactMe.twitter}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2.5 px-5 py-3 rounded-xl border border-[#212842] bg-[#212842] text-[#faf3e3] text-base font-semibold hover:bg-transparent hover:text-[#212842] hover:border-[#212842] transition-colors duration-200"
+                    className="flex items-center gap-2.5 px-5 py-3 rounded-xl border border-[#2F4F4F] bg-[#2F4F4F] text-[#faf3e3] text-base font-semibold hover:bg-transparent hover:text-[#2F4F4F] hover:border-[#2F4F4F] transition-colors duration-200"
                   >
                     <svg
                       className="w-4.5 h-4.5 fill-current shrink-0"

@@ -25,7 +25,9 @@ export default function ResearchProjectSection({ researchProject }: ResearchProj
       id="research-project"
       title="Research & Academic Projects"
       subtitle="Sponsored research projects, institutional grants, and educational initiatives"
-      theme="tan"
+      theme="oxford"
+    
+      cutout="top-left"
     >
       {/* Summary Stats */}
       <ScrollReveal>
@@ -89,7 +91,7 @@ export default function ResearchProjectSection({ researchProject }: ResearchProj
             >
               <span
                 className="w-2.5 h-2.5 rounded-full"
-                style={{ background: '#212842' }}
+                style={{ background: 'var(--muted)' }}
               />
               <div>
                 <div
@@ -147,14 +149,14 @@ export default function ResearchProjectSection({ researchProject }: ResearchProj
                         background: isOngoing
                           ? 'var(--color-gold-muted)'
                           : 'rgba(33,40,66,0.12)',
-                        color: isOngoing ? 'var(--color-gold)' : '#212842',
+                        color: isOngoing ? 'var(--color-gold)' : 'var(--muted)',
                         border: `1px solid ${isOngoing ? 'rgba(212, 201, 179, 0.2)' : 'rgba(33,40,66,0.2)'}`,
                       }}
                     >
                       <span
                         className="w-1.5 h-1.5 rounded-full"
                         style={{
-                          background: isOngoing ? 'var(--color-gold)' : '#212842',
+                          background: isOngoing ? 'var(--color-gold)' : 'var(--muted)',
                           boxShadow: isOngoing
                             ? '0 0 6px var(--color-gold-muted)'
                             : '0 0 6px rgba(33,40,66,0.5)',
@@ -221,7 +223,7 @@ export default function ResearchProjectSection({ researchProject }: ResearchProj
                         Details
                       </span>
                     </div>
-                    <p className="text-base leading-relaxed text-foreground/75">
+                    <p className="text-lg leading-relaxed text-foreground/75">
                       {proj.description}
                     </p>
                   </div>

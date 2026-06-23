@@ -17,7 +17,9 @@ export default function ReviewerSection({ reviewer }: ReviewerSectionProps) {
       id="reviewer"
       title="Editorial & Reviewer Roles"
       subtitle="Contributions to academic journals and publications"
-      theme="tan"
+      theme="oxford"
+    
+      cutout="top-left"
     >
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {reviewer.map((item, index) => (
@@ -44,7 +46,7 @@ export default function ReviewerSection({ reviewer }: ReviewerSectionProps) {
               </div>
               
               <div className="mt-auto pt-4 border-t border-border/10 flex items-center justify-between">
-                <span className="flex items-center gap-1.5 text-base font-medium text-foreground/80">
+                <span className="flex items-center gap-1.5 text-lg font-medium text-foreground/80">
                   <UserCheck size={14} className="text-gold" />
                   {item.role || 'Reviewer'}
                 </span>

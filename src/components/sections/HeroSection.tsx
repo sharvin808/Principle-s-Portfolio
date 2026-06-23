@@ -27,7 +27,7 @@ function renderLine(line: string, idx: number, itemVariants: Variants) {
     <motion.div
       key={idx}
       variants={itemVariants}
-      className="text-sm md:text-base text-[#fcefd2]/70 leading-relaxed text-center lg:text-left"
+      className="text-lg md:text-lg text-[#dad7cd]/70 leading-relaxed text-center lg:text-left"
     >
       {parts.map((part, pIdx) => {
         const isMatch = HIGHLIGHT_WORDS.some(word => 
@@ -35,7 +35,7 @@ function renderLine(line: string, idx: number, itemVariants: Variants) {
         );
         if (isMatch) {
           return (
-            <span key={pIdx} className="font-bold text-[#fcefd2]">
+            <span key={pIdx} className="font-bold text-[#dad7cd]">
               {part}
             </span>
           );
@@ -162,7 +162,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
   };
 
   return (
-    <section className="relative h-screen flex items-center overflow-hidden hero-gradient">
+    <section className="relative h-[90vh] min-h-[600px] flex items-center overflow-hidden hero-gradient w-[96%] lg:w-[98%] max-w-[1800px] mx-auto rounded-[2rem] md:rounded-[3rem] my-4 md:my-8">
       {/* Particles Background */}
       <Particles />
 
@@ -171,19 +171,19 @@ export default function HeroSection({ profile }: HeroSectionProps) {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(ellipse at 70% 50%, rgba(252, 239, 210, 0.08) 0%, transparent 60%)',
+            'radial-gradient(ellipse at 70% 50%, rgba(218, 215, 205, 0.08) 0%, transparent 60%)',
         }}
       />
 
       {/* Vertical Design Line */}
       <div 
-        className="hidden lg:block absolute top-0 bottom-0 w-[0.50in] bg-[#fcefd2] z-0 pointer-events-none"
+        className="hidden lg:block absolute top-0 bottom-0 w-[0.40in] bg-[#dad7cd] z-0 pointer-events-none"
         style={{ left: 'calc(6vw + 22vh)' }}
       />
 
       {/* Horizontal Design Line */}
       <div 
-        className="hidden lg:block absolute left-0 right-0 h-[0.50in] bg-[#fcefd2] z-0 pointer-events-none"
+        className="hidden lg:block absolute left-0 right-0 h-[0.40in] bg-[#dad7cd] z-0 pointer-events-none"
         style={{ bottom: '120px' }}
       />
 
@@ -192,7 +192,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
         initial={{ opacity: 0, x: -40 }}
         animate={!isLoading ? { opacity: 1, x: 0 } : { opacity: 0, x: -40 }}
         transition={{ duration: 0.9, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-        className="hidden lg:flex absolute left-[6vw] bottom-0 w-[45vw] h-[92vh] items-end justify-start z-10 pointer-events-none"
+        className="hidden lg:flex absolute left-[6vw] bottom-0 w-[45vw] h-full items-end justify-start z-10 pointer-events-none"
       >
         <div className="relative w-full h-full flex items-end">
           {profile.photoUrl ? (
@@ -207,8 +207,8 @@ export default function HeroSection({ profile }: HeroSectionProps) {
               }}
             />
           ) : (
-            <div className="w-full h-[75vh] flex items-center justify-center bg-[#212842]/50 rounded-2xl m-8">
-              <div className="text-center text-[#fcefd2]/50">
+            <div className="w-full h-[75vh] flex items-center justify-center bg-[#2F4F4F]/50 rounded-2xl m-8">
+              <div className="text-center text-[#dad7cd]/50">
                 <div
                   className="text-8xl mb-4"
                   style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
@@ -223,7 +223,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
       </motion.div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 lg:px-12 w-full">
+      <div className="relative z-10 max-w-[1800px] mx-auto px-4 md:px-8 lg:px-12 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* LEFT — Portrait */}
           <motion.div
@@ -242,8 +242,8 @@ export default function HeroSection({ profile }: HeroSectionProps) {
                   className="w-full h-full object-contain object-bottom"
                 />
               ) : (
-                <div className="w-full h-full flex items-center justify-center bg-[#212842]/50 rounded-2xl">
-                  <div className="text-center text-[#fcefd2]/50">
+                <div className="w-full h-full flex items-center justify-center bg-[#2F4F4F]/50 rounded-2xl">
+                  <div className="text-center text-[#dad7cd]/50">
                     <div
                       className="text-6xl mb-2"
                       style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
@@ -273,7 +273,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
             {/* Name */}
             <motion.h1
               variants={itemVariants}
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] xl:text-[3.25rem] font-bold text-[#fcefd2] leading-tight whitespace-nowrap"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] xl:text-[3.25rem] font-bold text-[#dad7cd] leading-tight whitespace-nowrap"
               style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
             >
               {profile.name || (
@@ -289,7 +289,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
               <div
                 className="h-0.5 w-20 rounded-full"
                 style={{
-                  background: 'linear-gradient(90deg, #fcefd2, #F7F2E8, transparent)',
+                  background: 'linear-gradient(90deg, #dad7cd, #F7F2E8, transparent)',
                 }}
               />
             </motion.div>
@@ -297,7 +297,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
             {/* Designation */}
             <motion.p
               variants={itemVariants}
-              className="text-xl md:text-2xl font-medium bg-gradient-to-r from-[#fcefd2] to-[#F7F2E8] bg-clip-text text-transparent"
+              className="text-xl md:text-2xl font-medium bg-gradient-to-r from-[#dad7cd] to-[#F7F2E8] bg-clip-text text-transparent"
             >
               {profile.designation || 'Designation'}
             </motion.p>
@@ -305,7 +305,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
             {/* Institution */}
             <motion.p
               variants={itemVariants}
-              className="mt-2 text-base md:text-lg text-[#fcefd2]/70"
+              className="mt-2 text-base md:text-lg text-[#dad7cd]/70"
             >
               {profile.institution || 'Institution'}
             </motion.p>
@@ -321,7 +321,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
             {profile.tagline && (
               <motion.p
                 variants={itemVariants}
-                className="mt-6 text-base text-[#fcefd2]/70 max-w-lg mx-auto lg:mx-0 leading-relaxed italic"
+                className="mt-6 text-lg text-[#dad7cd]/70 whitespace-nowrap mx-auto lg:mx-0 leading-relaxed italic"
                 style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
               >
                 &ldquo;{profile.tagline}&rdquo;
@@ -331,31 +331,33 @@ export default function HeroSection({ profile }: HeroSectionProps) {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Scroll Indicator Cut-out Button */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={!isLoading ? { opacity: 1 } : { opacity: 0 }}
         transition={{ delay: 2, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center cursor-pointer"
-        onClick={scrollToContent}
+        className="absolute bottom-0 right-0 z-20 flex"
       >
-        <motion.p
-          className="text-[#fcefd2] text-xs font-semibold tracking-widest uppercase mb-3"
-          animate={{ opacity: [0.6, 1, 0.6] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          Scroll to explore
-        </motion.p>
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{
-            duration: 1.5,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-        >
-          <ChevronDown size={24} className="text-[#fcefd2]" />
-        </motion.div>
+        <div className="relative bg-background rounded-tl-[2rem] md:rounded-tl-[3rem] p-4 md:p-6 pl-6 md:pl-8 pt-6 md:pt-8">
+          {/* Top-right inverted corner */}
+          <svg className="absolute right-0 top-[-2rem] w-8 h-8 fill-background pointer-events-none" viewBox="0 0 32 32">
+            <path d="M 0 32 A 32 32 0 0 0 32 0 L 32 32 Z" />
+          </svg>
+          {/* Bottom-left inverted corner */}
+          <svg className="absolute bottom-0 left-[-2rem] w-8 h-8 fill-background pointer-events-none" viewBox="0 0 32 32">
+            <path d="M 0 32 A 32 32 0 0 0 32 0 L 32 32 Z" />
+          </svg>
+
+          <button 
+            onClick={scrollToContent}
+            className="group flex items-center gap-3 px-6 md:px-8 py-3 md:py-4 bg-[#1C422D] border border-border/20 rounded-full text-[#dad7cd] text-sm font-bold tracking-widest uppercase hover:bg-[#2F4F4F] transition-all duration-300 shadow-sm hover:shadow-md"
+          >
+            Scroll to explore
+            <div className="bg-[#dad7cd]/10 rounded-full p-1 group-hover:bg-[#dad7cd]/20 transition-colors">
+              <ChevronDown size={18} className="animate-bounce text-[#dad7cd]" />
+            </div>
+          </button>
+        </div>
       </motion.div>
     </section>
   );

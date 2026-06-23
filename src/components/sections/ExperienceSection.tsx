@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useCallback, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useInView } from 'framer-motion';
 import SectionWrapper from '../ui/SectionWrapper';
 import { Calendar, MapPin, ChevronLeft, ChevronRight, Briefcase } from 'lucide-react';
 import type { Experience } from '@/lib/types';
@@ -20,13 +20,13 @@ export default function ExperienceSection({ experience }: ExperienceSectionProps
   const [stylesInitialized, setStylesInitialized] = useState(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
-  const [isPaused, setIsPaused] = useState(false);
+  const isInView = useInView(containerRef, { margin: "-100px" });
 
   const total = experience.length;
 
-  // Auto-play effect: slide to the next card periodically
+  // Auto-play effect: slide to the next card periodically ONLY when in view
   useEffect(() => {
-    if (total <= 1 || isPaused) return;
+    if (total <= 1 || !isInView) return;
 
     const timer = setInterval(() => {
       setActiveIndex((prev) => {
@@ -37,7 +37,7 @@ export default function ExperienceSection({ experience }: ExperienceSectionProps
     }, 4000); // 4 seconds interval
 
     return () => clearInterval(timer);
-  }, [activeIndex, total, isPaused]);
+  }, [activeIndex, total, isInView]);
 
   const goTo = useCallback((index: number) => {
     setDirection(index > activeIndex ? 1 : -1);
@@ -139,7 +139,9 @@ export default function ExperienceSection({ experience }: ExperienceSectionProps
       id="experience"
       title="Experience"
       subtitle="Professional journey and leadership roles in academia"
-      theme="tan"
+      theme="oxford"
+    
+      cutout="top-left"
     >
       <div className="mt-8 md:mt-12">
 
@@ -247,10 +249,10 @@ export default function ExperienceSection({ experience }: ExperienceSectionProps
             className={`absolute -left-2 md:-left-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-300 cursor-pointer ${
               activeIndex === 0
                 ? 'opacity-20 pointer-events-none'
-                : 'bg-surface border border-border hover:bg-gold/10 hover:border-gold/30 hover:shadow-[0_0_15px_var(--color-gold-muted)]'
+                : 'bg-[#dad7cd] border border-border hover:bg-gold/10 hover:border-gold/30 hover:shadow-[0_0_15px_var(--color-gold-muted)]'
             }`}
           >
-            <ChevronLeft size={20} className="text-gold" />
+            <ChevronLeft size={20} className="text-[#1C422D]" />
           </button>
           <button
             onClick={goNext}
@@ -258,10 +260,10 @@ export default function ExperienceSection({ experience }: ExperienceSectionProps
             className={`absolute -right-2 md:-right-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-300 cursor-pointer ${
               activeIndex === total - 1
                 ? 'opacity-20 pointer-events-none'
-                : 'bg-surface border border-border hover:bg-gold/10 hover:border-gold/30 hover:shadow-[0_0_15px_var(--color-gold-muted)]'
+                : 'bg-[#dad7cd] border border-border hover:bg-gold/10 hover:border-gold/30 hover:shadow-[0_0_15px_var(--color-gold-muted)]'
             }`}
           >
-            <ChevronRight size={20} className="text-gold" />
+            <ChevronRight size={20} className="text-[#1C422D]" />
           </button>
 
           {/* Card container */}
@@ -275,10 +277,10 @@ export default function ExperienceSection({ experience }: ExperienceSectionProps
                 animate="center"
                 exit="exit"
                 transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                className="relative rounded-2xl overflow-hidden"
+                className="relative rounded-2xl overflow-hidden bg-beige-card border border-border"
               >
                 {/* Card Background */}
-                <div className="absolute inset-0 rounded-2xl bg-surface border border-border" />
+                <div className="absolute inset-0 rounded-2xl pointer-events-none" />
                 {/* Decorative corner accent */}
                 <div className="absolute top-0 right-0 w-40 h-40 pointer-events-none"
                   style={{
@@ -347,14 +349,14 @@ export default function ExperienceSection({ experience }: ExperienceSectionProps
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.15 + i * 0.06, duration: 0.4 }}
-                            className="text-base md:text-[17px] leading-7 md:leading-8 text-foreground/75"
+                            className="text-lg md:text-xl leading-7 md:leading-8 text-foreground/75"
                           >
                             {para}
                           </motion.p>
                         ))}
                       </div>
                     ) : (
-                      <p className="text-muted italic text-base">No detailed description available.</p>
+                      <p className="text-muted italic text-lg">No detailed description available.</p>
                     )}
                   </div>
                 </div>

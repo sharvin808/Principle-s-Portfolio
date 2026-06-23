@@ -32,8 +32,10 @@ export default function GallerySection({ gallery }: GallerySectionProps) {
     <SectionWrapper
       id="gallery"
       title="Academic Achievements Gallery"
-      subtitle="Memorable moments, award ceremonies, guest visits, and campus activities"
-      theme="tan"
+      //subtitle="Memorable moments, award ceremonies, guest visits, and campus activities"
+      theme="oxford"
+    
+      cutout="top-left"
     >
       {/* Category filters */}
       {categories.length > 1 && (
@@ -56,7 +58,7 @@ export default function GallerySection({ gallery }: GallerySectionProps) {
           <ScrollReveal key={index} delay={index * 0.05} className="masonry-item">
             <div
               onClick={() => setLightboxIndex(index)}
-              className="group relative overflow-hidden rounded-xl cursor-pointer border border-border/10 bg-surface shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+              className="group relative overflow-hidden rounded-xl cursor-pointer border border-border/10 bg-beige-card shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
             >
               <div className="overflow-hidden aspect-video sm:aspect-auto">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -80,7 +82,7 @@ export default function GallerySection({ gallery }: GallerySectionProps) {
 
               {/* Static Caption for mobile/no hover */}
               {item.caption && (
-                <div className="p-3 bg-surface border-t border-border/5 group-hover:hidden">
+                <div className="p-3 bg-beige-card border-t border-border/5 group-hover:hidden">
                   <p className="text-xs text-foreground/75 font-medium line-clamp-1">
                     {item.caption}
                   </p>

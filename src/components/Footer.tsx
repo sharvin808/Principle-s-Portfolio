@@ -49,12 +49,9 @@ export default function Footer({ profile }: FooterProps) {
         <div className="my-8 border-t" style={{ borderColor: 'var(--border-color)' }} />
 
         {/* Copyright */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted">
-          <p>
+        <div className="flex flex-col items-center justify-center gap-4 text-sm text-muted">
+          <p className="text-center">
             © {currentYear} {profile.name || 'Academic Portfolio'}. All rights reserved.
-          </p>
-          <p className="flex items-center gap-1.5">
-            Crafted with <Heart size={14} className="text-gold" fill="currentColor" /> for academia
           </p>
         </div>
       </div>

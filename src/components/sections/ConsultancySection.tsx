@@ -25,7 +25,9 @@ export default function ConsultancySection({ consultancy }: ConsultancySectionPr
       id="consultancy"
       title="Consultancy"
       subtitle="Professional consulting and advisory roles"
-      theme="tan"
+      theme="oxford"
+    
+      cutout="top-left"
     >
       {/* Summary bar */}
       <ScrollReveal>
@@ -57,7 +59,7 @@ export default function ConsultancySection({ consultancy }: ConsultancySectionPr
                     animation: 'pulse 2s infinite',
                   }}
                 />
-                <span className="text-base text-muted">
+                <span className="text-lg text-muted">
                   {ongoingCount} Ongoing
                 </span>
               </div>
@@ -108,7 +110,7 @@ export default function ConsultancySection({ consultancy }: ConsultancySectionPr
                   {/* Role */}
                   <div className="min-w-0">
                     <h3
-                      className="text-base md:text-lg font-bold text-heading leading-snug truncate"
+                      className="text-lg md:text-lg font-bold text-heading leading-snug truncate"
                       style={{
                         fontFamily: 'var(--font-playfair), Georgia, serif',
                       }}
@@ -133,13 +135,13 @@ export default function ConsultancySection({ consultancy }: ConsultancySectionPr
                       <span
                         className="inline-flex items-center gap-1.5 text-sm font-semibold"
                         style={{
-                          color: isOngoing ? 'var(--color-gold)' : '#212842',
+                          color: isOngoing ? 'var(--color-gold)' : 'var(--muted)',
                         }}
                       >
                         <span
                           className="w-1.5 h-1.5 rounded-full"
                           style={{
-                            background: isOngoing ? 'var(--color-gold)' : '#212842',
+                            background: isOngoing ? 'var(--color-gold)' : 'var(--muted)',
                             ...(isOngoing ? { animation: 'pulse 2s infinite' } : {}),
                           }}
                         />
@@ -155,14 +157,14 @@ export default function ConsultancySection({ consultancy }: ConsultancySectionPr
                       className="flex-shrink-0"
                       style={{ color: 'var(--muted)' }}
                     />
-                    <span className="text-base text-foreground/80 truncate">
+                    <span className="text-lg text-foreground/80 truncate">
                       {item.organization || '—'}
                     </span>
                   </div>
 
                   {/* Year (desktop) */}
                   <div className="hidden md:block">
-                    <span className="text-base text-muted font-mono">
+                    <span className="text-lg text-muted font-mono">
                       {item.year || '—'}
                     </span>
                   </div>
@@ -173,7 +175,7 @@ export default function ConsultancySection({ consultancy }: ConsultancySectionPr
                       <span
                         className="w-2 h-2 rounded-full"
                         style={{
-                          background: isOngoing ? 'var(--color-gold)' : '#212842',
+                          background: isOngoing ? 'var(--color-gold)' : 'var(--muted)',
                           boxShadow: isOngoing
                             ? '0 0 6px var(--color-gold-muted)'
                             : '0 0 6px rgba(33,40,66,0.4)',
@@ -182,7 +184,7 @@ export default function ConsultancySection({ consultancy }: ConsultancySectionPr
                       />
                       <span
                         style={{
-                          color: isOngoing ? 'var(--color-gold)' : '#212842',
+                          color: isOngoing ? 'var(--color-gold)' : 'var(--muted)',
                         }}
                       >
                         {item.status || 'Completed'}
@@ -230,7 +232,7 @@ export default function ConsultancySection({ consultancy }: ConsultancySectionPr
                             Description
                           </span>
                         </div>
-                        <p className="text-base leading-7 text-foreground/75 max-w-3xl">
+                        <p className="text-lg leading-7 text-foreground/75 max-w-3xl">
                           {item.description}
                         </p>
                       </div>
