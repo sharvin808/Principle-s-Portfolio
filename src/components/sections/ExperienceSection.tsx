@@ -21,12 +21,13 @@ export default function ExperienceSection({ experience }: ExperienceSectionProps
 
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { margin: "-100px" });
+  const [isPaused, setIsPaused] = useState(false);
 
   const total = experience.length;
 
   // Auto-play effect: slide to the next card periodically ONLY when in view
   useEffect(() => {
-    if (total <= 1 || !isInView) return;
+    if (total <= 1 || !isInView || isPaused) return;
 
     const timer = setInterval(() => {
       setActiveIndex((prev) => {
@@ -37,7 +38,7 @@ export default function ExperienceSection({ experience }: ExperienceSectionProps
     }, 4000); // 4 seconds interval
 
     return () => clearInterval(timer);
-  }, [activeIndex, total, isInView]);
+  }, [activeIndex, total, isInView, isPaused]);
 
   const goTo = useCallback((index: number) => {
     setDirection(index > activeIndex ? 1 : -1);
