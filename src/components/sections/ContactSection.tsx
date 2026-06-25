@@ -39,8 +39,7 @@ export default function ContactSection({ contactMe }: ContactSectionProps) {
       title="Contact Me"
       //subtitle="Get in touch for academic collaborations, research inquiries, or speaking engagements"
       theme="oxford"
-    
-      cutout="top-right"
+      cutout="top-center"
     >
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
         {/* Contact Info Card */}

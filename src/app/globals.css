@@ -26,6 +26,9 @@
   --color-gold-dark: var(--color-gold-dark);
   --color-gold-muted: var(--color-gold-muted);
 
+  --color-success: var(--color-success);
+  --color-success-muted: var(--color-success-muted);
+
   --font-heading: var(--font-playfair);
   --font-body: var(--font-inter);
 }
@@ -52,6 +55,9 @@
   --color-gold-light: #2d3655;
   --color-gold-dark: #1C422D;
   --color-gold-muted: rgba(47, 79, 79, 0.1);
+
+  --color-success: #D97706;
+  --color-success-muted: rgba(217, 119, 6, 0.15);
 }
 
 /* Dark Mode Base */
@@ -76,6 +82,9 @@
   --color-gold-light: #F7F2E8;
   --color-gold-dark: #D4C9B3;
   --color-gold-muted: rgba(218, 215, 205, 0.15);
+
+  --color-success: #F59E0B;
+  --color-success-muted: rgba(245, 158, 11, 0.15);
 }
 
 /* Scoped Section Themes */
@@ -92,6 +101,9 @@
   --color-gold-light: #F7F2E8;
   --color-gold-dark: #D4C9B3;
   --color-gold-muted: rgba(218, 215, 205, 0.15);
+
+  --color-success: #F59E0B;
+  --color-success-muted: rgba(245, 158, 11, 0.15);
 
   background-color: var(--background);
   color: var(--foreground);
@@ -110,6 +122,9 @@
   --color-gold-light: #1b2238;
   --color-gold-dark: #0e1220;
   --color-gold-muted: rgba(21, 27, 46, 0.08);
+
+  --color-success: #D97706;
+  --color-success-muted: rgba(217, 119, 6, 0.15);
 
   background-color: var(--background);
   color: var(--foreground);
@@ -431,8 +446,8 @@ body {
 }
 
 .status-badge.completed {
-  background: rgba(47, 79, 79, 0.15);
-  color: #2F4F4F;
+  background: var(--color-success-muted);
+  color: var(--color-success);
 }
 
 /* =============================================================================

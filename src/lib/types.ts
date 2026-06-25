@@ -16,6 +16,7 @@ export interface AboutMe {
   biography: string;
   vision: string;
   introduction: string;
+  imageUrl?: string;
 }
 
 export interface Qualification {

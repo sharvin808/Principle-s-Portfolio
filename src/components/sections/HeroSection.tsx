@@ -166,6 +166,8 @@ export default function HeroSection({ profile }: HeroSectionProps) {
       {/* Particles Background */}
       <Particles />
 
+
+
       {/* Radial light overlay */}
       <div
         className="absolute inset-0 pointer-events-none"

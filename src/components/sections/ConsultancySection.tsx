@@ -26,13 +26,10 @@ export default function ConsultancySection({ consultancy }: ConsultancySectionPr
       title="Consultancy"
       subtitle="Professional consulting and advisory roles"
       theme="oxford"
-    
-      cutout="top-left"
-    >
-      {/* Summary bar */}
-      <ScrollReveal>
+      cutout="top-center"
+      headerContent={
         <div
-          className="flex flex-wrap items-center gap-6 mb-8 p-4 rounded-2xl"
+          className="flex flex-wrap items-center justify-start gap-6 p-4 rounded-2xl w-fit ml-4 md:ml-8 mt-4"
           style={{
             background: 'var(--surface)',
             border: '1px solid var(--border-color)',
@@ -66,7 +63,8 @@ export default function ConsultancySection({ consultancy }: ConsultancySectionPr
             </>
           )}
         </div>
-      </ScrollReveal>
+      }
+    >
 
       {/* Ledger */}
       <ScrollReveal>
@@ -135,13 +133,13 @@ export default function ConsultancySection({ consultancy }: ConsultancySectionPr
                       <span
                         className="inline-flex items-center gap-1.5 text-sm font-semibold"
                         style={{
-                          color: isOngoing ? 'var(--color-gold)' : 'var(--muted)',
+                          color: isOngoing ? 'var(--color-gold)' : 'var(--color-success)',
                         }}
                       >
                         <span
                           className="w-1.5 h-1.5 rounded-full"
                           style={{
-                            background: isOngoing ? 'var(--color-gold)' : 'var(--muted)',
+                            background: isOngoing ? 'var(--color-gold)' : 'var(--color-success)',
                             ...(isOngoing ? { animation: 'pulse 2s infinite' } : {}),
                           }}
                         />
@@ -175,16 +173,16 @@ export default function ConsultancySection({ consultancy }: ConsultancySectionPr
                       <span
                         className="w-2 h-2 rounded-full"
                         style={{
-                          background: isOngoing ? 'var(--color-gold)' : 'var(--muted)',
+                          background: isOngoing ? 'var(--color-gold)' : 'var(--color-success)',
                           boxShadow: isOngoing
                             ? '0 0 6px var(--color-gold-muted)'
-                            : '0 0 6px rgba(33,40,66,0.4)',
+                            : '0 0 6px var(--color-success-muted)',
                           ...(isOngoing ? { animation: 'pulse 2s infinite' } : {}),
                         }}
                       />
                       <span
                         style={{
-                          color: isOngoing ? 'var(--color-gold)' : 'var(--muted)',
+                          color: isOngoing ? 'var(--color-gold)' : 'var(--color-success)',
                         }}
                       >
                         {item.status || 'Completed'}

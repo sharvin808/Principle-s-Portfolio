@@ -51,10 +51,8 @@ export default function PaperPresentationsSection({ paperPresentations }: PaperP
       className="noise-texture"
     
       cutout="top-left"
-    >
-      {/* Stats ribbon / interactive tabs */}
-      <ScrollReveal>
-        <div className="flex flex-wrap items-center gap-4 mb-8">
+      headerContent={
+        <div className="flex flex-wrap items-center justify-end gap-4 w-full">
           <button
             onClick={() => handleTabClick('presentations')}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 cursor-pointer"
@@ -100,7 +98,8 @@ export default function PaperPresentationsSection({ paperPresentations }: PaperP
             {conferencesCount} Conferences
           </button>
         </div>
-      </ScrollReveal>
+      }
+    >
 
       {/* Ticket Grid */}
       <div className="ticket-grid">

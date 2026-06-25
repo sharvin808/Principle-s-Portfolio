@@ -141,8 +141,7 @@ export default function ExperienceSection({ experience }: ExperienceSectionProps
       title="Experience"
       subtitle="Professional journey and leadership roles in academia"
       theme="oxford"
-    
-      cutout="top-left"
+      cutout="top-right"
     >
       <div className="mt-8 md:mt-12">
 

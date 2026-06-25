@@ -18,14 +18,18 @@ export default function QualificationSection({ qualification }: QualificationSec
       title="Education"
       subtitle="Academic qualifications and scholarly foundation"
       theme="oxford"
-    
-      cutout="top-right"
+      cutout="top-center"
     >
       <div className="relative">
-        {/* Timeline line */}
-        <div className="timeline-line hidden md:block" />
+        {/* Background Watermark Icon */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden opacity-[0.03] dark:opacity-[0.05] z-0">
+          <GraduationCap className="w-[150%] h-[150%] max-w-[1200px] max-h-[1200px] min-w-[800px] min-h-[800px]" />
+        </div>
 
-        <div className="space-y-12">
+        {/* Timeline line */}
+        <div className="timeline-line hidden md:block z-10 relative" />
+
+        <div className="space-y-12 relative z-10">
           {qualification.map((edu, index) => (
             <ScrollReveal
               key={index}

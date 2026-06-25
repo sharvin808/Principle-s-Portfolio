@@ -3,6 +3,7 @@
 import SectionWrapper from '../ui/SectionWrapper';
 import ScrollReveal from '../ui/ScrollReveal';
 import { BookMarked, UserCheck } from 'lucide-react';
+import AnimatedCounter from '../ui/AnimatedCounter';
 import type { Reviewer } from '@/lib/types';
 
 interface ReviewerSectionProps {
@@ -20,6 +21,15 @@ export default function ReviewerSection({ reviewer }: ReviewerSectionProps) {
       theme="oxford"
     
       cutout="top-left"
+      headerContent={
+        <div className="flex flex-wrap items-center justify-end gap-6 pr-4 md:pr-8">
+          <AnimatedCounter
+            target={reviewer.length}
+            label="Total Editorial Roles"
+            suffix=""
+          />
+        </div>
+      }
     >
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {reviewer.map((item, index) => (
