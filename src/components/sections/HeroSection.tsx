@@ -162,7 +162,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
   };
 
   return (
-    <section className="relative h-auto min-h-[90vh] py-12 lg:py-0 lg:h-[90vh] flex items-center overflow-hidden hero-gradient w-[96%] lg:w-[98%] max-w-[1800px] mx-auto rounded-[2rem] md:rounded-[3rem] my-4 md:my-8">
+    <section className="relative h-auto min-h-[90vh] py-12 lg:py-40 lg:h-auto 2xl:py-0 2xl:h-[90vh] flex items-center overflow-hidden hero-gradient w-[96%] lg:w-[98%] max-w-[1800px] mx-auto rounded-[2rem] md:rounded-[3rem] my-4 md:my-8">
       {/* Particles Background */}
       <Particles />
 

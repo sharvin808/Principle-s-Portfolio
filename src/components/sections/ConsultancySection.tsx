@@ -108,7 +108,7 @@ export default function ConsultancySection({ consultancy }: ConsultancySectionPr
                   {/* Role */}
                   <div className="min-w-0">
                     <h3
-                      className="text-lg md:text-lg font-bold text-heading leading-snug truncate"
+                      className="text-lg md:text-lg font-bold text-heading leading-snug whitespace-normal md:truncate"
                       style={{
                         fontFamily: 'var(--font-playfair), Georgia, serif',
                       }}
@@ -119,9 +119,9 @@ export default function ConsultancySection({ consultancy }: ConsultancySectionPr
                     {/* Mobile-only: org + year */}
                     <div className="flex flex-wrap items-center gap-3 mt-1.5 md:hidden">
                       {item.organization && (
-                        <span className="inline-flex items-center gap-1 text-sm text-muted">
-                          <Building2 size={11} />
-                          {item.organization}
+                        <span className="inline-flex items-start gap-1.5 text-sm text-muted">
+                          <Building2 size={12} className="flex-shrink-0 mt-0.5" />
+                          <span className="break-words">{item.organization}</span>
                         </span>
                       )}
                       {item.year && (

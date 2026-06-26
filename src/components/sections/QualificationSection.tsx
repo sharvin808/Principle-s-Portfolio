@@ -99,7 +99,7 @@ function QualificationCard({ edu, index }: { edu: Qualification; index: number }
       </div>
 
       {/* Mobile/Tablet Layout */}
-      <div className="relative z-10 xl:hidden space-y-8 mt-8 px-4 md:px-8 lg:px-16 max-w-5xl mx-auto">
+      <div className="relative z-10 2xl:hidden space-y-8 mt-8 px-4 md:px-8 lg:px-16 max-w-5xl mx-auto">
         {qualification.map((edu, index) => (
           <ScrollReveal key={index} delay={index * 0.1}>
             <QualificationCard edu={edu} index={index} />
@@ -109,7 +109,7 @@ function QualificationCard({ edu, index }: { edu: Qualification; index: number }
 
       {/* Desktop Radial Infographic Layout */}
       {mounted && (
-        <div className="hidden xl:flex relative z-10 w-full h-[1200px] mt-12 items-center justify-center overflow-visible">
+        <div className="hidden 2xl:flex relative z-10 w-full h-[1200px] mt-12 items-center justify-center overflow-visible">
           
           {/* Center container to hold the circle and arc */}
           <div className="absolute left-[20%] top-1/2 -translate-y-1/2 w-0 h-0">
