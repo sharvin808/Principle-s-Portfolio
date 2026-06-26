@@ -23,7 +23,9 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <ThemeProvider>
           <LoadingProvider>
-            {children}
+            <main className="flex-1 w-full overflow-x-hidden max-w-[100vw] flex flex-col">
+              {children}
+            </main>
           </LoadingProvider>
         </ThemeProvider>
       </body>

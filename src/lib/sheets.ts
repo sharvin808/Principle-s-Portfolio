@@ -308,6 +308,7 @@ export async function getContactme(): Promise<ContactMe> {
     linkedin: parseExternalUrl(raw.linkedin || raw.linkedinurl || ''),
     instagram: parseExternalUrl(instagramUrl),
     twitter: parseExternalUrl(raw.twitter || raw.twitterurl || raw.x || raw.xurl || ''),
+    googleScholar: parseExternalUrl(raw.googlescholar || raw.googlescholarurl || raw.scholar || ''),
   };
 }
 

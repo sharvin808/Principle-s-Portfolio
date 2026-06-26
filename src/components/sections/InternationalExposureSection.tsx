@@ -204,8 +204,8 @@ export default function InternationalExposureSection({ internationalExposure }: 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           {/* Left Panel: SVG Map Connection Graph (Desktop) / Tab selector (Mobile) */}
           <div className="lg:col-span-8 flex flex-col justify-between bg-beige-card border border-border/80 rounded-2xl p-6 shadow-xl overflow-hidden min-h-[400px] lg:min-h-[500px]">
-            {/* Mobile Tab Swiper */}
-            <div className="flex lg:hidden overflow-x-auto pb-4 gap-3 scrollbar-none snap-x mb-4">
+            {/* Mobile Tabs */}
+            <div className="flex lg:hidden flex-wrap pb-4 gap-2 mb-4">
               {countriesWithData.filter(c => c !== 'in').map((code) => {
                 const isActive = activeCountryCode === code;
                 const countryName = groupedExposure[code]?.[0]?.country || code;
@@ -213,7 +213,7 @@ export default function InternationalExposureSection({ internationalExposure }: 
                   <button
                     key={`tab-mobile-${code}`}
                     onClick={() => setActiveCountryCode(code)}
-                    className={`flex items-center gap-2.5 px-4 py-2.5 rounded-xl border snap-align-start flex-shrink-0 transition-all duration-300 cursor-pointer ${
+                    className={`flex items-center gap-2 px-3 py-2 rounded-xl border transition-all duration-300 cursor-pointer ${
                       isActive
                         ? 'bg-[#2F4F4F] text-[#faf3e3] border-[#2F4F4F] shadow-md scale-95'
                         : 'bg-[#dad7cd] text-[#1C422D] border-border hover:border-[#2F4F4F]/50 hover:bg-[#faf3e3]'
@@ -222,7 +222,7 @@ export default function InternationalExposureSection({ internationalExposure }: 
                     <img
                       src={getFlagUrl(code)}
                       alt={countryName}
-                      className="w-5 h-3.5 object-cover rounded shadow-sm flex-shrink-0"
+                      className="w-5 h-3.5 object-cover rounded shadow-sm"
                     />
                     <span className="text-xs font-semibold">{countryName}</span>
                   </button>

@@ -51,7 +51,7 @@ export default function ResearchInterestsSection({
       <div className="relative">
         {/* Background Watermark Icon */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden opacity-[0.03] dark:opacity-[0.05] z-0">
-          <Lightbulb className="w-[150%] h-[150%] max-w-[1200px] max-h-[1200px] min-w-[800px] min-h-[800px]" />
+          <Lightbulb className="w-[150%] h-[150%] max-w-[1200px] max-h-[1200px] min-w-0 md:min-w-[800px] min-h-0 md:min-h-[800px]" />
         </div>
 
         <div 

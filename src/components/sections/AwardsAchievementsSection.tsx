@@ -37,7 +37,7 @@ export default function AwardsAchievementsSection({
       <div className="relative max-w-6xl mx-auto">
         {/* Background Watermark Icon */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden opacity-[0.03] dark:opacity-[0.05] z-0">
-          <Trophy className="w-[150%] h-[150%] max-w-[1200px] max-h-[1200px] min-w-[800px] min-h-[800px]" />
+          <Trophy className="w-[150%] h-[150%] max-w-[1200px] max-h-[1200px] min-w-0 md:min-w-[800px] min-h-0 md:min-h-[800px]" />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 relative z-10">

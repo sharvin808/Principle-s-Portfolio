@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, FormEvent } from 'react';
-import { Mail, MapPin } from 'lucide-react';
+import { Mail, MapPin, GraduationCap } from 'lucide-react';
 import SectionWrapper from '../ui/SectionWrapper';
 import ScrollReveal from '../ui/ScrollReveal';
 import type { ContactMe } from '@/lib/types';
@@ -172,6 +172,19 @@ export default function ContactSection({ contactMe }: ContactSectionProps) {
                       <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                     </svg>
                     <span>Twitter</span>
+                  </a>
+                )}
+
+                {/* Google Scholar */}
+                {contactMe.googleScholar && (
+                  <a
+                    href={contactMe.googleScholar}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2.5 px-5 py-3 rounded-xl border border-[#2F4F4F] bg-[#2F4F4F] text-[#faf3e3] text-base font-semibold hover:bg-transparent hover:text-[#2F4F4F] hover:border-[#2F4F4F] transition-colors duration-200"
+                  >
+                    <GraduationCap className="w-4.5 h-4.5 shrink-0" />
+                    <span>Google Scholar</span>
                   </a>
                 )}
               </div>
