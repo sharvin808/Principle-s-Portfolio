@@ -144,12 +144,12 @@ export default function Navbar({
               </button>
 
               {/* Desktop Nav Items */}
-              <div className="hidden lg:flex items-center gap-1 xl:gap-2">
+              <div className="hidden xl:flex items-center gap-1 xl:gap-2">
                 {EXTRA_ITEMS.map(({ id, label }) => (
                   <button
                     key={id}
                     onClick={() => scrollTo(id)}
-                    className={`relative px-2 lg:px-4 py-2 text-base lg:text-lg font-semibold rounded-lg transition-colors duration-200 cursor-pointer ${
+                    className={`relative px-2 xl:px-4 py-2 text-base xl:text-lg font-semibold rounded-lg transition-colors duration-200 cursor-pointer xl:whitespace-nowrap ${
                       activeSection === id
                         ? 'text-foreground'
                         : 'text-foreground/70 hover:text-foreground hover:bg-surface-alt/30'
@@ -170,7 +170,7 @@ export default function Navbar({
                   <button
                     key={id}
                     onClick={() => scrollTo(id)}
-                    className={`relative px-2 lg:px-4 py-2 text-base lg:text-lg font-semibold rounded-lg transition-colors duration-200 cursor-pointer ${
+                    className={`relative px-2 xl:px-4 py-2 text-base xl:text-lg font-semibold rounded-lg transition-colors duration-200 cursor-pointer xl:whitespace-nowrap ${
                       activeSection === id && !selectedExtraSection
                         ? 'text-foreground'
                         : 'text-foreground/70 hover:text-foreground hover:bg-surface-alt/30'
@@ -190,7 +190,7 @@ export default function Navbar({
                 {/* Contact Item */}
                 <button
                   onClick={() => scrollTo(CONTACT_ITEM.id)}
-                  className={`relative px-2 lg:px-4 py-2 text-base lg:text-lg font-semibold rounded-lg transition-colors duration-200 cursor-pointer ${
+                  className={`relative px-2 xl:px-4 py-2 text-base xl:text-lg font-semibold rounded-lg transition-colors duration-200 cursor-pointer xl:whitespace-nowrap ${
                     activeSection === CONTACT_ITEM.id && !selectedExtraSection
                       ? 'text-foreground'
                       : 'text-foreground/70 hover:text-foreground hover:bg-surface-alt/30'
@@ -208,7 +208,7 @@ export default function Navbar({
               </div>
 
               {/* Mobile controls */}
-              <div className="flex lg:hidden items-center gap-2">
+              <div className="flex xl:hidden items-center gap-2">
                 <button
                   onClick={() => setMobileOpen(!mobileOpen)}
                   className="w-10 h-10 rounded-lg flex items-center justify-center text-foreground cursor-pointer hover:bg-surface-alt/30 transition-colors"
@@ -227,7 +227,7 @@ export default function Navbar({
                   animate={{ opacity: 1, height: 'auto' }}
                   exit={{ opacity: 0, height: 0 }}
                   transition={{ duration: 0.3 }}
-                  className="lg:hidden overflow-y-auto max-h-[80vh] pb-4 px-2"
+                  className="xl:hidden overflow-y-auto max-h-[80vh] pb-4 px-2"
                 >
                   <div className="flex flex-col gap-1.5">
                     {EXTRA_ITEMS.map(({ id, label }) => (

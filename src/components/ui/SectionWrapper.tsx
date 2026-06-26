@@ -113,7 +113,7 @@ export default function SectionWrapper({
       )}
 
       {cutout === 'top-center' && (
-        <div className="relative md:absolute top-0 md:left-1/2 md:-translate-x-1/2 z-20 flex pointer-events-none w-[90%] md:w-[75%] lg:w-[60%] max-w-[900px] mx-auto md:mx-0 justify-center -mt-20 md:mt-0">
+        <div className="relative md:absolute top-0 md:left-1/2 md:-translate-x-1/2 z-20 flex pointer-events-none w-[90%] md:w-[75%] lg:w-[50%] xl:w-[45%] max-w-[900px] mx-auto md:mx-0 justify-center -mt-20 md:mt-0">
           <div className="relative rounded-bl-[2rem] rounded-br-[2rem] md:rounded-bl-[3rem] md:rounded-br-[3rem] px-6 py-6 md:px-16 md:py-10 pb-8 md:pb-12 pointer-events-auto text-center w-full" style={{ backgroundColor: 'var(--page-background)' }}>
             {/* Top-left inverted corner */}
             <svg className="absolute left-[-2rem] top-0 w-8 h-8 pointer-events-none" style={{ fill: 'var(--page-background)' }} viewBox="0 0 32 32">
@@ -204,6 +204,18 @@ export default function SectionWrapper({
         </div>
       )}
 
+      <div className="max-w-[1800px] mx-auto relative z-30 pointer-events-none">
+        {headerContent && (
+          <div className={`pointer-events-auto relative flex flex-col justify-center min-h-[140px] md:min-h-[180px] mb-8 ${
+            cutout === 'top-left' ? 'mt-8 md:mt-24 xl:mt-0 xl:absolute xl:-top-24 xl:right-0 xl:w-[65%] 2xl:w-[60%]' : 
+            cutout === 'top-right' ? 'mt-8 md:mt-24 xl:mt-0 xl:absolute xl:-top-24 xl:left-0 xl:w-[65%] 2xl:w-[60%]' : 
+            cutout === 'top-center' ? 'mt-8 md:mt-40 lg:mt-0 lg:absolute lg:top-0 lg:left-0 md:w-[60%] lg:w-[25%]' : ''
+          }`}>
+            {headerContent}
+          </div>
+        )}
+      </div>
+
       <div className="max-w-[1800px] mx-auto relative z-10">
         {title && cutout !== 'top-left' && cutout !== 'top-right' && cutout !== 'top-center' && (
           <motion.div
@@ -229,18 +241,10 @@ export default function SectionWrapper({
           transition={{ duration: 0.7, delay: 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="relative z-10 w-full"
         >
-          {headerContent && (
-            <div className={`flex flex-col justify-center min-h-[140px] md:min-h-[180px] mb-8 ${
-              cutout === 'top-left' ? 'mt-8 md:mt-24 lg:mt-28 w-full' : 
-              cutout === 'top-right' ? 'mt-8 md:mt-24 lg:mt-28 w-full' : 
-              cutout === 'top-center' ? 'mt-8 md:mt-20 lg:mt-0 lg:absolute lg:top-0 lg:left-0 md:w-[60%] lg:w-[25%]' : ''
-            }`}>
-              {headerContent}
-            </div>
-          )}
           <div className={`relative z-10 ${
             !headerContent && (cutout === 'top-left' || cutout === 'top-right' || cutout === 'top-center') ? 'mt-8 md:mt-40 lg:mt-48' : 
-            headerContent && cutout === 'top-center' ? 'mt-4 md:mt-12 lg:mt-56' : ''
+            headerContent && cutout === 'top-center' ? 'mt-4 md:mt-12 lg:mt-56' : 
+            headerContent && (cutout === 'top-left' || cutout === 'top-right') ? 'mt-0 md:mt-0 xl:mt-48' : ''
           }`}>
             {children}
           </div>
