@@ -141,8 +141,7 @@ export default function ExperienceSection({ experience }: ExperienceSectionProps
       title="Experience"
       subtitle="Professional journey and leadership roles in academia"
       theme="oxford"
-    
-      cutout="top-left"
+      cutout="top-right"
     >
       <div className="mt-8 md:mt-12">
 
@@ -247,7 +246,7 @@ export default function ExperienceSection({ experience }: ExperienceSectionProps
           <button
             onClick={goPrev}
             disabled={activeIndex === 0}
-            className={`absolute -left-2 md:-left-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-300 cursor-pointer ${
+            className={`hidden md:flex absolute -left-2 md:-left-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 md:w-12 md:h-12 rounded-full items-center justify-center transition-all duration-300 cursor-pointer ${
               activeIndex === 0
                 ? 'opacity-20 pointer-events-none'
                 : 'bg-[#dad7cd] border border-border hover:bg-gold/10 hover:border-gold/30 hover:shadow-[0_0_15px_var(--color-gold-muted)]'
@@ -258,7 +257,7 @@ export default function ExperienceSection({ experience }: ExperienceSectionProps
           <button
             onClick={goNext}
             disabled={activeIndex === total - 1}
-            className={`absolute -right-2 md:-right-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-300 cursor-pointer ${
+            className={`hidden md:flex absolute -right-2 md:-right-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 md:w-12 md:h-12 rounded-full items-center justify-center transition-all duration-300 cursor-pointer ${
               activeIndex === total - 1
                 ? 'opacity-20 pointer-events-none'
                 : 'bg-[#dad7cd] border border-border hover:bg-gold/10 hover:border-gold/30 hover:shadow-[0_0_15px_var(--color-gold-muted)]'
@@ -268,7 +267,7 @@ export default function ExperienceSection({ experience }: ExperienceSectionProps
           </button>
 
           {/* Card container */}
-          <div className="overflow-hidden mx-6 md:mx-10">
+          <div className="overflow-hidden mx-4 md:mx-10">
             <AnimatePresence mode="wait" custom={direction}>
               <motion.div
                 key={activeIndex}
@@ -294,7 +293,7 @@ export default function ExperienceSection({ experience }: ExperienceSectionProps
                   }}
                 />
 
-                <div className="relative z-10 p-8 md:p-12 lg:p-14">
+                <div className="relative z-10 p-6 sm:p-8 md:p-12 lg:p-14">
                   {/* Top row: Counter + metadata badges */}
                   <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
                     {/* Step counter */}
@@ -308,15 +307,15 @@ export default function ExperienceSection({ experience }: ExperienceSectionProps
                     </div>
  
                     {/* Badges */}
-                    <div className="flex flex-wrap items-center gap-2.5">
-                      <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-medium bg-gold-muted text-gold border border-gold/20">
-                        <Calendar size={13} />
+                    <div className="flex flex-wrap items-center gap-4">
+                      <div className="flex items-center gap-3 px-5 py-2.5 rounded-full text-base font-semibold bg-gold-muted text-gold border border-gold/20 shadow-sm">
+                        <Calendar size={18} />
                         <span>{activeExp.startYear}{activeExp.endYear ? ` — ${activeExp.endYear}` : ' — Present'}</span>
                       </div>
                       {activeExp.institution && (
-                        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium text-foreground/60 bg-surface-alt border border-border"
+                        <div className="flex items-center gap-3 px-5 py-2.5 rounded-full text-base font-semibold text-foreground/70 bg-surface-alt border border-border shadow-sm"
                         >
-                          <MapPin size={13} className="text-gold/50" />
+                          <MapPin size={18} className="text-gold/60" />
                           <span>{activeExp.institution}</span>
                         </div>
                       )}

@@ -69,10 +69,8 @@ export default function PublicationsSection({ publications }: PublicationsSectio
       theme="oxford"
     
       cutout="top-left"
-    >
-      {/* Counters */}
-      <ScrollReveal className="mb-12">
-        <div className="flex flex-wrap justify-center gap-12 md:gap-20">
+      headerContent={
+        <div className="flex flex-wrap items-center justify-end gap-12 md:gap-20">
           <AnimatedCounter
             target={publications.length}
             label="Total Publications"
@@ -88,7 +86,8 @@ export default function PublicationsSection({ publications }: PublicationsSectio
             suffix=""
           />
         </div>
-      </ScrollReveal>
+      }
+    >
 
       {/* Search and Filters */}
       <ScrollReveal className="mb-8">

@@ -4,6 +4,7 @@ import { useRef, useState, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import SectionWrapper from '../ui/SectionWrapper';
 import { Lightbulb } from 'lucide-react';
+import AnimatedCounter from '../ui/AnimatedCounter';
 import type { ResearchInterest } from '@/lib/types';
 
 interface ResearchInterestsSectionProps {
@@ -36,13 +37,27 @@ export default function ResearchInterestsSection({
       title="Research Interests"
       subtitle="Core areas of academic focus and ongoing research"
       theme={theme}
-    
-      cutout="top-right"
+      cutout="top-center"
+      headerContent={
+        <div className="flex flex-wrap items-center justify-start gap-6 mt-4 pl-4 md:pl-8">
+          <AnimatedCounter
+            target={researchInterests.length}
+            label="Total Core Areas"
+            suffix=""
+          />
+        </div>
+      }
     >
-      <div 
-        ref={containerRef}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 overflow-visible"
-      >
+      <div className="relative">
+        {/* Background Watermark Icon */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden opacity-[0.03] dark:opacity-[0.05] z-0">
+          <Lightbulb className="w-[150%] h-[150%] max-w-[1200px] max-h-[1200px] min-w-0 md:min-w-[800px] min-h-0 md:min-h-[800px]" />
+        </div>
+
+        <div 
+          ref={containerRef}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 overflow-visible relative z-10"
+        >
         {researchInterests.map((interest, index) => {
           const colIndex = index % 3;
           const isSpreadAnim = isLargeScreen && researchInterests.length >= 3;
@@ -114,6 +129,7 @@ export default function ResearchInterestsSection({
             </motion.div>
           );
         })}
+        </div>
       </div>
     </SectionWrapper>
   );

@@ -149,10 +149,14 @@ export async function getAboutMe(): Promise<AboutMe> {
   const rows = await fetchSheetTab('about me');
   const objects = rowsToObjects<any>(rows);
   const raw = objects[0] || {};
+  
+  const rawImageUrl = raw.imageurl || raw.image || raw.url || raw.photo || raw.link || '';
+  
   return {
     biography: raw.biography || '',
     vision: raw.vision || '',
     introduction: raw.introduction || '',
+    imageUrl: parseImageUrl(rawImageUrl),
   };
 }
 
@@ -304,6 +308,7 @@ export async function getContactme(): Promise<ContactMe> {
     linkedin: parseExternalUrl(raw.linkedin || raw.linkedinurl || ''),
     instagram: parseExternalUrl(instagramUrl),
     twitter: parseExternalUrl(raw.twitter || raw.twitterurl || raw.x || raw.xurl || ''),
+    googleScholar: parseExternalUrl(raw.googlescholar || raw.googlescholarurl || raw.scholar || ''),
   };
 }
 

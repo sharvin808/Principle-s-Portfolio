@@ -162,9 +162,11 @@ export default function HeroSection({ profile }: HeroSectionProps) {
   };
 
   return (
-    <section className="relative h-[90vh] min-h-[600px] flex items-center overflow-hidden hero-gradient w-[96%] lg:w-[98%] max-w-[1800px] mx-auto rounded-[2rem] md:rounded-[3rem] my-4 md:my-8">
+    <section className="relative h-auto min-h-[90vh] py-12 lg:py-0 lg:h-[90vh] flex items-center overflow-hidden hero-gradient w-[96%] lg:w-[98%] max-w-[1800px] mx-auto rounded-[2rem] md:rounded-[3rem] my-4 md:my-8">
       {/* Particles Background */}
       <Particles />
+
+
 
       {/* Radial light overlay */}
       <div
@@ -230,10 +232,10 @@ export default function HeroSection({ profile }: HeroSectionProps) {
             initial={{ opacity: 0, x: -40 }}
             animate={!isLoading ? { opacity: 1, x: 0 } : { opacity: 0, x: -40 }}
             transition={{ duration: 0.9, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="flex justify-center lg:justify-start order-2 lg:order-1 w-full"
+            className="flex justify-center lg:justify-start order-2 lg:order-1 w-full pb-8 md:pb-16 lg:pb-0"
           >
             {/* On mobile: show the image normally in flow */}
-            <div className="relative w-full h-[50vh] md:h-[60vh] lg:hidden">
+            <div className="relative w-full h-[45vh] md:h-[50vh] lg:hidden mt-8 md:mt-12">
               {profile.photoUrl ? (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
@@ -273,7 +275,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
             {/* Name */}
             <motion.h1
               variants={itemVariants}
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] xl:text-[3.25rem] font-bold text-[#dad7cd] leading-tight whitespace-nowrap"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] xl:text-[3.25rem] font-bold text-[#dad7cd] leading-tight whitespace-normal md:whitespace-nowrap"
               style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
             >
               {profile.name || (
@@ -321,7 +323,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
             {profile.tagline && (
               <motion.p
                 variants={itemVariants}
-                className="mt-6 text-lg text-[#dad7cd]/70 whitespace-nowrap mx-auto lg:mx-0 leading-relaxed italic"
+                className="mt-6 text-base md:text-lg text-[#dad7cd]/70 whitespace-normal mx-auto lg:mx-0 leading-relaxed italic"
                 style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
               >
                 &ldquo;{profile.tagline}&rdquo;

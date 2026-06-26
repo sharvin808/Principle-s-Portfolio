@@ -3,6 +3,7 @@
 import SectionWrapper from '../ui/SectionWrapper';
 import ScrollReveal from '../ui/ScrollReveal';
 import { Award as AwardIcon, Trophy } from 'lucide-react';
+import AnimatedCounter from '../ui/AnimatedCounter';
 import type { AwardAchievement } from '@/lib/types';
 
 interface AwardsAchievementsSectionProps {
@@ -22,56 +23,64 @@ export default function AwardsAchievementsSection({
       title="Awards & Recognitions"
       //subtitle="Honors, fellowships, and academic accolades received throughout the career"
       theme={theme}
-    
-      cutout="top-right"
+      cutout="top-center"
+      headerContent={
+        <div className="flex flex-wrap items-center justify-start gap-6 mt-4 pl-4 md:pl-8">
+          <AnimatedCounter
+            target={awardsAchievements.length}
+            label="Total Awards & Honors"
+            suffix=""
+          />
+        </div>
+      }
     >
-      <div className="relative max-w-3xl mx-auto">
-        {/* Timeline line */}
-        <div
-          className="absolute left-5 top-0 bottom-0 w-0.5"
-          style={{
-            background: 'linear-gradient(to bottom, var(--color-gold), var(--color-gold-muted), transparent)',
-          }}
-        />
+      <div className="relative max-w-6xl mx-auto">
+        {/* Background Watermark Icon */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden opacity-[0.03] dark:opacity-[0.05] z-0">
+          <Trophy className="w-[150%] h-[150%] max-w-[1200px] max-h-[1200px] min-w-0 md:min-w-[800px] min-h-0 md:min-h-[800px]" />
+        </div>
 
-        <div className="space-y-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 relative z-10">
           {awardsAchievements.map((award, index) => (
             <ScrollReveal key={index} delay={index * 0.08}>
-              <div className="relative pl-14">
-                {/* Timeline Dot with Trophy/Medal icon */}
-                <div
-                  className="absolute left-1 top-1 w-9 h-9 rounded-full border-2 flex items-center justify-center z-10"
-                  style={{
-                    background: 'var(--surface)',
-                    borderColor: 'var(--color-gold)',
-                  }}
-                >
-                  <Trophy size={14} style={{ color: 'var(--color-gold)' }} />
-                </div>
+              <div className="relative h-full bg-transparent rounded-[1.5rem] p-8 flex flex-col group transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+                {/* Thick Custom Borders */}
+                <div className="absolute top-0 right-0 w-16 md:w-24 h-16 md:h-24 border-t-[6px] border-r-[6px] border-[#dad7cd] rounded-tr-[1.5rem] transition-colors duration-300 group-hover:border-white pointer-events-none" />
+                <div className="absolute bottom-0 left-0 w-16 md:w-24 h-16 md:h-24 border-b-[6px] border-l-[6px] border-[#dad7cd] rounded-bl-[1.5rem] transition-colors duration-300 group-hover:border-white pointer-events-none" />
 
-                <div className="card-premium">
-                  <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
-                    <span className="text-sm font-semibold text-gold font-mono bg-gold-muted px-2.5 py-1 rounded-md">
-                      {award.year}
-                    </span>
-                    <span className="text-sm text-muted font-medium">
-                      {award.organization}
-                    </span>
-                  </div>
-
-                  <h3
-                    className="text-xl font-bold text-heading leading-snug mb-2"
-                    style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+                <div className="flex items-center gap-3 mb-6 relative z-10">
+                  <div
+                    className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
+                    style={{ background: 'rgba(218, 215, 205, 0.15)' }}
                   >
-                    {award.name}
-                  </h3>
-
-                  {award.description && (
-                    <p className="text-lg text-foreground/70 leading-relaxed">
-                      {award.description}
-                    </p>
-                  )}
+                    <Trophy size={20} style={{ color: '#dad7cd' }} />
+                  </div>
+                  <div className="flex-1 flex flex-wrap items-center justify-between gap-2">
+                    {award.year && (
+                      <span className="text-sm font-semibold text-[#dad7cd] font-mono bg-[#dad7cd]/10 px-2.5 py-1 rounded-md">
+                        {award.year}
+                      </span>
+                    )}
+                    {award.organization && (
+                      <span className="text-sm text-[#dad7cd]/80 font-medium text-right">
+                        {award.organization}
+                      </span>
+                    )}
+                  </div>
                 </div>
+
+                <h3
+                  className="text-xl font-bold text-[#dad7cd] leading-snug mb-3"
+                  style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+                >
+                  {award.name}
+                </h3>
+
+                {award.description && (
+                  <p className="text-lg text-[#dad7cd]/70 leading-relaxed mt-auto">
+                    {award.description}
+                  </p>
+                )}
               </div>
             </ScrollReveal>
           ))}

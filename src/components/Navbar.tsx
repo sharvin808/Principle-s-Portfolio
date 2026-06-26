@@ -137,14 +137,14 @@ export default function Navbar({
                   window.location.hash = 'about';
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                className="-ml-4 md:-ml-10 lg:-ml-16 xl:-ml-24 text-2xl md:text-3xl font-bold text-heading cursor-pointer hover:opacity-80 transition-opacity"
+                className="mt-1.5 text-2xl md:text-3xl font-bold text-heading cursor-pointer hover:opacity-80 transition-opacity"
                 style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
               >
                 <span className="text-gradient-gold">SMD</span>
               </button>
 
               {/* Desktop Nav Items */}
-              <div className="hidden md:flex items-center gap-2">
+              <div className="hidden lg:flex items-center gap-1 xl:gap-2">
                 {EXTRA_ITEMS.map(({ id, label }) => (
                   <button
                     key={id}
@@ -208,7 +208,7 @@ export default function Navbar({
               </div>
 
               {/* Mobile controls */}
-              <div className="flex md:hidden items-center gap-2">
+              <div className="flex lg:hidden items-center gap-2">
                 <button
                   onClick={() => setMobileOpen(!mobileOpen)}
                   className="w-10 h-10 rounded-lg flex items-center justify-center text-foreground cursor-pointer hover:bg-surface-alt/30 transition-colors"
@@ -227,7 +227,7 @@ export default function Navbar({
                   animate={{ opacity: 1, height: 'auto' }}
                   exit={{ opacity: 0, height: 0 }}
                   transition={{ duration: 0.3 }}
-                  className="md:hidden overflow-y-auto max-h-[80vh] pb-4 px-2"
+                  className="lg:hidden overflow-y-auto max-h-[80vh] pb-4 px-2"
                 >
                   <div className="flex flex-col gap-1.5">
                     {EXTRA_ITEMS.map(({ id, label }) => (

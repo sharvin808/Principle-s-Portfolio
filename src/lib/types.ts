@@ -16,6 +16,7 @@ export interface AboutMe {
   biography: string;
   vision: string;
   introduction: string;
+  imageUrl?: string;
 }
 
 export interface Qualification {
@@ -106,6 +107,7 @@ export interface ContactMe {
   linkedin: string;
   instagram: string;
   twitter?: string;
+  googleScholar?: string;
 }
 
 // Combined data type for the entire sheet

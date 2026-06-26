@@ -28,26 +28,25 @@ export default function ResearchProjectSection({ researchProject }: ResearchProj
       theme="oxford"
     
       cutout="top-left"
-    >
-      {/* Summary Stats */}
-      <ScrollReveal>
-        <div className="flex flex-wrap items-center gap-6 mb-10">
+      headerContent={
+        <div className="flex flex-wrap items-center justify-end gap-4 md:gap-6">
           <div
             className="flex items-center gap-3 px-5 py-3 rounded-2xl"
             style={{
-              background: 'var(--surface)',
-              border: '1px solid var(--border-color)',
+              background: '#dad7cd',
+              border: '1px solid rgba(28, 66, 45, 0.15)',
+              boxShadow: '0 4px 12px rgba(0,0,0,0.05)'
             }}
           >
-            <FlaskConical size={18} style={{ color: 'var(--color-gold)' }} />
+            <FlaskConical size={18} style={{ color: '#1C422D' }} />
             <div>
               <div
-                className="text-2xl font-bold text-heading"
-                style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+                className="text-2xl font-bold"
+                style={{ fontFamily: 'var(--font-playfair), Georgia, serif', color: '#1C422D' }}
               >
                 {researchProject.length}
               </div>
-              <div className="text-xs uppercase tracking-widest text-muted font-medium">
+              <div className="text-xs uppercase tracking-widest font-medium" style={{ color: '#4b5563' }}>
                 Total Projects
               </div>
             </div>
@@ -56,26 +55,27 @@ export default function ResearchProjectSection({ researchProject }: ResearchProj
             <div
               className="flex items-center gap-3 px-5 py-3 rounded-2xl"
               style={{
-                background: 'var(--surface)',
-                border: '1px solid var(--border-color)',
+                background: '#dad7cd',
+                border: '1px solid rgba(28, 66, 45, 0.15)',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.05)'
               }}
             >
               <span
                 className="w-2.5 h-2.5 rounded-full"
                 style={{
-                  background: 'var(--color-gold)',
-                  boxShadow: '0 0 8px var(--border-color)',
+                  background: '#1C422D',
+                  boxShadow: '0 0 8px rgba(28, 66, 45, 0.4)',
                   animation: 'pulse 2s infinite',
                 }}
               />
               <div>
                 <div
-                  className="text-2xl font-bold text-heading"
-                  style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+                  className="text-2xl font-bold"
+                  style={{ fontFamily: 'var(--font-playfair), Georgia, serif', color: '#1C422D' }}
                 >
                   {ongoingCount}
                 </div>
-                <div className="text-xs uppercase tracking-widest text-muted font-medium">
+                <div className="text-xs uppercase tracking-widest font-medium" style={{ color: '#4b5563' }}>
                   Ongoing
                 </div>
               </div>
@@ -85,29 +85,31 @@ export default function ResearchProjectSection({ researchProject }: ResearchProj
             <div
               className="flex items-center gap-3 px-5 py-3 rounded-2xl"
               style={{
-                background: 'var(--surface)',
-                border: '1px solid var(--border-color)',
+                background: '#dad7cd',
+                border: '1px solid rgba(28, 66, 45, 0.15)',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.05)'
               }}
             >
               <span
                 className="w-2.5 h-2.5 rounded-full"
-                style={{ background: 'var(--muted)' }}
+                style={{ background: 'var(--color-success)' }}
               />
               <div>
                 <div
-                  className="text-2xl font-bold text-heading"
-                  style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+                  className="text-2xl font-bold"
+                  style={{ fontFamily: 'var(--font-playfair), Georgia, serif', color: '#1C422D' }}
                 >
                   {completedCount}
                 </div>
-                <div className="text-xs uppercase tracking-widest text-muted font-medium">
+                <div className="text-xs uppercase tracking-widest font-medium" style={{ color: '#4b5563' }}>
                   Completed
                 </div>
               </div>
             </div>
           )}
         </div>
-      </ScrollReveal>
+      }
+    >
 
       {/* Bento Grid */}
       <div className="bento-grid">
@@ -148,18 +150,18 @@ export default function ResearchProjectSection({ researchProject }: ResearchProj
                       style={{
                         background: isOngoing
                           ? 'var(--color-gold-muted)'
-                          : 'rgba(33,40,66,0.12)',
-                        color: isOngoing ? 'var(--color-gold)' : 'var(--muted)',
-                        border: `1px solid ${isOngoing ? 'rgba(212, 201, 179, 0.2)' : 'rgba(33,40,66,0.2)'}`,
+                          : 'var(--color-success-muted)',
+                        color: isOngoing ? 'var(--color-gold)' : 'var(--color-success)',
+                        border: `1px solid ${isOngoing ? 'rgba(212, 201, 179, 0.2)' : 'var(--color-success-muted)'}`,
                       }}
                     >
                       <span
                         className="w-1.5 h-1.5 rounded-full"
                         style={{
-                          background: isOngoing ? 'var(--color-gold)' : 'var(--muted)',
+                          background: isOngoing ? 'var(--color-gold)' : 'var(--color-success)',
                           boxShadow: isOngoing
                             ? '0 0 6px var(--color-gold-muted)'
-                            : '0 0 6px rgba(33,40,66,0.5)',
+                            : '0 0 6px var(--color-success-muted)',
                           ...(isOngoing ? { animation: 'pulse 2s infinite' } : {}),
                         }}
                       />
