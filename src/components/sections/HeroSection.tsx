@@ -275,7 +275,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
             {/* Name */}
             <motion.h1
               variants={itemVariants}
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] xl:text-[3.25rem] font-bold text-[#dad7cd] leading-tight whitespace-normal md:whitespace-nowrap"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] xl:text-[3.25rem] font-bold text-[#dad7cd] leading-tight whitespace-normal xl:whitespace-nowrap"
               style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
             >
               {profile.name || (
