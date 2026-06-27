@@ -286,7 +286,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
             {/* Gold divider */}
             <motion.div
               variants={itemVariants}
-              className="mt-6 mb-2 mx-auto lg:mx-0"
+              className="mt-6 mb-6 mx-auto lg:mx-0"
             >
               <div
                 className="h-0.5 w-20 rounded-full"
@@ -296,23 +296,21 @@ export default function HeroSection({ profile }: HeroSectionProps) {
               />
             </motion.div>
 
-            {/* Designation & Institution */}
-            <motion.div
+            {/* Designation */}
+            <motion.p
               variants={itemVariants}
-              className="flex flex-wrap items-center gap-x-3 gap-y-1 justify-center lg:justify-start"
+              className="text-xl md:text-2xl font-medium bg-gradient-to-r from-[#dad7cd] to-[#F7F2E8] bg-clip-text text-transparent"
             >
-              <span className="text-xl md:text-2xl font-medium bg-gradient-to-r from-[#dad7cd] to-[#F7F2E8] bg-clip-text text-transparent">
-                {profile.designation || 'Designation'}
-              </span>
-              {profile.institution && (
-                <>
-                  <span className="hidden md:block w-1 h-1 rounded-full bg-[#dad7cd]/40" />
-                  <span className="text-base md:text-lg text-[#dad7cd]/70 leading-tight">
-                    {profile.institution}
-                  </span>
-                </>
-              )}
-            </motion.div>
+              {profile.designation || 'Designation'}
+            </motion.p>
+
+            {/* Institution */}
+            <motion.p
+              variants={itemVariants}
+              className="text-base md:text-lg text-[#dad7cd]/70 leading-tight"
+            >
+              {profile.institution || 'Institution'}
+            </motion.p>
 
             {/* Other Honors */}
             {profile.otherHonors && (
@@ -325,13 +323,35 @@ export default function HeroSection({ profile }: HeroSectionProps) {
             {profile.tagline && (
               <motion.p
                 variants={itemVariants}
-                className="mt-4 text-base md:text-lg text-[#dad7cd]/70 whitespace-normal mx-auto lg:mx-0 leading-relaxed italic"
+                className="mt-6 xl:hidden text-base md:text-lg text-[#dad7cd]/70 whitespace-normal mx-auto leading-relaxed italic"
                 style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
               >
                 &ldquo;{profile.tagline}&rdquo;
               </motion.p>
             )}
           </motion.div>
+        </div>
+      </div>
+
+      {/* Desktop Tagline (Absolutely positioned under the horizontal line) */}
+      <div className="hidden xl:block absolute bottom-[40px] left-0 right-0 z-20 pointer-events-none">
+        <div className="max-w-[1800px] mx-auto px-4 md:px-8 lg:px-12 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+            <div className="order-1" />
+            <div className="order-2 lg:-ml-12 xl:-ml-20">
+              {profile.tagline && (
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={!isLoading ? { opacity: 1 } : { opacity: 0 }}
+                  transition={{ delay: 1.2, duration: 1 }}
+                  className="text-lg xl:text-xl text-[#dad7cd]/70 leading-relaxed italic pointer-events-auto pr-[280px] 2xl:pr-0"
+                  style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+                >
+                  &ldquo;{profile.tagline}&rdquo;
+                </motion.p>
+              )}
+            </div>
+          </div>
         </div>
       </div>
 
