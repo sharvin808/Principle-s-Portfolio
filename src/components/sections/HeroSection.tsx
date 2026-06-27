@@ -344,10 +344,14 @@ export default function HeroSection({ profile }: HeroSectionProps) {
                   initial={{ opacity: 0 }}
                   animate={!isLoading ? { opacity: 1 } : { opacity: 0 }}
                   transition={{ delay: 1.2, duration: 1 }}
-                  className="text-lg xl:text-xl text-[#dad7cd]/70 leading-relaxed italic pointer-events-auto pr-[280px] 2xl:pr-0"
+                  className="text-lg xl:text-xl text-[#dad7cd]/70 leading-relaxed italic pointer-events-auto pr-[320px]"
                   style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
                 >
-                  &ldquo;{profile.tagline}&rdquo;
+                  &ldquo;
+                  {profile.tagline?.includes('and Innovation') 
+                    ? <>{profile.tagline.replace('and Innovation', '')}<br/>and Innovation</>
+                    : profile.tagline}
+                  &rdquo;
                 </motion.p>
               )}
             </div>
