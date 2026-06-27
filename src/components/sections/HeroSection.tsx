@@ -286,7 +286,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
             {/* Gold divider */}
             <motion.div
               variants={itemVariants}
-              className="mt-6 mb-6 mx-auto lg:mx-0"
+              className="mt-6 mb-2 mx-auto lg:mx-0"
             >
               <div
                 className="h-0.5 w-20 rounded-full"
@@ -307,7 +307,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
             {/* Institution */}
             <motion.p
               variants={itemVariants}
-              className="mt-2 text-base md:text-lg text-[#dad7cd]/70"
+              className="text-base md:text-lg text-[#dad7cd]/70 leading-tight"
             >
               {profile.institution || 'Institution'}
             </motion.p>
