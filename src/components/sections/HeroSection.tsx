@@ -267,7 +267,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
             variants={containerVariants}
             initial="hidden"
             animate={!isLoading ? "visible" : "hidden"}
-            className="text-center lg:text-left order-1 lg:order-2 lg:-ml-12 xl:-ml-20 lg:-mt-16"
+            className="text-center lg:text-left order-1 lg:order-2 lg:-ml-12 xl:-ml-20 lg:-mt-24"
           >
 
 
@@ -286,7 +286,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
             {/* Gold divider */}
             <motion.div
               variants={itemVariants}
-              className="mt-6 mb-6 mx-auto lg:mx-0"
+              className="mt-2 mb-6 mx-auto lg:mx-0"
             >
               <div
                 className="h-0.5 w-20 rounded-full"
@@ -338,7 +338,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
         <div className="max-w-[1800px] mx-auto px-4 md:px-8 lg:px-12 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
             <div className="order-1" />
-            <div className="order-2 lg:-ml-12 xl:-ml-20">
+            <div className="order-2 lg:-ml-16 xl:-ml-24">
               {profile.tagline && (
                 <motion.p
                   initial={{ opacity: 0 }}
