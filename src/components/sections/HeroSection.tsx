@@ -296,21 +296,23 @@ export default function HeroSection({ profile }: HeroSectionProps) {
               />
             </motion.div>
 
-            {/* Designation */}
-            <motion.p
+            {/* Designation & Institution */}
+            <motion.div
               variants={itemVariants}
-              className="text-xl md:text-2xl font-medium bg-gradient-to-r from-[#dad7cd] to-[#F7F2E8] bg-clip-text text-transparent"
+              className="flex flex-wrap items-center gap-x-3 gap-y-1 justify-center lg:justify-start"
             >
-              {profile.designation || 'Designation'}
-            </motion.p>
-
-            {/* Institution */}
-            <motion.p
-              variants={itemVariants}
-              className="text-base md:text-lg text-[#dad7cd]/70 leading-tight"
-            >
-              {profile.institution || 'Institution'}
-            </motion.p>
+              <span className="text-xl md:text-2xl font-medium bg-gradient-to-r from-[#dad7cd] to-[#F7F2E8] bg-clip-text text-transparent">
+                {profile.designation || 'Designation'}
+              </span>
+              {profile.institution && (
+                <>
+                  <span className="hidden md:block w-1 h-1 rounded-full bg-[#dad7cd]/40" />
+                  <span className="text-base md:text-lg text-[#dad7cd]/70 leading-tight">
+                    {profile.institution}
+                  </span>
+                </>
+              )}
+            </motion.div>
 
             {/* Other Honors */}
             {profile.otherHonors && (
@@ -323,7 +325,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
             {profile.tagline && (
               <motion.p
                 variants={itemVariants}
-                className="mt-6 text-base md:text-lg text-[#dad7cd]/70 whitespace-normal mx-auto lg:mx-0 leading-relaxed italic"
+                className="mt-4 text-base md:text-lg text-[#dad7cd]/70 whitespace-normal mx-auto lg:mx-0 leading-relaxed italic"
                 style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
               >
                 &ldquo;{profile.tagline}&rdquo;
