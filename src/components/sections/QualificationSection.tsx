@@ -112,11 +112,11 @@ function QualificationCard({ edu, index }: { edu: Qualification; index: number }
         <div className="hidden 2xl:flex relative z-10 w-full h-[1200px] mt-12 items-center justify-center overflow-visible">
           
           {/* Center container to hold the circle and arc */}
-          <div className="absolute left-[20%] top-1/2 -translate-y-1/2 w-0 h-0">
+          <div className="absolute left-[10%] xl:left-[15%] top-1/2 -translate-y-1/2 w-0 h-0">
             
             {/* The Arc */}
             <div 
-              className="absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] border-[2px] border-white/30 rounded-full pointer-events-none"
+              className="absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[850px] border-[2px] border-white/30 rounded-full pointer-events-none"
               style={{ clipPath: 'polygon(50% 0, 100% 0, 100% 100%, 50% 100%)' }}
             />
             
@@ -134,7 +134,7 @@ function QualificationCard({ edu, index }: { edu: Qualification; index: number }
             {/* The Qualification Nodes */}
             {qualification.map((edu, index) => {
               const N = qualification.length;
-              const radius = 500; // Half of 1000px
+              const radius = 425; // Half of 850px
               const startAngle = -45;
               const endAngle = 45;
               
@@ -159,7 +159,7 @@ function QualificationCard({ edu, index }: { edu: Qualification; index: number }
                       <div className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white rounded-full shadow-[0_0_10px_rgba(255,255,255,0.8)] z-10" />
                       
                       {/* Connecting Line to Card */}
-                      <div className="h-[2px] bg-white/40 w-24 lg:w-40 shrink-0" />
+                      <div className="h-[2px] bg-white/40 w-16 2xl:w-24 shrink-0" />
                       
                       {/* The Card */}
                       <div className="min-w-[380px] lg:min-w-[450px] max-w-[800px] transition-all duration-300">

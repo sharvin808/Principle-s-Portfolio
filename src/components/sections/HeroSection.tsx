@@ -188,7 +188,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
         className="hidden lg:block absolute left-0 right-0 h-[0.40in] bg-[#dad7cd] z-0 pointer-events-none"
         style={{ bottom: '120px' }}
       />
-
+      
       {/* Large Image on Left (Desktop Absolute, Mobile Inline) */}
       <motion.div
         initial={{ opacity: 0, x: -40 }}
@@ -204,8 +204,8 @@ export default function HeroSection({ profile }: HeroSectionProps) {
               alt={profile.name || 'Principal Portrait'}
               className="w-full h-full object-contain object-left-bottom pointer-events-none"
               style={{
-                maskImage: 'linear-gradient(to right, black 80%, transparent 98%)',
-                WebkitMaskImage: 'linear-gradient(to right, black 80%, transparent 98%)'
+                maskImage: 'linear-gradient(to right, black 92%, transparent 100%)',
+                WebkitMaskImage: 'linear-gradient(to right, black 92%, transparent 100%)'
               }}
             />
           ) : (
@@ -267,7 +267,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
             variants={containerVariants}
             initial="hidden"
             animate={!isLoading ? "visible" : "hidden"}
-            className="text-center lg:text-left order-1 lg:order-2"
+            className="text-center lg:text-left order-1 lg:order-2 lg:-ml-12 xl:-ml-20 lg:-mt-16"
           >
 
 

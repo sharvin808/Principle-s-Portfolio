@@ -102,7 +102,7 @@ export default function PaperPresentationsSection({ paperPresentations }: PaperP
         </div>
       }
     >
-      <div className="mt-16 max-w-5xl mx-auto flex flex-col gap-12 md:gap-16 px-4">
+      <div className="mt-16 max-w-5xl mx-auto flex flex-col gap-12 md:gap-16 px-4 md:px-28">
         {filteredPresentations.length === 0 ? (
           <div className="py-12 text-center text-muted italic bg-surface/50 border border-border/10 rounded-2xl">
             No presentations found matching this filter.
