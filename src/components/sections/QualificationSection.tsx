@@ -24,7 +24,7 @@ function QualificationCard({ edu, index }: { edu: Qualification; index: number }
   return (
     <div className="relative flex items-center w-full">
       <div 
-        className="relative w-full bg-[#1C422D] rounded-l-full rounded-r-md flex items-center p-2 pr-6 shadow-xl border border-white/10 group hover:border-white/20 transition-colors"
+        className="relative w-full bg-[#1C422D] rounded-l-[40px] rounded-r-2xl md:rounded-l-full md:rounded-r-md flex items-center p-3 md:p-2 md:pr-6 shadow-xl border border-white/10 group hover:border-white/20 transition-colors"
       >
         {/* Arrow Tip */}
         <div 
