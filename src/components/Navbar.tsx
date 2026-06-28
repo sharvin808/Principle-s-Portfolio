@@ -69,6 +69,7 @@ export default function Navbar({
         ? EXTRA_ITEMS.filter((item) => item.id === selectedExtraSection)
         : [...SCROLL_ITEMS, CONTACT_ITEM];
 
+      let found = false;
       for (const item of itemsToCheck) {
         const el = document.getElementById(item.id);
         if (el) {
@@ -76,9 +77,14 @@ export default function Navbar({
           const height = el.offsetHeight;
           if (scrollPosition >= top && scrollPosition < top + height) {
             setActiveSection(item.id);
+            found = true;
             break;
           }
         }
+      }
+      
+      if (!found) {
+        setActiveSection('');
       }
     };
 
@@ -151,14 +157,14 @@ export default function Navbar({
                     onClick={() => scrollTo(id)}
                     className={`relative px-2 xl:px-4 py-2 text-base xl:text-lg font-semibold rounded-lg transition-colors duration-200 cursor-pointer xl:whitespace-nowrap ${
                       activeSection === id
-                        ? 'text-foreground'
-                        : 'text-foreground/70 hover:text-foreground hover:bg-surface-alt/30'
+                        ? 'text-background'
+                        : 'text-foreground hover:bg-gold/5'
                     }`}
                   >
                     {activeSection === id && (
                       <motion.div
                         layoutId="active-pill"
-                        className="absolute inset-0 bg-surface-alt shadow-[0_2px_8px_-2px_rgba(0,0,0,0.08)] border border-border/10 rounded-lg -z-10"
+                        className="absolute inset-0 bg-gold shadow-md rounded-lg -z-10"
                         transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                       />
                     )}
@@ -172,14 +178,14 @@ export default function Navbar({
                     onClick={() => scrollTo(id)}
                     className={`relative px-2 xl:px-4 py-2 text-base xl:text-lg font-semibold rounded-lg transition-colors duration-200 cursor-pointer xl:whitespace-nowrap ${
                       activeSection === id && !selectedExtraSection
-                        ? 'text-foreground'
-                        : 'text-foreground/70 hover:text-foreground hover:bg-surface-alt/30'
+                        ? 'text-background'
+                        : 'text-foreground hover:bg-gold/5'
                     }`}
                   >
                     {activeSection === id && !selectedExtraSection && (
                       <motion.div
                         layoutId="active-pill"
-                        className="absolute inset-0 bg-surface-alt shadow-[0_2px_8px_-2px_rgba(0,0,0,0.08)] border border-border/10 rounded-lg -z-10"
+                        className="absolute inset-0 bg-gold shadow-md rounded-lg -z-10"
                         transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                       />
                     )}
@@ -192,14 +198,14 @@ export default function Navbar({
                   onClick={() => scrollTo(CONTACT_ITEM.id)}
                   className={`relative px-2 xl:px-4 py-2 text-base xl:text-lg font-semibold rounded-lg transition-colors duration-200 cursor-pointer xl:whitespace-nowrap ${
                     activeSection === CONTACT_ITEM.id && !selectedExtraSection
-                      ? 'text-foreground'
-                      : 'text-foreground/70 hover:text-foreground hover:bg-surface-alt/30'
+                      ? 'text-background'
+                      : 'text-foreground hover:bg-gold/5'
                   }`}
                 >
                   {activeSection === CONTACT_ITEM.id && !selectedExtraSection && (
                     <motion.div
                       layoutId="active-pill"
-                      className="absolute inset-0 bg-surface-alt shadow-[0_2px_8px_-2px_rgba(0,0,0,0.08)] border border-border/10 rounded-lg -z-10"
+                      className="absolute inset-0 bg-gold shadow-md rounded-lg -z-10"
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -211,7 +217,7 @@ export default function Navbar({
               <div className="flex xl:hidden items-center gap-2">
                 <button
                   onClick={() => setMobileOpen(!mobileOpen)}
-                  className="w-10 h-10 rounded-lg flex items-center justify-center text-foreground cursor-pointer hover:bg-surface-alt/30 transition-colors"
+                  className="w-10 h-10 rounded-lg flex items-center justify-center text-foreground cursor-pointer hover:bg-gold/5 transition-colors"
                   aria-label="Toggle menu"
                 >
                   {mobileOpen ? <X size={24} /> : <Menu size={24} />}
@@ -236,8 +242,8 @@ export default function Navbar({
                         onClick={() => scrollTo(id)}
                         className={`text-left px-4 py-3 rounded-lg text-lg font-semibold transition-all cursor-pointer ${
                           activeSection === id
-                            ? 'text-foreground bg-surface-alt shadow-sm border border-border/10'
-                            : 'text-foreground/70 hover:text-foreground hover:bg-surface-alt/40'
+                            ? 'text-background bg-gold shadow-md'
+                            : 'text-foreground hover:bg-gold/10'
                         }`}
                       >
                         {label}
@@ -250,8 +256,8 @@ export default function Navbar({
                         onClick={() => scrollTo(id)}
                         className={`text-left px-4 py-3 rounded-lg text-lg font-semibold transition-all cursor-pointer ${
                           activeSection === id && !selectedExtraSection
-                            ? 'text-foreground bg-surface-alt shadow-sm border border-border/10'
-                            : 'text-foreground/70 hover:text-foreground hover:bg-surface-alt/40'
+                            ? 'text-background bg-gold shadow-md'
+                            : 'text-foreground hover:bg-gold/10'
                         }`}
                       >
                         {label}
@@ -263,8 +269,8 @@ export default function Navbar({
                         onClick={() => scrollTo(CONTACT_ITEM.id)}
                         className={`w-full text-left px-4 py-3 rounded-lg text-lg font-semibold transition-all cursor-pointer ${
                           activeSection === CONTACT_ITEM.id && !selectedExtraSection
-                            ? 'text-foreground bg-surface-alt shadow-sm border border-border/10'
-                            : 'text-foreground/70 hover:text-foreground hover:bg-surface-alt/40'
+                            ? 'text-background bg-gold shadow-md'
+                            : 'text-foreground hover:bg-gold/10'
                         }`}
                       >
                         {CONTACT_ITEM.label}

@@ -42,11 +42,15 @@ export default function AboutMeSection({ aboutMe }: AboutMeSectionProps) {
               </h3>
             </div>
             
-            <div className="text-lg text-foreground/80 leading-relaxed space-y-4">
+            <div className="text-lg text-foreground/80 leading-relaxed space-y-4 text-left xl:text-justify">
               {aboutMe.biography ? (
-                aboutMe.biography.split('\n').filter(Boolean).map((para, i) => (
-                  <p key={i}>{para}</p>
-                ))
+                aboutMe.biography
+                  .replace(/2022\.\s+Prof\./g, '2022.\nProf.')
+                  .split('\n')
+                  .filter(Boolean)
+                  .map((para, i) => (
+                    <p key={i}>{para}</p>
+                  ))
               ) : (
                 <p className="text-muted italic">Biography will be loaded from Google Sheets.</p>
               )}
@@ -55,7 +59,7 @@ export default function AboutMeSection({ aboutMe }: AboutMeSectionProps) {
             {/* Introduction */}
             {aboutMe.introduction && (
               <div className="mt-6 pt-6 mb-8" style={{ borderTop: '1px solid var(--border-color)' }}>
-                <p className="text-lg text-foreground/70 leading-relaxed">{aboutMe.introduction}</p>
+                <p className="text-lg text-foreground/70 leading-relaxed text-left xl:text-justify">{aboutMe.introduction}</p>
               </div>
             )}
           </ScrollReveal>
@@ -105,7 +109,7 @@ export default function AboutMeSection({ aboutMe }: AboutMeSectionProps) {
               <div 
                 className={`overflow-hidden transition-all duration-500 ease-in-out px-6 md:px-10 ${isVisionExpanded ? 'max-h-[1000px] opacity-100 py-6 md:py-8' : 'max-h-0 opacity-0 py-0'}`}
               >
-                <p className="text-lg leading-relaxed text-[#dad7cd]/90">
+                <p className="text-lg leading-relaxed text-[#dad7cd]/90 text-left xl:text-justify">
                   {aboutMe.vision || (
                     <span className="italic">Vision statement from Google Sheets.</span>
                   )}
