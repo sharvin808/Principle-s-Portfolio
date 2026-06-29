@@ -14,6 +14,7 @@ export const EXTRA_ITEMS = [
   { id: 'consultancy', label: 'Consultancy' },
   { id: 'paper-presentations', label: 'Presentations' },
   { id: 'reviewer', label: 'Reviewer' },
+  { id: 'phd-scholars', label: 'PhD Supervision' },
 ];
 
 export const CONTACT_ITEM = { id: 'contact', label: 'Contact Me' };
@@ -55,19 +56,22 @@ export default function Navbar({
 
   useEffect(() => {
     const handleScroll = () => {
+      if (selectedExtraSection) {
+        setActiveSection(selectedExtraSection);
+        return;
+      }
+
       const scrollPosition = window.scrollY + 200; // offset for nav header height + padding
       
       // Check if we are at the bottom of the page
       const isAtBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 100;
       if (isAtBottom) {
-        setActiveSection(selectedExtraSection ? selectedExtraSection : 'contact');
+        setActiveSection('contact');
         return;
       }
 
       // Check which section we are in
-      const itemsToCheck = selectedExtraSection
-        ? EXTRA_ITEMS.filter((item) => item.id === selectedExtraSection)
-        : [...SCROLL_ITEMS, CONTACT_ITEM];
+      const itemsToCheck = [...SCROLL_ITEMS, CONTACT_ITEM];
 
       let found = false;
       for (const item of itemsToCheck) {
@@ -133,7 +137,7 @@ export default function Navbar({
           transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="fixed top-0 left-0 right-0 z-50 glass"
         >
-          <div className="max-w-7xl mx-auto px-4 md:px-8">
+          <div className="max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12">
             <div className="flex items-center justify-between h-20">
               {/* Logo / Name */}
               <button

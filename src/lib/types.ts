@@ -101,6 +101,13 @@ export interface Reviewer {
   role: string;
 }
 
+export interface PhDScholar {
+  id: string;
+  name: string;
+  topic: string;
+  status: string;
+}
+
 export interface ContactMe {
   officeLocation: string;
   emailId: string;
@@ -125,5 +132,6 @@ export interface SheetData {
   gallery: GalleryImage[];
   internationalExposure: InternationalExposure[];
   reviewer: Reviewer[];
+  phdScholars: PhDScholar[];
   contactMe: ContactMe;
 }

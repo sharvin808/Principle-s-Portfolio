@@ -69,6 +69,7 @@ export default async function Home() {
     gallery,
     internationalExposure,
     reviewer,
+    phdScholars,
   } = data;
 
   // Generate structured schemas for SEO

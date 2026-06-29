@@ -11,6 +11,7 @@ import ResearchInterestsSection from '@/components/sections/ResearchInterestsSec
 import GallerySection from '@/components/sections/GallerySection';
 import InternationalExposureSection from '@/components/sections/InternationalExposureSection';
 import ReviewerSection from '@/components/sections/ReviewerSection';
+import PhDScholarsSection from '@/components/sections/PhDScholarsSection';
 import ContactSection from '@/components/sections/ContactSection';
 
 import HeroSection from '@/components/sections/HeroSection';
@@ -75,6 +76,9 @@ export default function InteractiveContent({ data }: { data: any }) {
               )}
               {selectedExtraSection === 'reviewer' && (
                 <ReviewerSection reviewer={data.reviewer} />
+              )}
+              {selectedExtraSection === 'phd-scholars' && (
+                <PhDScholarsSection phdScholars={data.phdScholars} />
               )}
 
               {/* Back to main portfolio landing page button */}

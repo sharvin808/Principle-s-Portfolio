@@ -17,6 +17,7 @@ import {
   type GalleryImage,
   type InternationalExposure,
   type Reviewer,
+  type PhDScholar,
   type SheetData,
   type ContactMe,
 } from './types';
@@ -41,6 +42,7 @@ const SHEET_GIDS: Record<string, string> = {
   gallery: process.env.NEXT_PUBLIC_GID_GALLERY || '',
   'international exposure': process.env.NEXT_PUBLIC_GID_INTERNATIONAL_EXPOSURE || '',
   reviewer: process.env.NEXT_PUBLIC_GID_REVIEWER || '',
+  'phd supervision': process.env.NEXT_PUBLIC_GID_PHD_SUPERVISION || '',
   'contact me': process.env.NEXT_PUBLIC_GID_CONTACT_ME || '',
   instagram: process.env.NEXT_PUBLIC_GID_INSTAGRAM || '',
 };
@@ -283,6 +285,17 @@ export async function getReviewer(): Promise<Reviewer[]> {
   }));
 }
 
+export async function getPhDScholars(): Promise<PhDScholar[]> {
+  const rows = await fetchSheetTab('phd supervision');
+  const dataRows = rows.slice(1);
+  return dataRows.map((row) => ({
+    id: row[0]?.trim() || '',
+    name: row[1]?.trim() || '',
+    topic: row[2]?.trim() || '',
+    status: row[3]?.trim() || '',
+  })).filter(s => s.name !== '');
+}
+
 export async function getContactme(): Promise<ContactMe> {
   const rows = await fetchSheetTab('contact me');
   const objects = rowsToObjects<any>(rows);
@@ -331,6 +344,7 @@ export async function getAllData(): Promise<SheetData> {
     gallery,
     internationalExposure,
     reviewer,
+    phdScholars,
     contactMe,
   ] = await Promise.all([
     getProfile(),
@@ -346,6 +360,7 @@ export async function getAllData(): Promise<SheetData> {
     getGallery(),
     getInternationalExposure(),
     getReviewer(),
+    getPhDScholars(),
     getContactme(),
   ]);
 
@@ -363,6 +378,7 @@ export async function getAllData(): Promise<SheetData> {
     gallery,
     internationalExposure,
     reviewer,
+    phdScholars,
     contactMe,
   };
 }
