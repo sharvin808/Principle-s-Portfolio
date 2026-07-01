@@ -232,34 +232,10 @@ export default function HeroSection({ profile }: HeroSectionProps) {
             initial={{ opacity: 0, x: -40 }}
             animate={!isLoading ? { opacity: 1, x: 0 } : { opacity: 0, x: -40 }}
             transition={{ duration: 0.9, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="flex justify-center lg:justify-start order-2 lg:order-1 w-full pb-8 md:pb-16 lg:pb-0"
+            className="hidden lg:flex justify-start order-1 w-full"
           >
-            {/* On mobile: show the image normally in flow */}
-            <div className="relative w-full h-[45vh] md:h-[50vh] lg:hidden mt-8 md:mt-12">
-              {profile.photoUrl ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={profile.photoUrl}
-                  alt={profile.name || 'Principal Portrait'}
-                  className="w-full h-full object-contain object-bottom"
-                />
-              ) : (
-                <div className="w-full h-full flex items-center justify-center bg-[#2F4F4F]/50 rounded-2xl">
-                  <div className="text-center text-[#dad7cd]/50">
-                    <div
-                      className="text-6xl mb-2"
-                      style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
-                    >
-                      {(profile.name || 'P').charAt(0)}
-                    </div>
-                    <p className="text-xs">Portrait</p>
-                  </div>
-                </div>
-              )}
-            </div>
-
             {/* On desktop: just an empty spacer to keep grid alignment */}
-            <div className="hidden lg:block w-full h-[75vh]" />
+            <div className="w-full h-[75vh]" />
           </motion.div>
 
           {/* RIGHT — Text */}
@@ -267,7 +243,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
             variants={containerVariants}
             initial="hidden"
             animate={!isLoading ? "visible" : "hidden"}
-            className="text-center lg:text-left order-1 lg:order-2 lg:-ml-12 xl:-ml-20 lg:-mt-24"
+            className="text-center lg:text-left order-1 lg:order-2 lg:-ml-12 xl:-ml-20 lg:-mt-24 pb-32 md:pb-40 lg:pb-0"
           >
 
 
@@ -311,6 +287,33 @@ export default function HeroSection({ profile }: HeroSectionProps) {
             >
               {profile.institution || 'Institution'}
             </motion.p>
+
+            {/* On mobile: show the image normally in flow after institution */}
+            <motion.div
+              variants={itemVariants}
+              className="relative w-full h-[45vh] md:h-[50vh] lg:hidden mt-8 mb-8"
+            >
+              {profile.photoUrl ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={profile.photoUrl}
+                  alt={profile.name || 'Principal Portrait'}
+                  className="w-full h-full object-contain object-bottom"
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center bg-[#2F4F4F]/50 rounded-2xl">
+                  <div className="text-center text-[#dad7cd]/50">
+                    <div
+                      className="text-6xl mb-2"
+                      style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+                    >
+                      {(profile.name || 'P').charAt(0)}
+                    </div>
+                    <p className="text-xs">Portrait</p>
+                  </div>
+                </div>
+              )}
+            </motion.div>
 
             {/* Other Honors */}
             {profile.otherHonors && (
