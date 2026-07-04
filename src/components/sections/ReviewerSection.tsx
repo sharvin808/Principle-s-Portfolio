@@ -40,8 +40,8 @@ export default function ReviewerSection({ reviewer }: ReviewerSectionProps) {
         {reviewer.map((item, index) => {
           const pair = COLOR_PAIRS[index % COLOR_PAIRS.length];
           return (
-            <ScrollReveal key={index} delay={index * 0.1}>
-              <div className="relative bg-white shadow-[0_15px_40px_rgba(0,0,0,0.12)] pt-10 pr-10 pb-12 pl-12 min-h-[220px] flex flex-col z-10 rounded-sm">
+            <ScrollReveal key={index} delay={index * 0.1} className="h-full">
+              <div className="relative bg-white shadow-[0_15px_40px_rgba(0,0,0,0.12)] pt-10 pr-10 pb-12 pl-12 min-h-[220px] h-full flex flex-col z-10 rounded-sm">
                 
                 {/* --- Decorative Lines --- */}
                 {/* Left Vertical Thick (Dark) */}

@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
 import { Menu, X, ChevronDown } from 'lucide-react';
 
 export const SCROLL_ITEMS = [
@@ -36,6 +36,9 @@ export default function Navbar({
   const [mobileOpen, setMobileOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
+  const isScrollingRef = useRef(false);
+  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
   const isExtraActive = EXTRA_ITEMS.some((item) => item.id === activeSection);
 
   // Show navbar only after scrolling past hero
@@ -56,6 +59,8 @@ export default function Navbar({
 
   useEffect(() => {
     const handleScroll = () => {
+      if (isScrollingRef.current) return;
+
       if (selectedExtraSection) {
         setActiveSection(selectedExtraSection);
         return;
@@ -63,11 +68,15 @@ export default function Navbar({
 
       const scrollPosition = window.scrollY + 200; // offset for nav header height + padding
       
-      // Check if we are at the bottom of the page
-      const isAtBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 100;
-      if (isAtBottom) {
-        setActiveSection('contact');
-        return;
+      // More robust check for Contact section visibility to prevent trackpad bounce flicker
+      const contactEl = document.getElementById('contact');
+      if (contactEl) {
+        const rect = contactEl.getBoundingClientRect();
+        // If the contact section is significantly visible in the viewport
+        if (rect.top > 0 && rect.top < window.innerHeight - 150) {
+          setActiveSection('contact');
+          return;
+        }
       }
 
       // Check which section we are in
@@ -99,6 +108,11 @@ export default function Navbar({
   }, [selectedExtraSection, setActiveSection]);
 
   const scrollTo = (id: string) => {
+    isScrollingRef.current = true;
+    if (scrollTimeoutRef.current) {
+      clearTimeout(scrollTimeoutRef.current);
+    }
+
     const isExtra = EXTRA_ITEMS.some((item) => item.id === id);
     
     if (isExtra) {
@@ -122,6 +136,9 @@ export default function Navbar({
           window.scrollTo({ top: y, behavior: 'smooth' });
         }
       }
+      scrollTimeoutRef.current = setTimeout(() => {
+        isScrollingRef.current = false;
+      }, 800);
     }, 150);
     
     setMobileOpen(false);
@@ -142,10 +159,15 @@ export default function Navbar({
               {/* Logo / Name */}
               <button
                 onClick={() => {
+                  isScrollingRef.current = true;
+                  if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
                   setSelectedExtraSection(null);
                   setActiveSection('about');
                   window.location.hash = 'about';
                   window.scrollTo({ top: 0, behavior: 'smooth' });
+                  scrollTimeoutRef.current = setTimeout(() => {
+                    isScrollingRef.current = false;
+                  }, 800);
                 }}
                 className="mt-1.5 text-2xl md:text-3xl font-bold text-heading cursor-pointer hover:opacity-80 transition-opacity"
                 style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
@@ -155,7 +177,8 @@ export default function Navbar({
 
               {/* Desktop Nav Items */}
               <div className="hidden xl:flex items-center gap-1 xl:gap-2">
-                {EXTRA_ITEMS.map(({ id, label }) => (
+                <LayoutGroup>
+                  {EXTRA_ITEMS.map(({ id, label }) => (
                   <button
                     key={id}
                     onClick={() => scrollTo(id)}
@@ -215,6 +238,7 @@ export default function Navbar({
                   )}
                   <span className="relative z-10">{CONTACT_ITEM.label}</span>
                 </button>
+                </LayoutGroup>
               </div>
 
               {/* Mobile controls */}

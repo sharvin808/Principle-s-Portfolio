@@ -2,7 +2,8 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
-import { useEffect, useCallback } from 'react';
+import { createPortal } from 'react-dom';
+import { useEffect, useCallback, useState } from 'react';
 
 interface LightboxProps {
   images: { imageUrl: string; caption: string }[];
@@ -41,11 +42,17 @@ export default function Lightbox({
     };
   }, [isOpen, handleKeyDown]);
 
-  if (!images.length) return null;
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!images.length || !mounted) return null;
 
   const current = images[currentIndex];
 
-  return (
+  const content = (
     <AnimatePresence>
       {isOpen && (
         <motion.div
@@ -122,4 +129,6 @@ export default function Lightbox({
       )}
     </AnimatePresence>
   );
+
+  return createPortal(content, document.body);
 }

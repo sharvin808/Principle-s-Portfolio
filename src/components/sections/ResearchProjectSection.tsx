@@ -60,14 +60,16 @@ export default function ResearchProjectSection({ researchProject }: ResearchProj
                 boxShadow: '0 4px 12px rgba(0,0,0,0.05)'
               }}
             >
-              <span
-                className="w-2.5 h-2.5 rounded-full"
-                style={{
-                  background: '#1C422D',
-                  boxShadow: '0 0 8px rgba(28, 66, 45, 0.4)',
-                  animation: 'pulse 2s infinite',
-                }}
-              />
+              <div className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#22c55e] opacity-75"></span>
+                <span
+                  className="relative inline-flex rounded-full h-2.5 w-2.5"
+                  style={{
+                    background: '#22c55e',
+                    boxShadow: '0 0 8px rgba(34, 197, 94, 0.6)',
+                  }}
+                ></span>
+              </div>
               <div>
                 <div
                   className="text-2xl font-bold"
@@ -118,9 +120,9 @@ export default function ResearchProjectSection({ researchProject }: ResearchProj
           const isHovered = hoveredIndex === index;
 
           return (
-            <ScrollReveal key={index} delay={index * 0.06}>
+            <ScrollReveal key={index} delay={index * 0.06} className="h-full">
               <div
-                className="bento-card"
+                className="bento-card h-full flex flex-col min-h-[350px]"
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
               >
