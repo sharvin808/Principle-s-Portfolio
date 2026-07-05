@@ -243,7 +243,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
             variants={containerVariants}
             initial="hidden"
             animate={!isLoading ? "visible" : "hidden"}
-            className="text-center lg:text-left order-1 lg:order-2 lg:-ml-12 xl:-ml-20 lg:-mt-24 pb-32 md:pb-40 lg:pb-0"
+            className="text-center lg:text-left order-1 lg:order-2 lg:-ml-12 xl:-ml-20 lg:-mt-24 pb-32 md:pb-40 lg:pb-0 [@media(min-width:1400px)_and_(max-width:1450px)]:ml-16"
           >
 
 
@@ -322,45 +322,12 @@ export default function HeroSection({ profile }: HeroSectionProps) {
               </div>
             )}
 
-            {/* Tagline */}
-            {profile.tagline && (
-              <motion.p
-                variants={itemVariants}
-                className="mt-6 xl:hidden text-base md:text-lg text-[#dad7cd]/70 whitespace-normal mx-auto leading-relaxed italic"
-                style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
-              >
-                &ldquo;{profile.tagline}&rdquo;
-              </motion.p>
-            )}
+
           </motion.div>
         </div>
       </div>
 
-      {/* Desktop Tagline (Absolutely positioned) */}
-      <div className="hidden xl:block absolute bottom-[30px] [@media(max-width:1600px)_and_(max-height:950px)]:bottom-[-10px] left-0 right-0 z-20 pointer-events-none">
-        <div className="max-w-[1800px] mx-auto px-4 md:px-8 lg:px-12 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-            <div className="order-1" />
-            <div className="order-2 lg:-ml-8 xl:-ml-12 [@media(max-width:1600px)_and_(max-height:950px)]:ml-0">
-              {profile.tagline && (
-                <motion.p
-                  initial={{ opacity: 0 }}
-                  animate={!isLoading ? { opacity: 1 } : { opacity: 0 }}
-                  transition={{ delay: 1.2, duration: 1 }}
-                  className="text-lg xl:text-xl text-[#dad7cd]/70 leading-relaxed italic pointer-events-auto pr-[240px] [@media(max-width:1600px)_and_(max-height:950px)]:pr-[160px]"
-                  style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
-                >
-                  &ldquo;
-                  {profile.tagline?.includes('and Innovation') 
-                    ? <>{profile.tagline.replace('and Innovation', '')}<br/>and Innovation</>
-                    : profile.tagline}
-                  &rdquo;
-                </motion.p>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
+
 
       {/* Scroll Indicator Cut-out Button */}
       <motion.div
