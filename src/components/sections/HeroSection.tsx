@@ -50,7 +50,7 @@ function renderHonorsText(text: string, itemVariants: Variants) {
   if (!text) return null;
 
   // Split by newlines first to respect existing line breaks
-  const initialLines = text.split(/[\r\n]+/).map(l => l.trim()).filter(Boolean);
+  const initialLines = text.split(/[\r\n]+/).map(l => l.trim().replace(/ ([^ ]+)$/, '\u00A0$1')).filter(Boolean);
   const finalLines: string[] = [];
 
   const sortedWords = [...HIGHLIGHT_WORDS].sort((a, b) => b.length - a.length);
