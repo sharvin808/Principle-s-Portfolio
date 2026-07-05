@@ -27,8 +27,8 @@ function renderLine(line: string, idx: number, itemVariants: Variants) {
     <motion.div
       key={idx}
       variants={itemVariants}
-      className={`text-lg md:text-lg text-[#dad7cd]/70 leading-relaxed text-center lg:text-left ${
-        line.includes('Director') ? 'lg:whitespace-nowrap' : ''
+      className={`text-base lg:text-lg xl:text-base 2xl:text-lg text-[#dad7cd]/70 leading-relaxed text-center lg:text-left ${
+        line.includes('Director') ? 'lg:whitespace-nowrap tracking-tight xl:tracking-normal' : ''
       }`}
     >
       {parts.map((part, pIdx) => {
@@ -245,7 +245,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
             variants={containerVariants}
             initial="hidden"
             animate={!isLoading ? "visible" : "hidden"}
-            className="text-center lg:text-left order-1 lg:order-2 lg:-ml-12 xl:-ml-20 lg:-mt-24 pb-32 md:pb-40 lg:pb-0 [@media(min-width:1400px)_and_(max-width:1450px)]:ml-16"
+            className="text-center lg:text-left order-1 lg:order-2 lg:-ml-12 xl:-ml-20 lg:-mt-24 pb-32 md:pb-40 lg:pb-0 [@media(min-width:1400px)_and_(max-width:1450px)]:-ml-4"
           >
 
 
