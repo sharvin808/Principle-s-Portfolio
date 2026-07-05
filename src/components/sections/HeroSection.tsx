@@ -337,17 +337,17 @@ export default function HeroSection({ profile }: HeroSectionProps) {
       </div>
 
       {/* Desktop Tagline (Absolutely positioned) */}
-      <div className="hidden xl:block absolute bottom-[50px] left-0 right-0 z-20 pointer-events-none">
+      <div className="hidden xl:block absolute bottom-[30px] [@media(max-width:1600px)_and_(max-height:950px)]:bottom-[-10px] left-0 right-0 z-20 pointer-events-none">
         <div className="max-w-[1800px] mx-auto px-4 md:px-8 lg:px-12 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
             <div className="order-1" />
-            <div className="order-2 lg:-ml-8 xl:-ml-12">
+            <div className="order-2 lg:-ml-8 xl:-ml-12 [@media(max-width:1600px)_and_(max-height:950px)]:ml-0">
               {profile.tagline && (
                 <motion.p
                   initial={{ opacity: 0 }}
                   animate={!isLoading ? { opacity: 1 } : { opacity: 0 }}
                   transition={{ delay: 1.2, duration: 1 }}
-                  className="text-lg xl:text-xl text-[#dad7cd]/70 leading-relaxed italic pointer-events-auto pr-[320px]"
+                  className="text-lg xl:text-xl text-[#dad7cd]/70 leading-relaxed italic pointer-events-auto pr-[240px] [@media(max-width:1600px)_and_(max-height:950px)]:pr-[160px]"
                   style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
                 >
                   &ldquo;
