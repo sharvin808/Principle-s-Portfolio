@@ -184,10 +184,10 @@ export default function HeroSection({ profile }: HeroSectionProps) {
       />
 
       {/* Horizontal Design Line */}
-      {/*<div 
+      <div 
         className="hidden lg:block absolute left-0 right-0 h-[0.40in] bg-[#dad7cd] z-0 pointer-events-none"
         style={{ bottom: '120px' }}
-      />*/}
+      />
       
       {/* Large Image on Left (Desktop Absolute, Mobile Inline) */}
       <motion.div
