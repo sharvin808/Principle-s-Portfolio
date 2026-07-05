@@ -337,7 +337,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
       </div>
 
       {/* Desktop Tagline (Absolutely positioned) */}
-      <div className="hidden xl:block absolute bottom-[120px] left-0 right-0 z-20 pointer-events-none">
+      <div className="hidden xl:block absolute bottom-[50px] left-0 right-0 z-20 pointer-events-none">
         <div className="max-w-[1800px] mx-auto px-4 md:px-8 lg:px-12 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
             <div className="order-1" />
