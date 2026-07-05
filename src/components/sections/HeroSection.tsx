@@ -184,10 +184,10 @@ export default function HeroSection({ profile }: HeroSectionProps) {
       />
 
       {/* Horizontal Design Line */}
-      <div 
+      {/*<div 
         className="hidden lg:block absolute left-0 right-0 h-[0.40in] bg-[#dad7cd] z-0 pointer-events-none"
         style={{ bottom: '120px' }}
-      />
+      />*/}
       
       {/* Large Image on Left (Desktop Absolute, Mobile Inline) */}
       <motion.div
@@ -336,12 +336,12 @@ export default function HeroSection({ profile }: HeroSectionProps) {
         </div>
       </div>
 
-      {/* Desktop Tagline (Absolutely positioned under the horizontal line) */}
-      <div className="hidden xl:block absolute bottom-[40px] left-0 right-0 z-20 pointer-events-none">
+      {/* Desktop Tagline (Absolutely positioned) */}
+      <div className="hidden xl:block absolute bottom-[120px] left-0 right-0 z-20 pointer-events-none">
         <div className="max-w-[1800px] mx-auto px-4 md:px-8 lg:px-12 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
             <div className="order-1" />
-            <div className="order-2 lg:ml-0 xl:ml-8">
+            <div className="order-2 lg:-ml-8 xl:-ml-12">
               {profile.tagline && (
                 <motion.p
                   initial={{ opacity: 0 }}
