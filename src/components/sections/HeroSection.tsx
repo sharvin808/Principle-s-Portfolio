@@ -27,7 +27,9 @@ function renderLine(line: string, idx: number, itemVariants: Variants) {
     <motion.div
       key={idx}
       variants={itemVariants}
-      className="text-lg md:text-lg text-[#dad7cd]/70 leading-relaxed text-center lg:text-left"
+      className={`text-lg md:text-lg text-[#dad7cd]/70 leading-relaxed text-center lg:text-left ${
+        line.includes('Director') ? 'lg:whitespace-nowrap' : ''
+      }`}
     >
       {parts.map((part, pIdx) => {
         const isMatch = HIGHLIGHT_WORDS.some(word => 
