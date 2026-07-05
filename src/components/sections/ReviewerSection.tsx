@@ -46,13 +46,9 @@ export default function ReviewerSection({ reviewer }: ReviewerSectionProps) {
                 {/* --- Decorative Lines --- */}
                 {/* Left Vertical Thick (Dark) */}
                 <div className="absolute w-[5px] left-[24px] -top-[24px] -bottom-[24px] z-20 rounded-full" style={{ backgroundColor: pair.dark }} />
-                {/* Left Vertical Thin (Main) */}
-                <div className="absolute w-[3px] left-[12px] top-[24px] -bottom-[12px] z-20 rounded-full" style={{ backgroundColor: pair.main }} />
                 
                 {/* Bottom Horizontal Thick (Dark) */}
                 <div className="absolute h-[5px] bottom-[24px] -left-[24px] right-[10%] z-20 rounded-full" style={{ backgroundColor: pair.dark }} />
-                {/* Bottom Horizontal Thin (Main) */}
-                <div className="absolute h-[3px] bottom-[12px] left-[12px] right-[25%] z-20 rounded-full" style={{ backgroundColor: pair.main }} />
                 
                 {/* Top Right Horizontal Thin (Dark) */}
                 <div className="absolute h-[4px] w-[45%] top-[24px] -right-[24px] z-20 rounded-full" style={{ backgroundColor: pair.dark }} />

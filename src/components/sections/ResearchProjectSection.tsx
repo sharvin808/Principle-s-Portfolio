@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import SectionWrapper from '../ui/SectionWrapper';
 import ScrollReveal from '../ui/ScrollReveal';
-import { FlaskConical, DollarSign, Calendar, ExternalLink, ChevronDown, ChevronUp } from 'lucide-react';
+import { FlaskConical, Calendar, ExternalLink, ChevronDown, ChevronUp } from 'lucide-react';
 import type { ResearchProject } from '@/lib/types';
 
 interface ResearchProjectSectionProps {
@@ -195,7 +195,6 @@ export default function ResearchProjectSection({ researchProject }: ResearchProj
                         color: 'var(--color-gold)',
                       }}
                     >
-                      <DollarSign size={13} />
                       {proj.fundingAgency}
                     </div>
                   )}
