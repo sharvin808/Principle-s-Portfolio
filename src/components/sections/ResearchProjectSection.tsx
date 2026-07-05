@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import SectionWrapper from '../ui/SectionWrapper';
 import ScrollReveal from '../ui/ScrollReveal';
-import { FlaskConical, DollarSign, Calendar, ExternalLink } from 'lucide-react';
+import { FlaskConical, DollarSign, Calendar, ExternalLink, ChevronDown, ChevronUp } from 'lucide-react';
 import type { ResearchProject } from '@/lib/types';
 
 interface ResearchProjectSectionProps {
@@ -12,6 +12,7 @@ interface ResearchProjectSectionProps {
 
 export default function ResearchProjectSection({ researchProject }: ResearchProjectSectionProps) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
   if (!researchProject || researchProject.length === 0) return null;
 
@@ -114,15 +115,15 @@ export default function ResearchProjectSection({ researchProject }: ResearchProj
     >
 
       {/* Bento Grid */}
-      <div className="bento-grid">
+      <div className="bento-grid items-start">
         {researchProject.map((proj, index) => {
           const isOngoing = proj.status?.toLowerCase().includes('ongoing');
-          const isHovered = hoveredIndex === index;
+          const isExpanded = hoveredIndex === index || expandedIndex === index;
 
           return (
-            <ScrollReveal key={index} delay={index * 0.06} className="h-full">
-              <div
-                className="bento-card h-full flex flex-col min-h-[350px]"
+            <ScrollReveal key={index} delay={index * 0.06}>
+              <div 
+                className="bento-card flex flex-col min-h-[350px]"
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
               >
@@ -157,16 +158,20 @@ export default function ResearchProjectSection({ researchProject }: ResearchProj
                         border: `1px solid ${isOngoing ? 'rgba(212, 201, 179, 0.2)' : 'var(--color-success-muted)'}`,
                       }}
                     >
-                      <span
-                        className="w-1.5 h-1.5 rounded-full"
-                        style={{
-                          background: isOngoing ? 'var(--color-gold)' : 'var(--color-success)',
-                          boxShadow: isOngoing
-                            ? '0 0 6px var(--color-gold-muted)'
-                            : '0 0 6px var(--color-success-muted)',
-                          ...(isOngoing ? { animation: 'pulse 2s infinite' } : {}),
-                        }}
-                      />
+                      {isOngoing ? (
+                        <div className="relative flex h-1.5 w-1.5">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#22c55e] opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#22c55e]" style={{ boxShadow: '0 0 6px rgba(34, 197, 94, 0.6)' }}></span>
+                        </div>
+                      ) : (
+                        <span
+                          className="w-1.5 h-1.5 rounded-full"
+                          style={{
+                            background: 'var(--color-success)',
+                            boxShadow: '0 0 6px var(--color-success-muted)',
+                          }}
+                        />
+                      )}
                       {proj.status || 'Completed'}
                     </span>
                   </div>
@@ -198,27 +203,55 @@ export default function ResearchProjectSection({ researchProject }: ResearchProj
                   {/* Spacer */}
                   <div className="flex-1" />
 
-                  {/* Link (always visible) */}
-                  {proj.link && (
-                    <a
-                      href={proj.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 mt-4 text-sm font-semibold transition-colors"
-                      style={{ color: 'var(--color-gold)' }}
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      View Details <ExternalLink size={12} />
-                    </a>
-                  )}
+                  {/* Link and Mobile Expand Button */}
+                  <div className="flex items-center justify-between mt-4">
+                    {proj.link ? (
+                      <a
+                        href={proj.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-sm font-semibold transition-colors"
+                        style={{ color: 'var(--color-gold)' }}
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        View Details <ExternalLink size={12} />
+                      </a>
+                    ) : (
+                      <div />
+                    )}
+
+                    {proj.description && (
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          if (isExpanded) {
+                            setExpandedIndex(null);
+                            setHoveredIndex(null);
+                          } else {
+                            setExpandedIndex(index);
+                          }
+                        }}
+                        className="md:hidden w-8 h-8 rounded-full flex items-center justify-center bg-[var(--color-gold-muted)] hover:bg-[var(--color-gold)] transition-colors group/btn"
+                        aria-label="Toggle Details"
+                      >
+                        {isExpanded ? (
+                          <ChevronUp size={18} className="text-[var(--color-gold)] group-hover/btn:text-[#1C422D]" />
+                        ) : (
+                          <ChevronDown size={18} className="text-[var(--color-gold)] group-hover/btn:text-[#1C422D]" />
+                        )}
+                      </button>
+                    )}
+                  </div>
                 </div>
 
-                {/* Hover overlay for description */}
+                {/* Expandable Description */}
                 {proj.description && (
-                  <div className="bento-overlay">
-                    <div
-                      className="flex items-center gap-2 mb-2"
-                    >
+                  <div 
+                    className={`overflow-hidden transition-all duration-500 ease-in-out px-6 md:px-8 bg-[var(--surface-alt)] ${
+                      isExpanded ? 'max-h-[1000px] opacity-100 py-6 md:py-8' : 'max-h-0 opacity-0 py-0'
+                    }`}
+                  >
+                    <div className="flex items-center gap-2 mb-3">
                       <div
                         className="h-px flex-grow max-w-[40px]"
                         style={{ background: 'linear-gradient(90deg, var(--color-gold), transparent)' }}
@@ -227,7 +260,7 @@ export default function ResearchProjectSection({ researchProject }: ResearchProj
                         Details
                       </span>
                     </div>
-                    <p className="text-lg leading-relaxed text-foreground/75">
+                    <p className="text-base md:text-lg leading-relaxed text-foreground/80">
                       {proj.description}
                     </p>
                   </div>

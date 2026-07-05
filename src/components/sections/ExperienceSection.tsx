@@ -6,6 +6,11 @@ import SectionWrapper from '../ui/SectionWrapper';
 import { Calendar, MapPin, ChevronLeft, ChevronRight, Briefcase } from 'lucide-react';
 import type { Experience } from '@/lib/types';
 
+const swipeConfidenceThreshold = 10000;
+const swipePower = (offset: number, velocity: number) => {
+  return Math.abs(offset) * velocity;
+};
+
 interface ExperienceSectionProps {
   experience: Experience[];
 }
@@ -18,12 +23,20 @@ export default function ExperienceSection({ experience }: ExperienceSectionProps
   const [progressLeft, setProgressLeft] = useState(0);
   const [progressWidth, setProgressWidth] = useState(0);
   const [stylesInitialized, setStylesInitialized] = useState(false);
+  const [isMobileView, setIsMobileView] = useState(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { margin: "-100px" });
   const [isPaused, setIsPaused] = useState(false);
 
   const total = experience.length;
+
+  useEffect(() => {
+    const handleResize = () => setIsMobileView(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Auto-play effect: slide to the next card periodically ONLY when in view
   useEffect(() => {
@@ -278,6 +291,18 @@ export default function ExperienceSection({ experience }: ExperienceSectionProps
                 exit="exit"
                 transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                 className="relative rounded-2xl overflow-hidden bg-beige-card border border-border"
+                drag={isMobileView ? "x" : false}
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={1}
+                onDragEnd={(e, { offset, velocity }) => {
+                  const swipe = swipePower(offset.x, velocity.x);
+
+                  if (swipe < -swipeConfidenceThreshold) {
+                    goNext();
+                  } else if (swipe > swipeConfidenceThreshold) {
+                    goPrev();
+                  }
+                }}
               >
                 {/* Card Background */}
                 <div className="absolute inset-0 rounded-2xl pointer-events-none" />

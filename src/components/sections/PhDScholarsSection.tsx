@@ -148,16 +148,20 @@ export default function PhDScholarsSection({ phdScholars }: PhDScholarsSectionPr
                         border: `1px solid ${isOngoing ? 'rgba(212, 201, 179, 0.2)' : 'var(--color-success-muted)'}`,
                       }}
                     >
-                      <span
-                        className="w-1.5 h-1.5 rounded-full"
-                        style={{
-                          background: isOngoing ? 'var(--color-gold)' : 'var(--color-success)',
-                          boxShadow: isOngoing
-                            ? '0 0 6px var(--color-gold-muted)'
-                            : '0 0 6px var(--color-success-muted)',
-                          ...(isOngoing ? { animation: 'pulse 2s infinite' } : {}),
-                        }}
-                      />
+                      {isOngoing ? (
+                        <div className="relative flex h-1.5 w-1.5">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#22c55e] opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#22c55e]" style={{ boxShadow: '0 0 6px rgba(34, 197, 94, 0.6)' }}></span>
+                        </div>
+                      ) : (
+                        <span
+                          className="w-1.5 h-1.5 rounded-full"
+                          style={{
+                            background: 'var(--color-success)',
+                            boxShadow: '0 0 6px var(--color-success-muted)',
+                          }}
+                        />
+                      )}
                       {scholar.status || 'Awarded'}
                     </span>
                   </div>
