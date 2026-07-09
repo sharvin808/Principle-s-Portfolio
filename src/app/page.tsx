@@ -39,7 +39,7 @@ export default async function Home() {
 
   if (!sheetId) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#2F4F4F] p-6 text-white text-center">
+      <div className="min-h-screen flex items-center justify-center bg-[#102A4A] p-6 text-white text-center">
         <div className="max-w-md card-premium border-gold/30 bg-midnight-light/50">
           <h1 className="text-2xl font-serif text-gold font-bold mb-4">Configuration Required</h1>
           <p className="text-sm text-white/70 leading-relaxed mb-6">

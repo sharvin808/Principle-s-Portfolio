@@ -34,16 +34,16 @@ export default function ResearchProjectSection({ researchProject }: ResearchProj
           <div
             className="flex items-center gap-3 px-5 py-3 rounded-2xl"
             style={{
-              background: '#dad7cd',
+              background: '#E8D6B6',
               border: '1px solid rgba(28, 66, 45, 0.15)',
               boxShadow: '0 4px 12px rgba(0,0,0,0.05)'
             }}
           >
-            <FlaskConical size={18} style={{ color: '#1C422D' }} />
+            <FlaskConical size={18} style={{ color: '#071A35' }} />
             <div>
               <div
                 className="text-2xl font-bold"
-                style={{ fontFamily: 'var(--font-playfair), Georgia, serif', color: '#1C422D' }}
+                style={{ fontFamily: 'var(--font-playfair), Georgia, serif', color: '#071A35' }}
               >
                 {researchProject.length}
               </div>
@@ -56,7 +56,7 @@ export default function ResearchProjectSection({ researchProject }: ResearchProj
             <div
               className="flex items-center gap-3 px-5 py-3 rounded-2xl"
               style={{
-                background: '#dad7cd',
+                background: '#E8D6B6',
                 border: '1px solid rgba(28, 66, 45, 0.15)',
                 boxShadow: '0 4px 12px rgba(0,0,0,0.05)'
               }}
@@ -74,7 +74,7 @@ export default function ResearchProjectSection({ researchProject }: ResearchProj
               <div>
                 <div
                   className="text-2xl font-bold"
-                  style={{ fontFamily: 'var(--font-playfair), Georgia, serif', color: '#1C422D' }}
+                  style={{ fontFamily: 'var(--font-playfair), Georgia, serif', color: '#071A35' }}
                 >
                   {ongoingCount}
                 </div>
@@ -88,7 +88,7 @@ export default function ResearchProjectSection({ researchProject }: ResearchProj
             <div
               className="flex items-center gap-3 px-5 py-3 rounded-2xl"
               style={{
-                background: '#dad7cd',
+                background: '#E8D6B6',
                 border: '1px solid rgba(28, 66, 45, 0.15)',
                 boxShadow: '0 4px 12px rgba(0,0,0,0.05)'
               }}
@@ -100,7 +100,7 @@ export default function ResearchProjectSection({ researchProject }: ResearchProj
               <div>
                 <div
                   className="text-2xl font-bold"
-                  style={{ fontFamily: 'var(--font-playfair), Georgia, serif', color: '#1C422D' }}
+                  style={{ fontFamily: 'var(--font-playfair), Georgia, serif', color: '#071A35' }}
                 >
                   {completedCount}
                 </div>
@@ -234,9 +234,9 @@ export default function ResearchProjectSection({ researchProject }: ResearchProj
                         aria-label="Toggle Details"
                       >
                         {isExpanded ? (
-                          <ChevronUp size={18} className="text-[var(--color-gold)] group-hover/btn:text-[#1C422D]" />
+                          <ChevronUp size={18} className="text-[var(--color-gold)] group-hover/btn:text-[#071A35]" />
                         ) : (
-                          <ChevronDown size={18} className="text-[var(--color-gold)] group-hover/btn:text-[#1C422D]" />
+                          <ChevronDown size={18} className="text-[var(--color-gold)] group-hover/btn:text-[#071A35]" />
                         )}
                       </button>
                     )}

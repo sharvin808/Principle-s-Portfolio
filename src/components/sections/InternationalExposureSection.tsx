@@ -215,8 +215,8 @@ export default function InternationalExposureSection({ internationalExposure }: 
                     onClick={() => setActiveCountryCode(code)}
                     className={`flex items-center gap-2 px-3 py-2 rounded-xl border transition-all duration-300 cursor-pointer ${
                       isActive
-                        ? 'bg-[#2F4F4F] text-[#faf3e3] border-[#2F4F4F] shadow-md scale-95'
-                        : 'bg-[#dad7cd] text-[#1C422D] border-border hover:border-[#2F4F4F]/50 hover:bg-[#faf3e3]'
+                        ? 'bg-[#102A4A] text-[#faf3e3] border-[#102A4A] shadow-md scale-95'
+                        : 'bg-[#E8D6B6] text-[#071A35] border-border hover:border-[#102A4A]/50 hover:bg-[#faf3e3]'
                     }`}
                   >
                     <img
@@ -231,7 +231,7 @@ export default function InternationalExposureSection({ internationalExposure }: 
             </div>
 
             {/* Desktop Map Canvas */}
-            <div className="relative w-full h-auto aspect-[640/374] flex items-center justify-center bg-[#dad7cd] rounded-xl overflow-hidden border border-border/60 shadow-inner" style={{ aspectRatio: '640/374' }}>
+            <div className="relative w-full h-auto aspect-[640/374] flex items-center justify-center bg-[#E8D6B6] rounded-xl overflow-hidden border border-border/60 shadow-inner" style={{ aspectRatio: '640/374' }}>
               {/* Subtle radial shadow/glow at the edges to blend the map */}
               <div
                 className="absolute inset-0 pointer-events-none z-10"
@@ -285,7 +285,7 @@ export default function InternationalExposureSection({ internationalExposure }: 
                       <path
                         d={pathD}
                         fill="none"
-                        stroke="#2F4F4F"
+                        stroke="#102A4A"
                         strokeWidth={isActive ? 2.5 : 1.6}
                         className="animate-dash transition-all duration-300"
                         style={{
@@ -314,7 +314,7 @@ export default function InternationalExposureSection({ internationalExposure }: 
                         <circle
                           r="18"
                           fill="none"
-                          stroke={isHome ? '#2F4F4F' : '#2F4F4F'}
+                          stroke={isHome ? '#102A4A' : '#102A4A'}
                           strokeWidth="1.5"
                           className="animate-pulse-ring"
                           style={{ transformOrigin: '0px 0px' }}
@@ -325,9 +325,9 @@ export default function InternationalExposureSection({ internationalExposure }: 
                       <circle
                         r={isHome ? 9 : 12}
                         fill={isHome ? '#faf3e3' : '#ffffff'}
-                        stroke={isHome ? '#2F4F4F' : isActive ? '#2F4F4F' : 'rgba(47, 79, 79, 0.3)'}
+                        stroke={isHome ? '#102A4A' : isActive ? '#102A4A' : 'rgba(47, 79, 79, 0.3)'}
                         strokeWidth={isActive || isHome ? 2.5 : 1.2}
-                        className="transition-all duration-300 group-hover:scale-110 group-hover:stroke-[#2F4F4F]"
+                        className="transition-all duration-300 group-hover:scale-110 group-hover:stroke-[#102A4A]"
                         style={{ transformOrigin: '0px 0px' }}
                       />
 
@@ -341,7 +341,7 @@ export default function InternationalExposureSection({ internationalExposure }: 
                       >
                         <div className="w-full h-full flex items-center justify-center rounded-full overflow-hidden">
                           {isHome ? (
-                            <div className="w-3 h-3 bg-[#2F4F4F] rounded-full shadow-inner animate-pulse" />
+                            <div className="w-3 h-3 bg-[#102A4A] rounded-full shadow-inner animate-pulse" />
                           ) : (
                             <img
                               src={getFlagUrl(code)}
@@ -362,8 +362,8 @@ export default function InternationalExposureSection({ internationalExposure }: 
                         textAnchor="middle"
                         className={`text-[8.5px] font-mono font-bold tracking-wider uppercase transition-colors duration-300 pointer-events-none ${
                           isHome || isActive
-                            ? 'fill-[#2F4F4F]'
-                            : 'fill-[#6B7280]/80 group-hover:fill-[#2F4F4F]'
+                            ? 'fill-[#102A4A]'
+                            : 'fill-[#6B7280]/80 group-hover:fill-[#102A4A]'
                         }`}
                       >
                         {isHome ? 'Base: India' : code}
@@ -385,8 +385,8 @@ export default function InternationalExposureSection({ internationalExposure }: 
                     onClick={() => setActiveCountryCode(code)}
                     className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg border text-sm font-semibold transition-all duration-300 cursor-pointer ${
                       isActive
-                        ? 'bg-[#2F4F4F] text-[#faf3e3] border-[#2F4F4F] shadow-sm'
-                        : 'bg-[#dad7cd] text-[#1C422D] border-border hover:text-[#2F4F4F] hover:border-[#2F4F4F]/50 hover:bg-[#faf3e3]'
+                        ? 'bg-[#102A4A] text-[#faf3e3] border-[#102A4A] shadow-sm'
+                        : 'bg-[#E8D6B6] text-[#071A35] border-border hover:text-[#102A4A] hover:border-[#102A4A]/50 hover:bg-[#faf3e3]'
                     }`}
                   >
                     <img

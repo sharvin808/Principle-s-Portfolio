@@ -191,7 +191,7 @@ export default function Navbar({
                     {activeSection === id && (
                       <motion.div
                         layoutId="active-pill"
-                        className="absolute inset-0 bg-gold shadow-md rounded-lg -z-10"
+                        className="absolute inset-0 bg-[#18385F] shadow-md rounded-lg -z-10"
                         transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                       />
                     )}
@@ -212,7 +212,7 @@ export default function Navbar({
                     {activeSection === id && !selectedExtraSection && (
                       <motion.div
                         layoutId="active-pill"
-                        className="absolute inset-0 bg-gold shadow-md rounded-lg -z-10"
+                        className="absolute inset-0 bg-[#18385F] shadow-md rounded-lg -z-10"
                         transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                       />
                     )}
@@ -232,7 +232,7 @@ export default function Navbar({
                   {activeSection === CONTACT_ITEM.id && !selectedExtraSection && (
                     <motion.div
                       layoutId="active-pill"
-                      className="absolute inset-0 bg-gold shadow-md rounded-lg -z-10"
+                      className="absolute inset-0 bg-[#18385F] shadow-md rounded-lg -z-10"
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -270,7 +270,7 @@ export default function Navbar({
                         onClick={() => scrollTo(id)}
                         className={`text-left px-4 py-3 rounded-lg text-lg font-semibold transition-all cursor-pointer ${
                           activeSection === id
-                            ? 'text-background bg-gold shadow-md'
+                            ? 'text-background bg-[#18385F] shadow-md'
                             : 'text-foreground hover:bg-gold/10'
                         }`}
                       >
@@ -284,7 +284,7 @@ export default function Navbar({
                         onClick={() => scrollTo(id)}
                         className={`text-left px-4 py-3 rounded-lg text-lg font-semibold transition-all cursor-pointer ${
                           activeSection === id && !selectedExtraSection
-                            ? 'text-background bg-gold shadow-md'
+                            ? 'text-background bg-[#18385F] shadow-md'
                             : 'text-foreground hover:bg-gold/10'
                         }`}
                       >
@@ -297,7 +297,7 @@ export default function Navbar({
                         onClick={() => scrollTo(CONTACT_ITEM.id)}
                         className={`w-full text-left px-4 py-3 rounded-lg text-lg font-semibold transition-all cursor-pointer ${
                           activeSection === CONTACT_ITEM.id && !selectedExtraSection
-                            ? 'text-background bg-gold shadow-md'
+                            ? 'text-background bg-[#18385F] shadow-md'
                             : 'text-foreground hover:bg-gold/10'
                         }`}
                       >
