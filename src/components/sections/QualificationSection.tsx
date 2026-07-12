@@ -24,17 +24,17 @@ function QualificationCard({ edu, index }: { edu: Qualification; index: number }
   return (
     <div className="relative flex items-center w-full">
       <div 
-        className="relative w-full bg-[#1C422D] rounded-l-[40px] rounded-r-2xl md:rounded-l-full md:rounded-r-md flex items-center p-3 md:p-2 md:pr-6 shadow-xl border border-white/10 group hover:border-white/20 transition-colors"
+        className="relative w-full bg-[#5C1D24] rounded-l-[40px] rounded-r-2xl md:rounded-l-full md:rounded-r-md flex items-center p-3 md:p-2 md:pr-6 shadow-xl border border-white/10 group hover:border-white/20 transition-colors"
       >
         {/* Arrow Tip */}
         <div 
-          className="absolute top-0 right-[-20px] w-[21px] h-full bg-[#1C422D]"
+          className="absolute top-0 right-[-20px] w-[21px] h-full bg-[#5C1D24]"
           style={{ clipPath: 'polygon(0 0, 0 100%, 100% 50%)' }}
         />
         
         {/* Circular Icon */}
-        <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#dad7cd] flex items-center justify-center flex-shrink-0 shadow-inner z-10 transition-transform duration-300 group-hover:scale-105">
-          <GraduationCap size={32} className="text-[#1C422D]" />
+        <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#D4AF37] flex items-center justify-center flex-shrink-0 shadow-inner z-10 transition-transform duration-300 group-hover:scale-105">
+          <GraduationCap size={32} className="text-[#5C1D24]" />
         </div>
         
         {/* Content */}
@@ -48,7 +48,7 @@ function QualificationCard({ edu, index }: { edu: Qualification; index: number }
                 <h3 className="text-white font-bold text-xl md:text-2xl uppercase tracking-wider mb-1">
                   {edu.degree}
                 </h3>
-                <p className="text-[#dad7cd] text-sm md:text-base font-medium">
+                <p className="text-[#D4AF37] text-sm md:text-base font-medium">
                   {edu.field}
                 </p>
               </div>
@@ -57,7 +57,7 @@ function QualificationCard({ edu, index }: { edu: Qualification; index: number }
                 <p className="text-white/90 text-lg md:text-xl font-semibold mb-1">
                   {edu.institution}
                 </p>
-                <p className="text-[#dad7cd] text-sm md:text-base font-medium">
+                <p className="text-[#D4AF37] text-sm md:text-base font-medium">
                   {edu.year}
                 </p>
               </div>
@@ -121,11 +121,11 @@ function QualificationCard({ edu, index }: { edu: Qualification; index: number }
             />
             
             {/* The Center Circle Node */}
-            <div className="absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full bg-[#dad7cd] shadow-2xl flex flex-col items-center justify-center z-20 border-[8px] border-[#1C422D]">
+            <div className="absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full bg-[#D4AF37] shadow-2xl flex flex-col items-center justify-center z-20 border-[8px] border-[#5C1D24]">
               
               <div className="relative z-10 flex flex-col items-center">
-                <Globe size={48} className="text-[#1C422D] mb-4" />
-                <h2 className="text-[#1C422D] font-black text-xl text-center px-8 uppercase tracking-widest leading-tight">
+                <Globe size={48} className="text-[#5C1D24] mb-4" />
+                <h2 className="text-[#5C1D24] font-black text-xl text-center px-8 uppercase tracking-widest leading-tight">
                   Academic<br/>Qualifications
                 </h2>
               </div>

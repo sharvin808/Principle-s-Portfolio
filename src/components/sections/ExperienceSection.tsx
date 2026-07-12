@@ -262,10 +262,10 @@ export default function ExperienceSection({ experience }: ExperienceSectionProps
             className={`hidden md:flex absolute -left-2 md:-left-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 md:w-12 md:h-12 rounded-full items-center justify-center transition-all duration-300 cursor-pointer ${
               activeIndex === 0
                 ? 'opacity-20 pointer-events-none'
-                : 'bg-[#dad7cd] border border-border hover:bg-gold/10 hover:border-gold/30 hover:shadow-[0_0_15px_var(--color-gold-muted)]'
+                : 'bg-[#D4AF37] border border-border hover:bg-gold/10 hover:border-gold/30 hover:shadow-[0_0_15px_var(--color-gold-muted)]'
             }`}
           >
-            <ChevronLeft size={20} className="text-[#1C422D]" />
+            <ChevronLeft size={20} className="text-[#5C1D24]" />
           </button>
           <button
             onClick={goNext}
@@ -273,10 +273,10 @@ export default function ExperienceSection({ experience }: ExperienceSectionProps
             className={`hidden md:flex absolute -right-2 md:-right-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 md:w-12 md:h-12 rounded-full items-center justify-center transition-all duration-300 cursor-pointer ${
               activeIndex === total - 1
                 ? 'opacity-20 pointer-events-none'
-                : 'bg-[#dad7cd] border border-border hover:bg-gold/10 hover:border-gold/30 hover:shadow-[0_0_15px_var(--color-gold-muted)]'
+                : 'bg-[#D4AF37] border border-border hover:bg-gold/10 hover:border-gold/30 hover:shadow-[0_0_15px_var(--color-gold-muted)]'
             }`}
           >
-            <ChevronRight size={20} className="text-[#1C422D]" />
+            <ChevronRight size={20} className="text-[#5C1D24]" />
           </button>
 
           {/* Card container */}

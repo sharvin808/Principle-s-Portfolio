@@ -51,7 +51,7 @@ export default function BackToTop() {
             opacity: 1,
             scale: 1,
             y: 0,
-            backgroundColor: isOverDark ? '#dad7cd' : '#2F4F4F',
+            backgroundColor: isOverDark ? '#D4AF37' : '#2F4F4F',
             color: isOverDark ? '#2F4F4F' : '#FFFFFF',
           }}
           exit={{ opacity: 0, scale: 0.8, y: 20 }}
