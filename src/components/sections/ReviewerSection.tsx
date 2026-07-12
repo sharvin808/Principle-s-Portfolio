@@ -41,7 +41,7 @@ export default function ReviewerSection({ reviewer }: ReviewerSectionProps) {
           const pair = COLOR_PAIRS[index % COLOR_PAIRS.length];
           return (
             <ScrollReveal key={index} delay={index * 0.1} className="h-full">
-              <div className="relative bg-[#E8D6B6] shadow-[0_15px_40px_rgba(0,0,0,0.12)] pt-10 pr-10 pb-12 pl-12 min-h-[220px] h-full flex flex-col z-10 rounded-sm">
+              <div className="relative bg-[#e8ce9e] shadow-[0_15px_40px_rgba(0,0,0,0.12)] pt-10 pr-10 pb-12 pl-12 min-h-[220px] h-full flex flex-col z-10 rounded-sm">
                 
                 {/* --- Decorative Lines --- */}
                 {/* Left Vertical Thick (Dark) */}

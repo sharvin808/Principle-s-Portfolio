@@ -35,12 +35,12 @@
 
 /* Light Mode Base */
 :root {
-  --background: #E8D6B6;
-  --page-background: #E8D6B6;
+  --background: #e8ce9e;
+  --page-background: #e8ce9e;
   --page-heading: #071A35;
   --foreground: #102A4A;
-  --surface: #E8D6B6;
-  --surface-alt: #E8D6B6;
+  --surface: #e8ce9e;
+  --surface-alt: #e8ce9e;
   --heading: #102A4A;
   --muted: #6B7280;
   --border-color: rgba(47, 79, 79, 0.12);
@@ -64,11 +64,11 @@
 :root.dark {
   --background: #071A35;
   --page-background: #071A35;
-  --page-heading: #E8D6B6;
-  --foreground: #E8D6B6;
+  --page-heading: #e8ce9e;
+  --foreground: #e8ce9e;
   --surface: #102A4A;
   --surface-alt: #2a3150;
-  --heading: #E8D6B6;
+  --heading: #e8ce9e;
   --muted: #A3B1C6;
   --border-color: rgba(218, 215, 205, 0.15);
 
@@ -78,7 +78,7 @@
   --color-midnight: #071A35;
   --color-midnight-light: #181e32;
 
-  --color-gold: #E8D6B6;
+  --color-gold: #e8ce9e;
   --color-gold-light: #F7F2E8;
   --color-gold-dark: #D4C9B3;
   --color-gold-muted: rgba(218, 215, 205, 0.15);
@@ -90,14 +90,14 @@
 /* Scoped Section Themes */
 .bg-oxford-theme {
   --background: #071A35;
-  --foreground: #E8D6B6;
+  --foreground: #e8ce9e;
   --surface: #102A4A;
   --surface-alt: #2a3150;
-  --heading: #E8D6B6;
+  --heading: #e8ce9e;
   --muted: rgba(218, 215, 205, 0.7);
   --border-color: rgba(218, 215, 205, 0.15);
 
-  --color-gold: #E8D6B6;
+  --color-gold: #e8ce9e;
   --color-gold-light: #F7F2E8;
   --color-gold-dark: #D4C9B3;
   --color-gold-muted: rgba(218, 215, 205, 0.15);
@@ -110,9 +110,9 @@
 }
 
 .bg-tan-theme {
-  --background: #E8D6B6;
+  --background: #e8ce9e;
   --foreground: #071A35;
-  --surface: #E8D6B6;
+  --surface: #e8ce9e;
   --surface-alt: #faf3e3;
   --heading: #071A35;
   --muted: #6B7280;
@@ -222,8 +222,8 @@ body {
    ============================================================================= */
 
 .card-premium {
-  background-color: #E8D6B6;
-  --surface: #E8D6B6;
+  background-color: #e8ce9e;
+  --surface: #e8ce9e;
   --surface-alt: #e3dcc8;
   color: #071A35;
   --foreground: #071A35;
@@ -547,8 +547,8 @@ body {
   position: relative;
   border-radius: 20px;
   overflow: hidden;
-  background-color: #E8D6B6;
-  --surface: #E8D6B6;
+  background-color: #e8ce9e;
+  --surface: #e8ce9e;
   --surface-alt: #e3dcc8;
   color: #071A35;
   --foreground: #071A35;
@@ -735,8 +735,8 @@ body {
   display: flex;
   border-radius: 0 16px 16px 0;
   overflow: hidden;
-  background-color: #E8D6B6;
-  --surface: #E8D6B6;
+  background-color: #e8ce9e;
+  --surface: #e8ce9e;
   --surface-alt: #e3dcc8;
   color: #071A35;
   --foreground: #071A35;
@@ -896,8 +896,8 @@ body {
   background-size: 256px 256px;
 }
 .bg-beige-card {
-  background-color: #E8D6B6 !important;
-  --surface: #E8D6B6;
+  background-color: #e8ce9e !important;
+  --surface: #e8ce9e;
   --surface-alt: #e3dcc8;
   color: #071A35;
   --foreground: #071A35;
