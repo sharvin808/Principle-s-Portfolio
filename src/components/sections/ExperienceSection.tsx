@@ -213,16 +213,12 @@ export default function ExperienceSection({ experience }: ExperienceSectionProps
                       className={`w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center border-2 transition-colors duration-300 ${
                         isActive
                           ? 'border-gold bg-gold/20'
-                          : isPast
-                          ? 'border-gold/60 bg-gold/10'
-                          : 'border-border bg-surface-alt hover:border-gold/40 hover:bg-gold/5'
+                          : 'border-gold/60 bg-gold/10 hover:border-gold hover:bg-gold/20'
                       }`}
                     >
                       <Briefcase
                         size={16}
-                        className={`transition-colors duration-300 ${
-                          isActive ? 'text-gold' : isPast ? 'text-gold/60' : 'text-muted group-hover:text-gold/50'
-                        }`}
+                        className={`transition-colors duration-300 text-gold`}
                       />
                     </motion.div>
 

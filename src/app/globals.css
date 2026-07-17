@@ -56,7 +56,7 @@
   --color-gold-dark: #071A35;
   --color-gold-muted: rgba(47, 79, 79, 0.1);
 
-  --color-success: #D97706;
+  --color-success: #92400E;
   --color-success-muted: rgba(217, 119, 6, 0.15);
 }
 
@@ -123,7 +123,7 @@
   --color-gold-dark: #0e1220;
   --color-gold-muted: rgba(21, 27, 46, 0.08);
 
-  --color-success: #D97706;
+  --color-success: #92400E;
   --color-success-muted: rgba(217, 119, 6, 0.15);
 
   background-color: var(--background);
