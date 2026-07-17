@@ -133,7 +133,7 @@ export default function PaperPresentationsSection({ paperPresentations }: PaperP
                     </div>
 
                     {/* White Content Pill */}
-                    <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center bg-[#e8ce9e] border border-white/40 rounded-3xl md:rounded-full p-6 md:px-10 md:py-6 shadow-[0_15px_35px_rgba(0,0,0,0.2)] w-full">
+                    <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center bg-[#ede5d5] border border-white/40 rounded-3xl md:rounded-full p-6 md:px-10 md:py-6 shadow-[0_15px_35px_rgba(0,0,0,0.2)] w-full">
                       
                       {/* Mobile Number Badge */}
                       <div 

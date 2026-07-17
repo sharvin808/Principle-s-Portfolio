@@ -33,7 +33,7 @@ function QualificationCard({ edu, index }: { edu: Qualification; index: number }
         />
         
         {/* Circular Icon */}
-        <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#e8ce9e] flex items-center justify-center flex-shrink-0 shadow-inner z-10 transition-transform duration-300 group-hover:scale-105">
+        <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#ede5d5] flex items-center justify-center flex-shrink-0 shadow-inner z-10 transition-transform duration-300 group-hover:scale-105">
           <GraduationCap size={32} className="text-[#071A35]" />
         </div>
         
@@ -48,7 +48,7 @@ function QualificationCard({ edu, index }: { edu: Qualification; index: number }
                 <h3 className="text-white font-bold text-xl md:text-2xl uppercase tracking-wider mb-1">
                   {edu.degree}
                 </h3>
-                <p className="text-[#e8ce9e] text-sm md:text-base font-medium">
+                <p className="text-[#ede5d5] text-sm md:text-base font-medium">
                   {edu.field}
                 </p>
               </div>
@@ -57,7 +57,7 @@ function QualificationCard({ edu, index }: { edu: Qualification; index: number }
                 <p className="text-white/90 text-lg md:text-xl font-semibold mb-1">
                   {edu.institution}
                 </p>
-                <p className="text-[#e8ce9e] text-sm md:text-base font-medium">
+                <p className="text-[#ede5d5] text-sm md:text-base font-medium">
                   {edu.year}
                 </p>
               </div>
@@ -121,7 +121,7 @@ function QualificationCard({ edu, index }: { edu: Qualification; index: number }
             />
             
             {/* The Center Circle Node */}
-            <div className="absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full bg-[#e8ce9e] shadow-2xl flex flex-col items-center justify-center z-20 border-[8px] border-[#071A35]">
+            <div className="absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full bg-[#ede5d5] shadow-2xl flex flex-col items-center justify-center z-20 border-[8px] border-[#071A35]">
               
               <div className="relative z-10 flex flex-col items-center">
                 <Globe size={48} className="text-[#071A35] mb-4" />
