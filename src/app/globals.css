@@ -35,12 +35,12 @@
 
 /* Light Mode Base */
 :root {
-  --background: #D4AF37;
-  --page-background: #D4AF37;
-  --page-heading: #5C1D24;
+  --background: #DFE8D9;
+  --page-background: #DFE8D9;
+  --page-heading: #244B3A;
   --foreground: #2F4F4F;
-  --surface: #D4AF37;
-  --surface-alt: #D4AF37;
+  --surface: #DFE8D9;
+  --surface-alt: #DFE8D9;
   --heading: #2F4F4F;
   --muted: #6B7280;
   --border-color: rgba(47, 79, 79, 0.12);
@@ -48,12 +48,12 @@
   --color-navy: #2F4F4F;
   --color-navy-light: #2d3655;
   --color-navy-mid: #1b2238;
-  --color-midnight: #5C1D24;
+  --color-midnight: #244B3A;
   --color-midnight-light: #181e32;
 
   --color-gold: #2F4F4F;
   --color-gold-light: #2d3655;
-  --color-gold-dark: #5C1D24;
+  --color-gold-dark: #244B3A;
   --color-gold-muted: rgba(47, 79, 79, 0.1);
 
   --color-success: #D97706;
@@ -62,23 +62,23 @@
 
 /* Dark Mode Base */
 :root.dark {
-  --background: #5C1D24;
-  --page-background: #5C1D24;
-  --page-heading: #D4AF37;
-  --foreground: #D4AF37;
+  --background: #244B3A;
+  --page-background: #244B3A;
+  --page-heading: #DFE8D9;
+  --foreground: #DFE8D9;
   --surface: #2F4F4F;
   --surface-alt: #2a3150;
-  --heading: #D4AF37;
+  --heading: #DFE8D9;
   --muted: #A3B1C6;
   --border-color: rgba(218, 215, 205, 0.15);
 
   --color-navy: #2F4F4F;
   --color-navy-light: #2d3655;
   --color-navy-mid: #1b2238;
-  --color-midnight: #5C1D24;
+  --color-midnight: #244B3A;
   --color-midnight-light: #181e32;
 
-  --color-gold: #D4AF37;
+  --color-gold: #DFE8D9;
   --color-gold-light: #F7F2E8;
   --color-gold-dark: #D4C9B3;
   --color-gold-muted: rgba(218, 215, 205, 0.15);
@@ -89,15 +89,15 @@
 
 /* Scoped Section Themes */
 .bg-oxford-theme {
-  --background: #5C1D24;
-  --foreground: #D4AF37;
+  --background: #244B3A;
+  --foreground: #DFE8D9;
   --surface: #2F4F4F;
   --surface-alt: #2a3150;
-  --heading: #D4AF37;
+  --heading: #DFE8D9;
   --muted: rgba(218, 215, 205, 0.7);
   --border-color: rgba(218, 215, 205, 0.15);
 
-  --color-gold: #D4AF37;
+  --color-gold: #DFE8D9;
   --color-gold-light: #F7F2E8;
   --color-gold-dark: #D4C9B3;
   --color-gold-muted: rgba(218, 215, 205, 0.15);
@@ -110,15 +110,15 @@
 }
 
 .bg-tan-theme {
-  --background: #D4AF37;
-  --foreground: #5C1D24;
-  --surface: #D4AF37;
+  --background: #DFE8D9;
+  --foreground: #244B3A;
+  --surface: #DFE8D9;
   --surface-alt: #faf3e3;
-  --heading: #5C1D24;
+  --heading: #244B3A;
   --muted: #6B7280;
   --border-color: rgba(21, 27, 46, 0.15);
 
-  --color-gold: #5C1D24;
+  --color-gold: #244B3A;
   --color-gold-light: #1b2238;
   --color-gold-dark: #0e1220;
   --color-gold-muted: rgba(21, 27, 46, 0.08);
@@ -222,18 +222,18 @@ body {
    ============================================================================= */
 
 .card-premium {
-  background-color: #D4AF37;
-  --surface: #D4AF37;
+  background-color: #DFE8D9;
+  --surface: #DFE8D9;
   --surface-alt: #e3dcc8;
-  color: #5C1D24;
-  --foreground: #5C1D24;
-  --heading: #5C1D24;
-  --color-heading: #5C1D24;
+  color: #244B3A;
+  --foreground: #244B3A;
+  --heading: #244B3A;
+  --color-heading: #244B3A;
   --muted: #4b5563;
   --border-color: rgba(21, 27, 46, 0.15);
   --color-gold: #2F4F4F;
   --color-gold-light: #2d3655;
-  --color-gold-dark: #5C1D24;
+  --color-gold-dark: #244B3A;
   --color-gold-muted: rgba(47, 79, 79, 0.12);
   border: 1px solid var(--border-color);
   border-radius: 16px;
@@ -300,7 +300,7 @@ body {
    ============================================================================= */
 
 .hero-gradient {
-  background: linear-gradient(135deg, #2A0910 0%, #401016 40%, #5C1D24 100%);
+  background: linear-gradient(135deg, #0A1B12 0%, #143525 40%, #244B3A 100%);
 }
 
 /* =============================================================================
@@ -388,7 +388,7 @@ body {
 
 .filter-btn.active {
   background: var(--color-gold);
-  color: #5C1D24;
+  color: #244B3A;
   border-color: var(--color-gold);
   font-weight: 600;
 }
@@ -412,7 +412,7 @@ body {
 
 .doi-badge:hover {
   background: var(--color-gold);
-  color: #5C1D24;
+  color: #244B3A;
 }
 
 /* =============================================================================
@@ -547,18 +547,18 @@ body {
   position: relative;
   border-radius: 20px;
   overflow: hidden;
-  background-color: #D4AF37;
-  --surface: #D4AF37;
+  background-color: #DFE8D9;
+  --surface: #DFE8D9;
   --surface-alt: #e3dcc8;
-  color: #5C1D24;
-  --foreground: #5C1D24;
-  --heading: #5C1D24;
-  --color-heading: #5C1D24;
+  color: #244B3A;
+  --foreground: #244B3A;
+  --heading: #244B3A;
+  --color-heading: #244B3A;
   --muted: #4b5563;
   --border-color: rgba(21, 27, 46, 0.15);
   --color-gold: #2F4F4F;
   --color-gold-light: #2d3655;
-  --color-gold-dark: #5C1D24;
+  --color-gold-dark: #244B3A;
   --color-gold-muted: rgba(47, 79, 79, 0.12);
   border: 1px solid var(--border-color);
   transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94),
@@ -735,18 +735,18 @@ body {
   display: flex;
   border-radius: 0 16px 16px 0;
   overflow: hidden;
-  background-color: #D4AF37;
-  --surface: #D4AF37;
+  background-color: #DFE8D9;
+  --surface: #DFE8D9;
   --surface-alt: #e3dcc8;
-  color: #5C1D24;
-  --foreground: #5C1D24;
-  --heading: #5C1D24;
-  --color-heading: #5C1D24;
+  color: #244B3A;
+  --foreground: #244B3A;
+  --heading: #244B3A;
+  --color-heading: #244B3A;
   --muted: #4b5563;
   --border-color: rgba(21, 27, 46, 0.15);
   --color-gold: #2F4F4F;
   --color-gold-light: #2d3655;
-  --color-gold-dark: #5C1D24;
+  --color-gold-dark: #244B3A;
   --color-gold-muted: rgba(47, 79, 79, 0.12);
   border: 1px solid var(--border-color);
   border-left: none;
@@ -896,17 +896,17 @@ body {
   background-size: 256px 256px;
 }
 .bg-beige-card {
-  background-color: #D4AF37 !important;
-  --surface: #D4AF37;
+  background-color: #DFE8D9 !important;
+  --surface: #DFE8D9;
   --surface-alt: #e3dcc8;
-  color: #5C1D24;
-  --foreground: #5C1D24;
-  --heading: #5C1D24;
-  --color-heading: #5C1D24;
+  color: #244B3A;
+  --foreground: #244B3A;
+  --heading: #244B3A;
+  --color-heading: #244B3A;
   --muted: #4b5563;
   --border-color: rgba(21, 27, 46, 0.15);
   --color-gold: #2F4F4F;
   --color-gold-light: #2d3655;
-  --color-gold-dark: #5C1D24;
+  --color-gold-dark: #244B3A;
   --color-gold-muted: rgba(47, 79, 79, 0.12);
 }

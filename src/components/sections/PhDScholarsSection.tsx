@@ -32,16 +32,16 @@ export default function PhDScholarsSection({ phdScholars }: PhDScholarsSectionPr
           <div
             className="flex items-center gap-3 px-5 py-3 rounded-2xl"
             style={{
-              background: '#D4AF37',
+              background: '#DFE8D9',
               border: '1px solid rgba(28, 66, 45, 0.15)',
               boxShadow: '0 4px 12px rgba(0,0,0,0.05)'
             }}
           >
-            <Users size={18} style={{ color: '#5C1D24' }} />
+            <Users size={18} style={{ color: '#244B3A' }} />
             <div>
               <div
                 className="text-2xl font-bold"
-                style={{ fontFamily: 'var(--font-playfair), Georgia, serif', color: '#5C1D24' }}
+                style={{ fontFamily: 'var(--font-playfair), Georgia, serif', color: '#244B3A' }}
               >
                 {phdScholars.length}
               </div>
@@ -54,7 +54,7 @@ export default function PhDScholarsSection({ phdScholars }: PhDScholarsSectionPr
             <div
               className="flex items-center gap-3 px-5 py-3 rounded-2xl"
               style={{
-                background: '#D4AF37',
+                background: '#DFE8D9',
                 border: '1px solid rgba(28, 66, 45, 0.15)',
                 boxShadow: '0 4px 12px rgba(0,0,0,0.05)'
               }}
@@ -72,7 +72,7 @@ export default function PhDScholarsSection({ phdScholars }: PhDScholarsSectionPr
               <div>
                 <div
                   className="text-2xl font-bold"
-                  style={{ fontFamily: 'var(--font-playfair), Georgia, serif', color: '#5C1D24' }}
+                  style={{ fontFamily: 'var(--font-playfair), Georgia, serif', color: '#244B3A' }}
                 >
                   {ongoingCount}
                 </div>
@@ -86,7 +86,7 @@ export default function PhDScholarsSection({ phdScholars }: PhDScholarsSectionPr
             <div
               className="flex items-center gap-3 px-5 py-3 rounded-2xl"
               style={{
-                background: '#D4AF37',
+                background: '#DFE8D9',
                 border: '1px solid rgba(28, 66, 45, 0.15)',
                 boxShadow: '0 4px 12px rgba(0,0,0,0.05)'
               }}
@@ -98,7 +98,7 @@ export default function PhDScholarsSection({ phdScholars }: PhDScholarsSectionPr
               <div>
                 <div
                   className="text-2xl font-bold"
-                  style={{ fontFamily: 'var(--font-playfair), Georgia, serif', color: '#5C1D24' }}
+                  style={{ fontFamily: 'var(--font-playfair), Georgia, serif', color: '#244B3A' }}
                 >
                   {awardedCount}
                 </div>

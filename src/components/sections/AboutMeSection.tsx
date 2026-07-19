@@ -76,13 +76,13 @@ export default function AboutMeSection({ aboutMe }: AboutMeSectionProps) {
               }}
             >
               {/* Top-Left Beige Cutout for the Heading */}
-              <div className="relative bg-[#D4AF37] w-fit rounded-br-[2rem] md:rounded-br-[3rem] px-6 py-4 md:px-8 md:py-6 pr-8 md:pr-12 pointer-events-auto">
+              <div className="relative bg-[#DFE8D9] w-fit rounded-br-[2rem] md:rounded-br-[3rem] px-6 py-4 md:px-8 md:py-6 pr-8 md:pr-12 pointer-events-auto">
                 {/* Top-right inverted corner */}
-                <svg className="absolute right-[-2rem] top-0 w-8 h-8 pointer-events-none" style={{ fill: '#D4AF37' }} viewBox="0 0 32 32">
+                <svg className="absolute right-[-2rem] top-0 w-8 h-8 pointer-events-none" style={{ fill: '#DFE8D9' }} viewBox="0 0 32 32">
                   <path d="M 0 32 A 32 32 0 0 1 32 0 L 0 0 Z" />
                 </svg>
                 {/* Bottom-left inverted corner */}
-                <svg className="absolute bottom-[-2rem] left-0 w-8 h-8 pointer-events-none" style={{ fill: '#D4AF37' }} viewBox="0 0 32 32">
+                <svg className="absolute bottom-[-2rem] left-0 w-8 h-8 pointer-events-none" style={{ fill: '#DFE8D9' }} viewBox="0 0 32 32">
                   <path d="M 0 32 A 32 32 0 0 1 32 0 L 0 0 Z" />
                 </svg>
 
@@ -91,16 +91,16 @@ export default function AboutMeSection({ aboutMe }: AboutMeSectionProps) {
                   className="flex items-center gap-4 cursor-pointer outline-none group/btn"
                 >
                   <div className="flex items-center gap-3">
-                    <Target size={20} className="text-[#5C1D24]" />
-                    <h3 className="text-xl font-bold uppercase tracking-widest text-[#5C1D24]">
+                    <Target size={20} className="text-[#244B3A]" />
+                    <h3 className="text-xl font-bold uppercase tracking-widest text-[#244B3A]">
                       Academic Vision
                     </h3>
                   </div>
-                  <div className="w-8 h-8 rounded-full flex items-center justify-center bg-[#5C1D24]/10 group-hover/btn:bg-[#5C1D24] transition-colors">
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center bg-[#244B3A]/10 group-hover/btn:bg-[#244B3A] transition-colors">
                     {isVisionExpanded ? (
-                      <ChevronUp size={20} className="text-[#5C1D24] group-hover/btn:text-[#D4AF37]" />
+                      <ChevronUp size={20} className="text-[#244B3A] group-hover/btn:text-[#DFE8D9]" />
                     ) : (
-                      <ChevronDown size={20} className="text-[#5C1D24] group-hover/btn:text-[#D4AF37]" />
+                      <ChevronDown size={20} className="text-[#244B3A] group-hover/btn:text-[#DFE8D9]" />
                     )}
                   </div>
                 </button>
@@ -109,7 +109,7 @@ export default function AboutMeSection({ aboutMe }: AboutMeSectionProps) {
               <div 
                 className={`overflow-hidden transition-all duration-500 ease-in-out px-6 md:px-10 ${isVisionExpanded ? 'max-h-[1000px] opacity-100 py-6 md:py-8' : 'max-h-0 opacity-0 py-0'}`}
               >
-                <p className="text-lg leading-relaxed text-[#D4AF37]/90 text-left xl:text-justify">
+                <p className="text-lg leading-relaxed text-[#DFE8D9]/90 text-left xl:text-justify">
                   {aboutMe.vision || (
                     <span className="italic">Vision statement from Google Sheets.</span>
                   )}

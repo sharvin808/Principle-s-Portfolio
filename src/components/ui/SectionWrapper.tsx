@@ -87,9 +87,9 @@ export default function SectionWrapper({
               >
                 {titleDecoration === 'bracket' ? (
                   <div className="relative inline-block mb-2">
-                    <div className="absolute -bottom-3 -left-3 w-12 md:w-16 h-12 md:h-16 border-b-[6px] border-l-[6px] border-[#5C1D24] rounded-bl-2xl pointer-events-none" />
+                    <div className="absolute -bottom-3 -left-3 w-12 md:w-16 h-12 md:h-16 border-b-[6px] border-l-[6px] border-[#244B3A] rounded-bl-2xl pointer-events-none" />
                     <h2
-                      className="relative bg-[#5C1D24] text-[#faf3e3] px-8 py-4 rounded-[1.5rem] text-3xl md:text-4xl lg:text-5xl font-bold z-10 shadow-lg"
+                      className="relative bg-[#244B3A] text-[#faf3e3] px-8 py-4 rounded-[1.5rem] text-3xl md:text-4xl lg:text-5xl font-bold z-10 shadow-lg"
                       style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
                     >
                       {title}
@@ -132,9 +132,9 @@ export default function SectionWrapper({
               >
                 {titleDecoration === 'bracket' ? (
                   <div className="relative inline-block mb-2">
-                    <div className="absolute -bottom-3 -left-3 w-12 md:w-16 h-12 md:h-16 border-b-[6px] border-l-[6px] border-[#5C1D24] rounded-bl-2xl pointer-events-none" />
+                    <div className="absolute -bottom-3 -left-3 w-12 md:w-16 h-12 md:h-16 border-b-[6px] border-l-[6px] border-[#244B3A] rounded-bl-2xl pointer-events-none" />
                     <h2
-                      className="relative bg-[#5C1D24] text-[#faf3e3] px-8 py-4 rounded-[1.5rem] text-3xl md:text-4xl lg:text-5xl font-bold z-10 shadow-lg"
+                      className="relative bg-[#244B3A] text-[#faf3e3] px-8 py-4 rounded-[1.5rem] text-3xl md:text-4xl lg:text-5xl font-bold z-10 shadow-lg"
                       style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
                     >
                       {title}
@@ -178,10 +178,10 @@ export default function SectionWrapper({
                 {titleDecoration === 'bracket' ? (
                   <div className="relative inline-block mb-2">
                     {/* The thick border bracket */}
-                    <div className="absolute -bottom-3 -left-3 w-12 md:w-16 h-12 md:h-16 border-b-[6px] border-l-[6px] border-[#5C1D24] rounded-bl-2xl pointer-events-none" />
+                    <div className="absolute -bottom-3 -left-3 w-12 md:w-16 h-12 md:h-16 border-b-[6px] border-l-[6px] border-[#244B3A] rounded-bl-2xl pointer-events-none" />
                     {/* The heading box */}
                     <h2
-                      className="relative bg-[#5C1D24] text-[#faf3e3] px-8 py-4 rounded-[1.5rem] text-3xl md:text-4xl lg:text-5xl font-bold z-10 shadow-lg"
+                      className="relative bg-[#244B3A] text-[#faf3e3] px-8 py-4 rounded-[1.5rem] text-3xl md:text-4xl lg:text-5xl font-bold z-10 shadow-lg"
                       style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
                     >
                       {title}

@@ -5,9 +5,8 @@ function replaceInFile(filePath) {
   let content = fs.readFileSync(filePath, 'utf8');
   let newContent = content;
   
-  // Replace case-insensitive colors
-  newContent = newContent.replace(/#1C422D/gi, '#5C1D24');
-  newContent = newContent.replace(/#dad7cd/gi, '#D4AF37');
+  newContent = newContent.replace(/#5C1D24/gi, '#244B3A');
+  newContent = newContent.replace(/#D4AF37/gi, '#DFE8D9');
   
   if (content !== newContent) {
     fs.writeFileSync(filePath, newContent);
