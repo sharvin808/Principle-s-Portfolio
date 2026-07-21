@@ -216,7 +216,7 @@ export default function InternationalExposureSection({ internationalExposure }: 
                     className={`flex items-center gap-2 px-3 py-2 rounded-xl border transition-all duration-300 cursor-pointer ${
                       isActive
                         ? 'bg-[#102A4A] text-[#faf3e3] border-[#102A4A] shadow-md scale-95'
-                        : 'bg-[#ede5d5] text-[#071A35] border-border hover:border-[#102A4A]/50 hover:bg-[#faf3e3]'
+                        : 'bg-[#EFE0CD] text-[#071A35] border-border hover:border-[#102A4A]/50 hover:bg-[#faf3e3]'
                     }`}
                   >
                     <img
@@ -231,7 +231,7 @@ export default function InternationalExposureSection({ internationalExposure }: 
             </div>
 
             {/* Desktop Map Canvas */}
-            <div className="relative w-full h-auto aspect-[640/374] flex items-center justify-center bg-[#ede5d5] rounded-xl overflow-hidden border border-border/60 shadow-inner" style={{ aspectRatio: '640/374' }}>
+            <div className="relative w-full h-auto aspect-[640/374] flex items-center justify-center bg-[#EFE0CD] rounded-xl overflow-hidden border border-border/60 shadow-inner" style={{ aspectRatio: '640/374' }}>
               {/* Subtle radial shadow/glow at the edges to blend the map */}
               <div
                 className="absolute inset-0 pointer-events-none z-10"
@@ -386,7 +386,7 @@ export default function InternationalExposureSection({ internationalExposure }: 
                     className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg border text-sm font-semibold transition-all duration-300 cursor-pointer ${
                       isActive
                         ? 'bg-[#102A4A] text-[#faf3e3] border-[#102A4A] shadow-sm'
-                        : 'bg-[#ede5d5] text-[#071A35] border-border hover:text-[#102A4A] hover:border-[#102A4A]/50 hover:bg-[#faf3e3]'
+                        : 'bg-[#EFE0CD] text-[#071A35] border-border hover:text-[#102A4A] hover:border-[#102A4A]/50 hover:bg-[#faf3e3]'
                     }`}
                   >
                     <img

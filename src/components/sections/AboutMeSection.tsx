@@ -76,13 +76,13 @@ export default function AboutMeSection({ aboutMe }: AboutMeSectionProps) {
               }}
             >
               {/* Top-Left Beige Cutout for the Heading */}
-              <div className="relative bg-[#ede5d5] w-fit rounded-br-[2rem] md:rounded-br-[3rem] px-6 py-4 md:px-8 md:py-6 pr-8 md:pr-12 pointer-events-auto">
+              <div className="relative bg-[#EFE0CD] w-fit rounded-br-[2rem] md:rounded-br-[3rem] px-6 py-4 md:px-8 md:py-6 pr-8 md:pr-12 pointer-events-auto">
                 {/* Top-right inverted corner */}
-                <svg className="absolute right-[-2rem] top-0 w-8 h-8 pointer-events-none" style={{ fill: '#ede5d5' }} viewBox="0 0 32 32">
+                <svg className="absolute right-[-2rem] top-0 w-8 h-8 pointer-events-none" style={{ fill: '#EFE0CD' }} viewBox="0 0 32 32">
                   <path d="M 0 32 A 32 32 0 0 1 32 0 L 0 0 Z" />
                 </svg>
                 {/* Bottom-left inverted corner */}
-                <svg className="absolute bottom-[-2rem] left-0 w-8 h-8 pointer-events-none" style={{ fill: '#ede5d5' }} viewBox="0 0 32 32">
+                <svg className="absolute bottom-[-2rem] left-0 w-8 h-8 pointer-events-none" style={{ fill: '#EFE0CD' }} viewBox="0 0 32 32">
                   <path d="M 0 32 A 32 32 0 0 1 32 0 L 0 0 Z" />
                 </svg>
 
@@ -98,9 +98,9 @@ export default function AboutMeSection({ aboutMe }: AboutMeSectionProps) {
                   </div>
                   <div className="w-8 h-8 rounded-full flex items-center justify-center bg-[#071A35]/10 group-hover/btn:bg-[#071A35] transition-colors">
                     {isVisionExpanded ? (
-                      <ChevronUp size={20} className="text-[#071A35] group-hover/btn:text-[#ede5d5]" />
+                      <ChevronUp size={20} className="text-[#071A35] group-hover/btn:text-[#EFE0CD]" />
                     ) : (
-                      <ChevronDown size={20} className="text-[#071A35] group-hover/btn:text-[#ede5d5]" />
+                      <ChevronDown size={20} className="text-[#071A35] group-hover/btn:text-[#EFE0CD]" />
                     )}
                   </div>
                 </button>
@@ -109,7 +109,7 @@ export default function AboutMeSection({ aboutMe }: AboutMeSectionProps) {
               <div 
                 className={`overflow-hidden transition-all duration-500 ease-in-out px-6 md:px-10 ${isVisionExpanded ? 'max-h-[1000px] opacity-100 py-6 md:py-8' : 'max-h-0 opacity-0 py-0'}`}
               >
-                <p className="text-lg leading-relaxed text-[#ede5d5]/90 text-left xl:text-justify">
+                <p className="text-lg leading-relaxed text-[#EFE0CD]/90 text-left xl:text-justify">
                   {aboutMe.vision || (
                     <span className="italic">Vision statement from Google Sheets.</span>
                   )}
