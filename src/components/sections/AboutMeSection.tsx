@@ -128,6 +128,7 @@ export default function AboutMeSection({ aboutMe }: AboutMeSectionProps) {
                 <img 
                   src={aboutMe.imageUrl} 
                   alt="About me" 
+                  referrerPolicy="no-referrer"
                   className="w-full h-full object-cover object-top lg:rounded-bl-3xl rounded-2xl"
                 />
               ) : (

@@ -114,6 +114,7 @@ export default function Lightbox({
             <img
               src={current?.imageUrl}
               alt={current?.caption || ''}
+              referrerPolicy="no-referrer"
               className="max-w-full max-h-[75vh] object-contain rounded-lg"
             />
             {current?.caption && (
