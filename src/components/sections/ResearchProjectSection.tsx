@@ -149,7 +149,7 @@ export default function ResearchProjectSection({ researchProject }: ResearchProj
                       </span>
                     )}
                     <span
-                      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider"
+                      className="ml-auto inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider"
                       style={{
                         background: isOngoing
                           ? 'var(--color-gold-muted)'
