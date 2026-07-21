@@ -204,6 +204,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
             <img
               src={profile.photoUrl}
               alt={profile.name || 'Principal Portrait'}
+              referrerPolicy="no-referrer"
               className="w-full h-full object-contain object-left-bottom pointer-events-none"
               style={{
                 maskImage: 'linear-gradient(to right, black 92%, transparent 100%)',
@@ -300,6 +301,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
                 <img
                   src={profile.photoUrl}
                   alt={profile.name || 'Principal Portrait'}
+                  referrerPolicy="no-referrer"
                   className="w-full h-full object-contain object-bottom"
                 />
               ) : (
