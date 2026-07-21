@@ -28,7 +28,7 @@ function renderLine(line: string, idx: number, itemVariants: Variants) {
       key={idx}
       variants={itemVariants}
       className={`text-base lg:text-lg xl:text-base 2xl:text-lg text-[#ede5d5]/70 leading-relaxed text-center lg:text-left ${
-        line.includes('Director') ? 'lg:whitespace-nowrap tracking-tight xl:tracking-normal' : ''
+        line.includes('Director') ? 'xl:whitespace-nowrap tracking-tight xl:tracking-normal' : ''
       }`}
     >
       {parts.map((part, pIdx) => {
@@ -196,7 +196,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
         initial={{ opacity: 0, x: -40 }}
         animate={!isLoading ? { opacity: 1, x: 0 } : { opacity: 0, x: -40 }}
         transition={{ duration: 0.9, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-        className="hidden lg:flex absolute left-[6vw] bottom-0 w-[45vw] h-full items-end justify-start z-10 pointer-events-none"
+        className="hidden lg:flex absolute left-[4vw] xl:left-[6vw] bottom-0 lg:w-[40vw] xl:w-[45vw] h-full items-end justify-start z-10 pointer-events-none"
       >
         <div className="relative w-full h-full flex items-end">
           {profile.photoUrl ? (
@@ -246,7 +246,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
             variants={containerVariants}
             initial="hidden"
             animate={!isLoading ? "visible" : "hidden"}
-            className="text-center lg:text-left order-1 lg:order-2 lg:-ml-12 xl:-ml-20 lg:-mt-24 pb-32 md:pb-40 lg:pb-0 [@media(min-width:1400px)_and_(max-width:1450px)]:-ml-4"
+            className="text-center lg:text-left order-1 lg:order-2 lg:ml-0 xl:-ml-20 lg:-mt-24 pb-32 md:pb-40 lg:pb-0 [@media(min-width:1400px)_and_(max-width:1450px)]:-ml-4"
           >
 
 

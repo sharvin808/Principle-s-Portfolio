@@ -83,8 +83,8 @@
   --color-gold-dark: #D4C9B3;
   --color-gold-muted: rgba(218, 215, 205, 0.15);
 
-  --color-success: #F59E0B;
-  --color-success-muted: rgba(245, 158, 11, 0.15);
+  --color-success: #D97706;
+  --color-success-muted: rgba(217, 119, 6, 0.15);
 }
 
 /* Scoped Section Themes */
@@ -102,8 +102,8 @@
   --color-gold-dark: #D4C9B3;
   --color-gold-muted: rgba(218, 215, 205, 0.15);
 
-  --color-success: #F59E0B;
-  --color-success-muted: rgba(245, 158, 11, 0.15);
+  --color-success: #D97706;
+  --color-success-muted: rgba(217, 119, 6, 0.15);
 
   background-color: var(--background);
   color: var(--foreground);
