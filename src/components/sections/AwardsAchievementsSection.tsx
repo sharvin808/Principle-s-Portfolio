@@ -45,24 +45,24 @@ export default function AwardsAchievementsSection({
             <ScrollReveal key={index} delay={index * 0.08}>
               <div className="relative h-full bg-transparent rounded-[1.5rem] p-8 flex flex-col group transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
                 {/* Thick Custom Borders */}
-                <div className="absolute top-0 right-0 w-16 md:w-24 h-16 md:h-24 border-t-[6px] border-r-[6px] border-[#FFFFF0] rounded-tr-[1.5rem] transition-colors duration-300 group-hover:border-white pointer-events-none" />
-                <div className="absolute bottom-0 left-0 w-16 md:w-24 h-16 md:h-24 border-b-[6px] border-l-[6px] border-[#FFFFF0] rounded-bl-[1.5rem] transition-colors duration-300 group-hover:border-white pointer-events-none" />
+                <div className="absolute top-0 right-0 w-16 md:w-24 h-16 md:h-24 border-t-[6px] border-r-[6px] border-[#e8ce9e] rounded-tr-[1.5rem] transition-colors duration-300 group-hover:border-white pointer-events-none" />
+                <div className="absolute bottom-0 left-0 w-16 md:w-24 h-16 md:h-24 border-b-[6px] border-l-[6px] border-[#e8ce9e] rounded-bl-[1.5rem] transition-colors duration-300 group-hover:border-white pointer-events-none" />
 
                 <div className="flex items-center gap-3 mb-6 relative z-10">
                   <div
                     className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
                     style={{ background: 'rgba(218, 215, 205, 0.15)' }}
                   >
-                    <Trophy size={20} style={{ color: '#FFFFF0' }} />
+                    <Trophy size={20} style={{ color: '#e8ce9e' }} />
                   </div>
                   <div className="flex-1 flex flex-wrap items-center justify-between gap-2">
                     {award.year && (
-                      <span className="text-sm font-semibold text-[#FFFFF0] font-mono bg-[#FFFFF0]/10 px-2.5 py-1 rounded-md">
+                      <span className="text-sm font-semibold text-[#e8ce9e] font-mono bg-[#e8ce9e]/10 px-2.5 py-1 rounded-md">
                         {award.year}
                       </span>
                     )}
                     {award.organization && (
-                      <span className="text-sm text-[#FFFFF0]/80 font-medium text-right">
+                      <span className="text-sm text-[#e8ce9e]/80 font-medium text-right">
                         {award.organization}
                       </span>
                     )}
@@ -70,14 +70,14 @@ export default function AwardsAchievementsSection({
                 </div>
 
                 <h3
-                  className="text-xl font-bold text-[#FFFFF0] leading-snug mb-3"
+                  className="text-xl font-bold text-[#e8ce9e] leading-snug mb-3"
                   style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
                 >
                   {award.name}
                 </h3>
 
                 {award.description && (
-                  <p className="text-lg text-[#FFFFF0]/70 leading-relaxed mt-auto">
+                  <p className="text-lg text-[#e8ce9e]/70 leading-relaxed mt-auto">
                     {award.description}
                   </p>
                 )}
