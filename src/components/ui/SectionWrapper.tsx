@@ -47,9 +47,9 @@ export default function SectionWrapper({
               <feDropShadow dx="6" dy="0" stdDeviation="8" floodColor="#000" floodOpacity={theme === 'oxford' ? "0.25" : "0.1"}/>
             </filter>
           </defs>
-          <path d="M 0 0 C 350 100, 550 300, 550 600 C 550 900, 350 1100, 0 1200 Z" fill={theme === 'oxford' ? '#193B28' : '#cdcac0'} filter={`url(#cutout-shadow-left-${id})`} />
-          <path d="M 0 0 C 250 150, 430 350, 430 600 C 430 850, 250 1050, 0 1200 Z" fill={theme === 'oxford' ? '#163524' : '#c0bdb3'} filter={`url(#cutout-shadow-left-${id})`} />
-          <path d="M 0 0 C 150 200, 300 400, 300 600 C 300 800, 150 1000, 0 1200 Z" fill={theme === 'oxford' ? '#143020' : '#b3b0a6'} filter={`url(#cutout-shadow-left-${id})`} />
+          <path d="M 0 0 C 350 100, 550 300, 550 600 C 550 900, 350 1100, 0 1200 Z" fill={theme === 'oxford' ? '#0A2143' : '#cdcac0'} filter={`url(#cutout-shadow-left-${id})`} />
+          <path d="M 0 0 C 250 150, 430 350, 430 600 C 430 850, 250 1050, 0 1200 Z" fill={theme === 'oxford' ? '#071A35' : '#c0bdb3'} filter={`url(#cutout-shadow-left-${id})`} />
+          <path d="M 0 0 C 150 200, 300 400, 300 600 C 300 800, 150 1000, 0 1200 Z" fill={theme === 'oxford' ? '#0D2952' : '#b3b0a6'} filter={`url(#cutout-shadow-left-${id})`} />
         </svg>
       </div>
 
@@ -61,9 +61,9 @@ export default function SectionWrapper({
               <feDropShadow dx="-6" dy="0" stdDeviation="8" floodColor="#000" floodOpacity={theme === 'oxford' ? "0.25" : "0.1"}/>
             </filter>
           </defs>
-          <path d="M 600 0 C 250 100, 50 300, 50 600 C 50 900, 250 1100, 600 1200 Z" fill={theme === 'oxford' ? '#193B28' : '#cdcac0'} filter={`url(#cutout-shadow-right-${id})`} />
-          <path d="M 600 0 C 350 150, 170 350, 170 600 C 170 850, 350 1050, 600 1200 Z" fill={theme === 'oxford' ? '#163524' : '#c0bdb3'} filter={`url(#cutout-shadow-right-${id})`} />
-          <path d="M 600 0 C 450 200, 300 400, 300 600 C 300 800, 450 1000, 600 1200 Z" fill={theme === 'oxford' ? '#143020' : '#b3b0a6'} filter={`url(#cutout-shadow-right-${id})`} />
+          <path d="M 600 0 C 250 100, 50 300, 50 600 C 50 900, 250 1100, 600 1200 Z" fill={theme === 'oxford' ? '#0A2143' : '#cdcac0'} filter={`url(#cutout-shadow-right-${id})`} />
+          <path d="M 600 0 C 350 150, 170 350, 170 600 C 170 850, 350 1050, 600 1200 Z" fill={theme === 'oxford' ? '#071A35' : '#c0bdb3'} filter={`url(#cutout-shadow-right-${id})`} />
+          <path d="M 600 0 C 450 200, 300 400, 300 600 C 300 800, 450 1000, 600 1200 Z" fill={theme === 'oxford' ? '#0D2952' : '#b3b0a6'} filter={`url(#cutout-shadow-right-${id})`} />
         </svg>
       </div>
 
@@ -87,9 +87,9 @@ export default function SectionWrapper({
               >
                 {titleDecoration === 'bracket' ? (
                   <div className="relative inline-block mb-2">
-                    <div className="absolute -bottom-3 -left-3 w-12 md:w-16 h-12 md:h-16 border-b-[6px] border-l-[6px] border-[#244B3A] rounded-bl-2xl pointer-events-none" />
+                    <div className="absolute -bottom-3 -left-3 w-12 md:w-16 h-12 md:h-16 border-b-[6px] border-l-[6px] border-[#071A35] rounded-bl-2xl pointer-events-none" />
                     <h2
-                      className="relative bg-[#244B3A] text-[#faf3e3] px-8 py-4 rounded-[1.5rem] text-3xl md:text-4xl lg:text-5xl font-bold z-10 shadow-lg"
+                      className="relative bg-[#071A35] text-[#faf3e3] px-8 py-4 rounded-[1.5rem] text-3xl md:text-4xl lg:text-5xl font-bold z-10 shadow-lg"
                       style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
                     >
                       {title}
@@ -132,9 +132,9 @@ export default function SectionWrapper({
               >
                 {titleDecoration === 'bracket' ? (
                   <div className="relative inline-block mb-2">
-                    <div className="absolute -bottom-3 -left-3 w-12 md:w-16 h-12 md:h-16 border-b-[6px] border-l-[6px] border-[#244B3A] rounded-bl-2xl pointer-events-none" />
+                    <div className="absolute -bottom-3 -left-3 w-12 md:w-16 h-12 md:h-16 border-b-[6px] border-l-[6px] border-[#071A35] rounded-bl-2xl pointer-events-none" />
                     <h2
-                      className="relative bg-[#244B3A] text-[#faf3e3] px-8 py-4 rounded-[1.5rem] text-3xl md:text-4xl lg:text-5xl font-bold z-10 shadow-lg"
+                      className="relative bg-[#071A35] text-[#faf3e3] px-8 py-4 rounded-[1.5rem] text-3xl md:text-4xl lg:text-5xl font-bold z-10 shadow-lg"
                       style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
                     >
                       {title}
@@ -178,10 +178,10 @@ export default function SectionWrapper({
                 {titleDecoration === 'bracket' ? (
                   <div className="relative inline-block mb-2">
                     {/* The thick border bracket */}
-                    <div className="absolute -bottom-3 -left-3 w-12 md:w-16 h-12 md:h-16 border-b-[6px] border-l-[6px] border-[#244B3A] rounded-bl-2xl pointer-events-none" />
+                    <div className="absolute -bottom-3 -left-3 w-12 md:w-16 h-12 md:h-16 border-b-[6px] border-l-[6px] border-[#071A35] rounded-bl-2xl pointer-events-none" />
                     {/* The heading box */}
                     <h2
-                      className="relative bg-[#244B3A] text-[#faf3e3] px-8 py-4 rounded-[1.5rem] text-3xl md:text-4xl lg:text-5xl font-bold z-10 shadow-lg"
+                      className="relative bg-[#071A35] text-[#faf3e3] px-8 py-4 rounded-[1.5rem] text-3xl md:text-4xl lg:text-5xl font-bold z-10 shadow-lg"
                       style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
                     >
                       {title}

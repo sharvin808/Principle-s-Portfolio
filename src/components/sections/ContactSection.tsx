@@ -124,7 +124,7 @@ export default function ContactSection({ contactMe }: ContactSectionProps) {
                     href={contactMe.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2.5 px-5 py-3 rounded-xl border border-[#2F4F4F] bg-[#2F4F4F] text-[#faf3e3] text-base font-semibold hover:bg-transparent hover:text-[#2F4F4F] hover:border-[#2F4F4F] transition-colors duration-200"
+                    className="flex items-center gap-2.5 px-5 py-3 rounded-xl border border-[#102A4A] bg-[#102A4A] text-[#faf3e3] text-base font-semibold hover:bg-transparent hover:text-[#102A4A] hover:border-[#102A4A] transition-colors duration-200"
                   >
                     <svg
                       className="w-4.5 h-4.5 fill-current shrink-0"
@@ -143,7 +143,7 @@ export default function ContactSection({ contactMe }: ContactSectionProps) {
                     href={contactMe.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2.5 px-5 py-3 rounded-xl border border-[#2F4F4F] bg-[#2F4F4F] text-[#faf3e3] text-base font-semibold hover:bg-transparent hover:text-[#2F4F4F] hover:border-[#2F4F4F] transition-colors duration-200"
+                    className="flex items-center gap-2.5 px-5 py-3 rounded-xl border border-[#102A4A] bg-[#102A4A] text-[#faf3e3] text-base font-semibold hover:bg-transparent hover:text-[#102A4A] hover:border-[#102A4A] transition-colors duration-200"
                   >
                     <svg
                       className="w-4.5 h-4.5 fill-current shrink-0"
@@ -162,7 +162,7 @@ export default function ContactSection({ contactMe }: ContactSectionProps) {
                     href={contactMe.twitter}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2.5 px-5 py-3 rounded-xl border border-[#2F4F4F] bg-[#2F4F4F] text-[#faf3e3] text-base font-semibold hover:bg-transparent hover:text-[#2F4F4F] hover:border-[#2F4F4F] transition-colors duration-200"
+                    className="flex items-center gap-2.5 px-5 py-3 rounded-xl border border-[#102A4A] bg-[#102A4A] text-[#faf3e3] text-base font-semibold hover:bg-transparent hover:text-[#102A4A] hover:border-[#102A4A] transition-colors duration-200"
                   >
                     <svg
                       className="w-4.5 h-4.5 fill-current shrink-0"
@@ -181,7 +181,7 @@ export default function ContactSection({ contactMe }: ContactSectionProps) {
                     href={contactMe.googleScholar}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2.5 px-5 py-3 rounded-xl border border-[#2F4F4F] bg-[#2F4F4F] text-[#faf3e3] text-base font-semibold hover:bg-transparent hover:text-[#2F4F4F] hover:border-[#2F4F4F] transition-colors duration-200"
+                    className="flex items-center gap-2.5 px-5 py-3 rounded-xl border border-[#102A4A] bg-[#102A4A] text-[#faf3e3] text-base font-semibold hover:bg-transparent hover:text-[#102A4A] hover:border-[#102A4A] transition-colors duration-200"
                   >
                     <GraduationCap className="w-4.5 h-4.5 shrink-0" />
                     <span>Google Scholar</span>

@@ -6,8 +6,8 @@ function replaceInFile(filePath) {
   let newContent = content;
   
   // Replace case-insensitive colors
-  newContent = newContent.replace(/#1C422D/gi, '#071A35');
-  newContent = newContent.replace(/#dad7cd/gi, '#E8D6B6');
+  newContent = newContent.replace(/#E8D6B6/gi, '#ede5d5');
+  newContent = newContent.replace(/#e8c88e/gi, '#ede5d5');
   
   if (content !== newContent) {
     fs.writeFileSync(filePath, newContent);
@@ -15,16 +15,18 @@ function replaceInFile(filePath) {
   }
 }
 
-function walkSync(dir, filelist = []) {
+function walkSync(dir) {
   fs.readdirSync(dir).forEach(file => {
     const filePath = path.join(dir, file);
     if (fs.statSync(filePath).isDirectory()) {
-      walkSync(filePath, filelist);
-    } else if (filePath.endsWith('.tsx') || filePath.endsWith('.ts') || filePath.endsWith('.css')) {
+      walkSync(filePath);
+    } else if (filePath.endsWith('.tsx') || filePath.endsWith('.ts') || filePath.endsWith('.css') || filePath.endsWith('.js')) {
       replaceInFile(filePath);
     }
   });
 }
 
 walkSync('src');
+replaceInFile('tailwind.config.ts'); // just in case it exists now
+replaceInFile('replace_colors.js'); // update the script itself
 console.log('Replacement complete.');
