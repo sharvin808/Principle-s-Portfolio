@@ -34,7 +34,7 @@ export default function ResearchProjectSection({ researchProject }: ResearchProj
           <div
             className="flex items-center gap-3 px-5 py-3 rounded-2xl"
             style={{
-              background: '#EFE0CD',
+              background: '#FFFFF0',
               border: '1px solid rgba(28, 66, 45, 0.15)',
               boxShadow: '0 4px 12px rgba(0,0,0,0.05)'
             }}
@@ -56,7 +56,7 @@ export default function ResearchProjectSection({ researchProject }: ResearchProj
             <div
               className="flex items-center gap-3 px-5 py-3 rounded-2xl"
               style={{
-                background: '#EFE0CD',
+                background: '#FFFFF0',
                 border: '1px solid rgba(28, 66, 45, 0.15)',
                 boxShadow: '0 4px 12px rgba(0,0,0,0.05)'
               }}
@@ -88,7 +88,7 @@ export default function ResearchProjectSection({ researchProject }: ResearchProj
             <div
               className="flex items-center gap-3 px-5 py-3 rounded-2xl"
               style={{
-                background: '#EFE0CD',
+                background: '#FFFFF0',
                 border: '1px solid rgba(28, 66, 45, 0.15)',
                 boxShadow: '0 4px 12px rgba(0,0,0,0.05)'
               }}

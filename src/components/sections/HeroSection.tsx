@@ -27,7 +27,7 @@ function renderLine(line: string, idx: number, itemVariants: Variants) {
     <motion.div
       key={idx}
       variants={itemVariants}
-      className={`text-base lg:text-lg xl:text-base 2xl:text-lg text-[#EFE0CD]/70 leading-relaxed text-center lg:text-left ${
+      className={`text-base lg:text-lg xl:text-base 2xl:text-lg text-[#FFFFF0]/70 leading-relaxed text-center lg:text-left ${
         line.includes('Director') ? 'xl:whitespace-nowrap tracking-tight xl:tracking-normal' : ''
       }`}
     >
@@ -37,7 +37,7 @@ function renderLine(line: string, idx: number, itemVariants: Variants) {
         );
         if (isMatch) {
           return (
-            <span key={pIdx} className="font-bold text-[#EFE0CD]">
+            <span key={pIdx} className="font-bold text-[#FFFFF0]">
               {part}
             </span>
           );
@@ -181,13 +181,13 @@ export default function HeroSection({ profile }: HeroSectionProps) {
 
       {/* Vertical Design Line */}
       <div 
-        className="hidden lg:block absolute top-0 bottom-0 w-[0.40in] bg-[#EFE0CD] z-0 pointer-events-none"
+        className="hidden lg:block absolute top-0 bottom-0 w-[0.40in] bg-[#FFFFF0] z-0 pointer-events-none"
         style={{ left: 'calc(6vw + 22vh)' }}
       />
 
       {/* Horizontal Design Line */}
       <div 
-        className="hidden lg:block absolute left-0 right-0 h-[0.40in] bg-[#EFE0CD] z-0 pointer-events-none"
+        className="hidden lg:block absolute left-0 right-0 h-[0.40in] bg-[#FFFFF0] z-0 pointer-events-none"
         style={{ bottom: '120px' }}
       />
       
@@ -213,7 +213,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
             />
           ) : (
             <div className="w-full h-[75vh] flex items-center justify-center bg-[#102A4A]/50 rounded-2xl m-8">
-              <div className="text-center text-[#EFE0CD]/50">
+              <div className="text-center text-[#FFFFF0]/50">
                 <div
                   className="text-8xl mb-4"
                   style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
@@ -254,7 +254,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
             {/* Name */}
             <motion.h1
               variants={itemVariants}
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] xl:text-[3.25rem] font-bold text-[#EFE0CD] leading-tight whitespace-normal xl:whitespace-nowrap"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] xl:text-[3.25rem] font-bold text-[#FFFFF0] leading-tight whitespace-normal xl:whitespace-nowrap"
               style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
             >
               {profile.name || (
@@ -270,7 +270,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
               <div
                 className="h-0.5 w-20 rounded-full mx-auto lg:mx-0"
                 style={{
-                  background: 'linear-gradient(90deg, #EFE0CD, #F7F2E8, transparent)',
+                  background: 'linear-gradient(90deg, #FFFFF0, #F7F2E8, transparent)',
                 }}
               />
             </motion.div>
@@ -278,7 +278,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
             {/* Designation */}
             <motion.p
               variants={itemVariants}
-              className="text-xl md:text-2xl font-medium bg-gradient-to-r from-[#EFE0CD] to-[#F7F2E8] bg-clip-text text-transparent"
+              className="text-xl md:text-2xl font-medium bg-gradient-to-r from-[#FFFFF0] to-[#F7F2E8] bg-clip-text text-transparent"
             >
               {profile.designation || 'Designation'}
             </motion.p>
@@ -286,7 +286,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
             {/* Institution */}
             <motion.p
               variants={itemVariants}
-              className="text-base md:text-lg text-[#EFE0CD]/70 leading-tight"
+              className="text-base md:text-lg text-[#FFFFF0]/70 leading-tight"
             >
               {profile.institution || 'Institution'}
             </motion.p>
@@ -306,7 +306,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
                 />
               ) : (
                 <div className="w-full h-full flex items-center justify-center bg-[#102A4A]/50 rounded-2xl">
-                  <div className="text-center text-[#EFE0CD]/50">
+                  <div className="text-center text-[#FFFFF0]/50">
                     <div
                       className="text-6xl mb-2"
                       style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
@@ -352,11 +352,11 @@ export default function HeroSection({ profile }: HeroSectionProps) {
 
           <button 
             onClick={scrollToContent}
-            className="group flex items-center gap-3 px-6 md:px-8 py-3 md:py-4 bg-[#071A35] border border-border/20 rounded-full text-[#EFE0CD] text-sm font-bold tracking-widest uppercase hover:bg-[#102A4A] transition-all duration-300 shadow-sm hover:shadow-md"
+            className="group flex items-center gap-3 px-6 md:px-8 py-3 md:py-4 bg-[#071A35] border border-border/20 rounded-full text-[#FFFFF0] text-sm font-bold tracking-widest uppercase hover:bg-[#102A4A] transition-all duration-300 shadow-sm hover:shadow-md"
           >
             Scroll to explore
-            <div className="bg-[#EFE0CD]/10 rounded-full p-1 group-hover:bg-[#EFE0CD]/20 transition-colors">
-              <ChevronDown size={18} className="animate-bounce text-[#EFE0CD]" />
+            <div className="bg-[#FFFFF0]/10 rounded-full p-1 group-hover:bg-[#FFFFF0]/20 transition-colors">
+              <ChevronDown size={18} className="animate-bounce text-[#FFFFF0]" />
             </div>
           </button>
         </div>
