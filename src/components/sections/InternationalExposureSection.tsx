@@ -50,23 +50,24 @@ const COUNTRY_CODES: Record<string, string> = {
 // Custom coordinate mapping for the SVG abstract map view
 const MAP_COORDINATES: Record<string, { x: number; y: number; labelOffset?: { x: number; y: number } }> = {
   us: { x: 155, y: 130, labelOffset: { x: -15, y: -15 } },
-  gb: { x: 295, y: 110, labelOffset: { x: -20, y: -12 } },
-  be: { x: 310, y: 122, labelOffset: { x: 20, y: -12 } },
-  hk: { x: 508, y: 180, labelOffset: { x: 25, y: 5 } },
+  gb: { x: 285, y: 102, labelOffset: { x: -20, y: -12 } },
+  be: { x: 303, y: 115, labelOffset: { x: 0, y: -22 } },
+  hk: { x: 504, y: 176, labelOffset: { x: 25, y: 5 } },
   au: { x: 556, y: 292, labelOffset: { x: 0, y: 20 } },
   in: { x: 446, y: 215, labelOffset: { x: 0, y: 18 } }, // Home base: Kochi
   ca: { x: 140, y: 110, labelOffset: { x: 0, y: -20 } },
-  de: { x: 320, y: 115, labelOffset: { x: 20, y: -15 } },
-  fr: { x: 308, y: 128, labelOffset: { x: -20, y: 20 } },
-  ch: { x: 310, y: 125, labelOffset: { x: 0, y: 20 } },
-  it: { x: 318, y: 132, labelOffset: { x: 20, y: 20 } },
-  es: { x: 282, y: 135, labelOffset: { x: -20, y: 20 } },
+  de: { x: 325, y: 106, labelOffset: { x: 20, y: -15 } },
+  fr: { x: 293, y: 125, labelOffset: { x: -25, y: 15 } },
+  ch: { x: 314, y: 122, labelOffset: { x: 15, y: 20 } },
+  it: { x: 326, y: 134, labelOffset: { x: 20, y: 15 } },
+  es: { x: 278, y: 138, labelOffset: { x: -20, y: 15 } },
   sg: { x: 495, y: 212, labelOffset: { x: 0, y: 20 } },
   jp: { x: 535, y: 145, labelOffset: { x: 20, y: -15 } },
   cn: { x: 490, y: 155, labelOffset: { x: 0, y: -20 } },
   za: { x: 345, y: 265, labelOffset: { x: 0, y: 20 } },
   br: { x: 220, y: 255, labelOffset: { x: 0, y: 20 } },
   nz: { x: 585, y: 310, labelOffset: { x: 0, y: 20 } },
+  lk: { x: 454, y: 231, labelOffset: { x: 20, y: 15 } }, // Sri Lanka
 };
 
 function getCountryCode(country: string): string {
@@ -93,10 +94,11 @@ function getFlagUrl(code: string): string {
   return `https://flagcdn.com/w160/${code.toLowerCase()}.png`;
 }
 
-// Computes curved bezier paths for map connections
 function getArcPath(x1: number, y1: number, x2: number, y2: number): string {
   const cx = (x1 + x2) / 2;
-  const cy = Math.min(y1, y2) - Math.abs(x1 - x2) * 0.18 - 30; // Adaptive arch height
+  const dist = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+  const baseHeight = Math.min(30, dist * 0.25);
+  const cy = Math.min(y1, y2) - Math.abs(x1 - x2) * 0.18 - baseHeight; // Adaptive arch height
   return `M ${x1} ${y1} Q ${cx} ${cy} ${x2} ${y2}`;
 }
 
@@ -215,7 +217,7 @@ export default function InternationalExposureSection({ internationalExposure }: 
                     onClick={() => setActiveCountryCode(code)}
                     className={`flex items-center gap-2 px-3 py-2 rounded-xl border transition-all duration-300 cursor-pointer ${
                       isActive
-                        ? 'bg-[#102A4A] text-[#faf3e3] border-[#102A4A] shadow-md scale-95'
+                        ? 'bg-[#102A4A] text-[#faf3e3] border-[#102A4A] shadow-[0_0_6px_rgba(255,255,255,0.9),0_0_12px_rgba(16,42,74,0.6)] scale-95'
                         : 'bg-[#FFFFF0] text-[#071A35] border-border hover:border-[#102A4A]/50 hover:bg-[#faf3e3]'
                     }`}
                   >
@@ -312,7 +314,7 @@ export default function InternationalExposureSection({ internationalExposure }: 
                       {/* Pulse rings for active or home pin */}
                       {(isActive || isHome) && (
                         <circle
-                          r="18"
+                          r={isHome ? "24" : "18"}
                           fill="none"
                           stroke={isHome ? '#102A4A' : '#102A4A'}
                           strokeWidth="1.5"
@@ -323,25 +325,28 @@ export default function InternationalExposureSection({ internationalExposure }: 
 
                       {/* Outer Ring */}
                       <circle
-                        r={isHome ? 9 : 12}
+                        r={isHome ? 12 : 12}
                         fill={isHome ? '#faf3e3' : '#ffffff'}
                         stroke={isHome ? '#102A4A' : isActive ? '#102A4A' : 'rgba(47, 79, 79, 0.3)'}
                         strokeWidth={isActive || isHome ? 2.5 : 1.2}
                         className="transition-all duration-300 group-hover:scale-110 group-hover:stroke-[#102A4A]"
-                        style={{ transformOrigin: '0px 0px' }}
+                        style={{ 
+                          transformOrigin: '0px 0px',
+                          filter: isActive ? 'drop-shadow(0px 0px 4px rgba(255, 255, 255, 1)) drop-shadow(0px 0px 6px rgba(16, 42, 74, 0.6))' : 'none'
+                        }}
                       />
 
                       {/* Flag Image / Home center dot */}
                       <foreignObject
-                        x={isHome ? -9 : -10}
-                        y={isHome ? -9 : -10}
-                        width={isHome ? 18 : 20}
-                        height={isHome ? 18 : 20}
+                        x={isHome ? -12 : -10}
+                        y={isHome ? -12 : -10}
+                        width={isHome ? 24 : 20}
+                        height={isHome ? 24 : 20}
                         className="rounded-full overflow-hidden pointer-events-none"
                       >
                         <div className="w-full h-full flex items-center justify-center rounded-full overflow-hidden">
                           {isHome ? (
-                            <div className="w-3 h-3 bg-[#102A4A] rounded-full shadow-inner animate-pulse" />
+                            <div className="w-4 h-4 bg-[#102A4A] rounded-full shadow-inner animate-pulse" />
                           ) : (
                             <img
                               src={getFlagUrl(code)}
@@ -385,7 +390,7 @@ export default function InternationalExposureSection({ internationalExposure }: 
                     onClick={() => setActiveCountryCode(code)}
                     className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg border text-sm font-semibold transition-all duration-300 cursor-pointer ${
                       isActive
-                        ? 'bg-[#102A4A] text-[#faf3e3] border-[#102A4A] shadow-sm'
+                        ? 'bg-[#102A4A] text-[#faf3e3] border-[#102A4A] shadow-[0_0_6px_rgba(255,255,255,0.9),0_0_12px_rgba(16,42,74,0.6)]'
                         : 'bg-[#FFFFF0] text-[#071A35] border-border hover:text-[#102A4A] hover:border-[#102A4A]/50 hover:bg-[#faf3e3]'
                     }`}
                   >
@@ -409,13 +414,12 @@ export default function InternationalExposureSection({ internationalExposure }: 
                 <Compass size={220} />
               </div>
 
-              <AnimatePresence mode="wait">
+                  <AnimatePresence mode="wait">
                 <motion.div
                   key={activeCountryCode}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                  transition={{ duration: 0.3 }}
+                  initial={{ opacity: 0, x: 15 }}
+                  animate={{ opacity: 1, x: 0, transition: { duration: 0.25, ease: "easeOut" } }}
+                  exit={{ opacity: 0, x: -15, transition: { duration: 0.2, ease: "easeIn" } }}
                   className="flex-grow flex flex-col justify-between"
                 >
                   <div>
@@ -451,7 +455,11 @@ export default function InternationalExposureSection({ internationalExposure }: 
                           {/* University */}
                           <h4 className="text-base font-bold text-heading flex items-start gap-2 mb-2.5">
                             <Building size={16} className="mt-0.5 flex-shrink-0 text-gold" />
-                            <span>{item.university}</span>
+                            <div className="flex flex-col gap-1">
+                              {item.university.split(',').map((uni, i) => (
+                                <span key={i}>{uni.trim()}</span>
+                              ))}
+                            </div>
                           </h4>
 
                           {/* Details */}

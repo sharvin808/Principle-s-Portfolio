@@ -172,7 +172,7 @@ export default function Navbar({
                 className="mt-1.5 text-2xl md:text-3xl font-bold text-heading cursor-pointer hover:opacity-80 transition-opacity"
                 style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
               >
-                <span className="text-gradient-gold">SMD</span>
+                <img src="/logo.png" alt="SMD Logo" className="h-16 md:h-20 w-auto object-contain scale-[1.4] origin-left translate-y-1.5" />
               </button>
 
               {/* Desktop Nav Items */}
