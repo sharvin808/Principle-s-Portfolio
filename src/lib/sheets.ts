@@ -81,7 +81,7 @@ function parseImageUrl(url: string): string {
     }
     
     if (fileId) {
-      return `https://lh3.googleusercontent.com/d/${fileId}`;
+      return `https://drive.google.com/thumbnail?id=${fileId}&sz=w1200`;
     }
   }
   

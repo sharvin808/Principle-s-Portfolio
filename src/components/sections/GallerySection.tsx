@@ -66,7 +66,7 @@ export default function GallerySection({ gallery }: GallerySectionProps) {
                   src={item.imageUrl}
                   alt={item.caption || 'Gallery Image'}
                   referrerPolicy="no-referrer"
-                  className="w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   style={{ maxHeight: '400px' }}
                 />
               </div>
