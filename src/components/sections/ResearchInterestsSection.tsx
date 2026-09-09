@@ -56,7 +56,13 @@ export default function ResearchInterestsSection({
 
         <div 
           ref={containerRef}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 overflow-visible relative z-10"
+          className={`grid grid-cols-1 ${
+            researchInterests.length === 1 
+              ? 'max-w-xl mx-auto' 
+              : researchInterests.length === 2 
+                ? 'md:grid-cols-2 max-w-5xl mx-auto' 
+                : 'md:grid-cols-2 lg:grid-cols-3'
+          } gap-6 overflow-visible relative z-10`}
         >
         {researchInterests.map((interest, index) => {
           const colIndex = index % 3;
@@ -103,7 +109,7 @@ export default function ResearchInterestsSection({
               initial={initial}
               animate={animate}
               transition={transition}
-              className={zClass}
+              className={`${zClass} h-full`}
             >
               <div className="card-premium h-full">
                 <div className="flex items-center gap-3 mb-4">

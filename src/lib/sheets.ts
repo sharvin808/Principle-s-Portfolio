@@ -260,6 +260,8 @@ export async function getGallery(): Promise<GalleryImage[]> {
       imageUrl: parseImageUrl(rawImageUrl),
       caption: raw.caption || '',
       category: raw.category || '',
+      title: raw.title || '',
+      description: raw.description || '',
     };
   });
 }

@@ -131,9 +131,7 @@ export default function Navbar({
       } else {
         const contentEl = document.getElementById(id);
         if (contentEl) {
-          const yOffset = -80;
-          const y = contentEl.getBoundingClientRect().top + window.scrollY + yOffset;
-          window.scrollTo({ top: y, behavior: 'smooth' });
+          contentEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       }
       scrollTimeoutRef.current = setTimeout(() => {

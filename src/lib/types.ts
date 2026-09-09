@@ -86,6 +86,8 @@ export interface GalleryImage {
   imageUrl: string;
   caption: string;
   category: string;
+  title?: string;
+  description?: string;
 }
 
 export interface InternationalExposure {

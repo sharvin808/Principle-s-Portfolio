@@ -37,7 +37,7 @@ export default function SectionWrapper({
     <section
       id={id}
       ref={ref}
-      className={`relative py-20 md:py-28 px-4 md:px-8 ${themeClass} ${className}`}
+      className={`relative py-20 md:py-28 px-4 md:px-8 scroll-m-[80px] ${themeClass} ${className}`}
     >
       {/* Decorative Topographical Cutout on the Left */}
       <div className="hidden md:block absolute top-12 bottom-12 left-0 md:w-[250px] lg:w-[350px] xl:w-[450px] pointer-events-none z-0 overflow-hidden rounded-3xl">

@@ -6,7 +6,7 @@ import { createPortal } from 'react-dom';
 import { useEffect, useCallback, useState } from 'react';
 
 interface LightboxProps {
-  images: { imageUrl: string; caption: string }[];
+  images: { imageUrl: string; caption: string; title?: string; description?: string }[];
   currentIndex: number;
   isOpen: boolean;
   onClose: () => void;
@@ -107,22 +107,31 @@ export default function Lightbox({
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.3 }}
-            className="max-w-[90vw] max-h-[85vh] flex flex-col items-center"
+            className="max-w-[90vw] max-h-[95vh] w-full flex flex-col items-center"
             onClick={(e) => e.stopPropagation()}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={current?.imageUrl}
-              alt={current?.caption || ''}
+              alt={current?.title || current?.caption || ''}
               referrerPolicy="no-referrer"
-              className="max-w-full max-h-[75vh] object-contain rounded-lg"
+              className="max-w-full max-h-[65vh] object-contain rounded-lg shadow-xl"
             />
-            {current?.caption && (
-              <p className="mt-4 text-white/80 text-center text-sm max-w-lg">
-                {current.caption}
-              </p>
-            )}
-            <p className="mt-2 text-white/40 text-xs">
+            
+            <div className="flex flex-col items-center mt-5 w-full max-w-3xl overflow-y-auto max-h-[20vh] px-4">
+              {current?.title && (
+                <h3 className="text-white font-semibold text-xl text-center mb-2">
+                  {current.title}
+                </h3>
+              )}
+              {(current?.description || current?.caption) && (
+                <p className="text-white/80 text-center text-sm leading-relaxed">
+                  {current.description || current.caption}
+                </p>
+              )}
+            </div>
+
+            <p className="mt-4 text-white/40 text-xs font-mono shrink-0">
               {currentIndex + 1} / {images.length}
             </p>
           </motion.div>

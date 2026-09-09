@@ -1,3 +1,5 @@
+'use client';
+
 import { Heart } from 'lucide-react';
 import type { Profile } from '@/lib/types';
 
@@ -7,6 +9,23 @@ interface FooterProps {
 
 export default function Footer({ profile }: FooterProps) {
   const currentYear = new Date().getFullYear();
+
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const id = href.replace('#', '');
+    window.location.hash = id;
+    
+    setTimeout(() => {
+      if (id === 'about') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        const contentEl = document.getElementById(id);
+        if (contentEl) {
+          contentEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    }, 150);
+  };
 
   return (
     <footer className="bg-oxford-theme border-t py-12 px-4 md:px-8" style={{ borderColor: 'var(--border-color)' }}>
@@ -32,11 +51,11 @@ export default function Footer({ profile }: FooterProps) {
               { label: 'Home', href: '#about' },
               { label: 'Publications', href: '#publications' },
               { label: 'Projects', href: '#research-project' },
-              { label: 'Contact', href: '#contact' },
             ].map((item) => (
               <a
                 key={item.label}
                 href={item.href}
+                onClick={(e) => handleScroll(e, item.href)}
                 className="hover:text-gold transition-colors"
               >
                 {item.label}

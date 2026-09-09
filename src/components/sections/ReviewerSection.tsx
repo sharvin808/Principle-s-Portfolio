@@ -22,7 +22,7 @@ export default function ReviewerSection({ reviewer }: ReviewerSectionProps) {
   return (
     <SectionWrapper
       id="reviewer"
-      title="Editorial & Reviewer Roles"
+      title="Reviewer Roles"
       subtitle="Contributions to academic journals and publications"
       theme="oxford"
       cutout="top-left"
@@ -30,7 +30,7 @@ export default function ReviewerSection({ reviewer }: ReviewerSectionProps) {
         <div className="flex flex-wrap items-center justify-end gap-6 pr-4 md:pr-8">
           <AnimatedCounter
             target={reviewer.length}
-            label="Total Editorial Roles"
+            label="Total Reviewer Roles"
             suffix=""
           />
         </div>

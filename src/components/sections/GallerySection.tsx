@@ -77,18 +77,11 @@ export default function GallerySection({ gallery }: GallerySectionProps) {
                   {item.category}
                 </span>
                 <p className="text-white text-xs font-medium line-clamp-2 leading-relaxed">
-                  {item.caption}
+                  {item.title || item.caption}
                 </p>
               </div>
 
-              {/* Static Caption for mobile/no hover */}
-              {item.caption && (
-                <div className="p-3 bg-beige-card border-t border-border/5 group-hover:hidden">
-                  <p className="text-xs text-foreground/75 font-medium line-clamp-1">
-                    {item.caption}
-                  </p>
-                </div>
-              )}
+
             </div>
           </ScrollReveal>
         ))}
@@ -96,7 +89,7 @@ export default function GallerySection({ gallery }: GallerySectionProps) {
 
       {/* Lightbox Modal */}
       <Lightbox
-        images={filteredImages.map((img) => ({ imageUrl: img.imageUrl, caption: img.caption }))}
+        images={filteredImages.map((img) => ({ imageUrl: img.imageUrl, caption: img.caption, title: img.title, description: img.description }))}
         currentIndex={lightboxIndex}
         isOpen={lightboxIndex >= 0}
         onClose={() => setLightboxIndex(-1)}

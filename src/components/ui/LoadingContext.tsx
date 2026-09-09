@@ -15,10 +15,9 @@ export function LoadingProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     const handleLoad = () => {
-      // Add a small minimum delay so the loading screen isn't just a flash
       setTimeout(() => {
         setIsLoading(false);
-      }, 800);
+      }, 100);
     };
 
     if (document.readyState === 'complete') {
@@ -38,7 +37,7 @@ export function LoadingProvider({ children }: { children: React.ReactNode }) {
             key="preloader"
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
+            transition={{ duration: 0.4, ease: "easeInOut" }}
             className="fixed inset-0 z-[9999] flex items-center justify-center bg-background pointer-events-auto"
           >
             <LoadingSkeleton />
