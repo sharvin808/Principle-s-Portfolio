@@ -40,6 +40,7 @@ export default function AboutMeSection({ aboutMe }: AboutMeSectionProps) {
               >
                 Biography
               </h3>
+              
             </div>
             
             <div className="text-lg text-foreground/80 leading-relaxed space-y-4 text-left xl:text-justify">
