@@ -151,8 +151,8 @@ export default function ExperienceSection({ experience }: ExperienceSectionProps
   return (
     <SectionWrapper
       id="experience"
-      title="Experience"
-      subtitle="Professional journey and leadership roles in academia"
+      title="Professional Journey"
+      subtitle="Leadership roles in academia"
       theme="oxford"
       cutout="top-right"
     >
@@ -329,10 +329,16 @@ export default function ExperienceSection({ experience }: ExperienceSectionProps
  
                     {/* Badges */}
                     <div className="flex flex-wrap items-center gap-4">
-                      <div className="flex items-center gap-3 px-5 py-2.5 rounded-full text-base font-semibold bg-gold-muted text-gold border border-gold/20 shadow-sm">
-                        <Calendar size={18} />
-                        <span>{activeExp.startYear}{activeExp.endYear ? ` — ${activeExp.endYear}` : ' — Present'}</span>
-                      </div>
+                      {(activeExp.startYear || activeExp.endYear) && (
+                        <div className="flex items-center gap-3 px-5 py-2.5 rounded-full text-base font-semibold bg-gold-muted text-gold border border-gold/20 shadow-sm">
+                          <Calendar size={18} />
+                          <span>
+                            {activeExp.startYear && activeExp.endYear
+                              ? `${activeExp.startYear} — ${activeExp.endYear}`
+                              : activeExp.startYear || activeExp.endYear}
+                          </span>
+                        </div>
+                      )}
                       {activeExp.institution && (
                         <div className="flex items-center gap-3 px-5 py-2.5 rounded-full text-base font-semibold text-foreground/70 bg-surface-alt border border-border shadow-sm"
                         >

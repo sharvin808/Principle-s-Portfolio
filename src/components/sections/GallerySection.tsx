@@ -52,22 +52,21 @@ export default function GallerySection({ gallery }: GallerySectionProps) {
         </ScrollReveal>
       )}
 
-      {/* Masonry Grid */}
-      <div className="masonry-grid">
+      {/* Horizontal / Row-first Gallery Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredImages.map((item, index) => (
-          <ScrollReveal key={index} delay={index * 0.05} className="masonry-item">
+          <ScrollReveal key={index} delay={index * 0.05} className="h-full">
             <div
               onClick={() => setLightboxIndex(index)}
-              className="group relative overflow-hidden rounded-xl cursor-pointer border border-border/10 bg-beige-card shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+              className="group relative overflow-hidden rounded-xl cursor-pointer border border-border/10 bg-beige-card shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1 h-full"
             >
-              <div className="overflow-hidden aspect-video sm:aspect-auto">
+              <div className="overflow-hidden aspect-[4/3] w-full bg-surface-alt">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={item.imageUrl}
                   alt={item.caption || 'Gallery Image'}
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  style={{ maxHeight: '400px' }}
                 />
               </div>
 
@@ -80,8 +79,6 @@ export default function GallerySection({ gallery }: GallerySectionProps) {
                   {item.title || item.caption}
                 </p>
               </div>
-
-
             </div>
           </ScrollReveal>
         ))}
