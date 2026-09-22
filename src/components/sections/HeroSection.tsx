@@ -196,7 +196,7 @@ export default function HeroSection({ profile }: HeroSectionProps) {
         initial={{ opacity: 0, x: -40 }}
         animate={!isLoading ? { opacity: 1, x: 0 } : { opacity: 0, x: -40 }}
         transition={{ duration: 0.9, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-        className="hidden lg:flex absolute left-[4vw] xl:left-[6vw] bottom-0 lg:w-[40vw] xl:w-[45vw] h-full items-end justify-start z-10 pointer-events-none"
+        className="hidden lg:flex absolute left-[2vw] xl:left-[4vw] bottom-0 lg:w-[40vw] xl:w-[45vw] h-full items-end justify-start z-10 pointer-events-none"
       >
         <div className="relative w-full h-full flex items-end">
           {profile.photoUrl ? (
