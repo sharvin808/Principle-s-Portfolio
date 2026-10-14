@@ -38,7 +38,7 @@ export async function fetchFromVisualizationAPI(sheetId: string, gid: string): P
     return [];
   }
 
-  const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&gid=${gid}&headers=1&t=${Date.now()}`;
+  const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&gid=${gid}&headers=1`;
 
   try {
     const response = await fetch(url, {
