@@ -70,9 +70,20 @@ export default function Footer({ profile }: FooterProps) {
         {/* Copyright */}
         <div className="flex flex-col items-center justify-center gap-4 text-sm text-muted">
           <p className="text-center">
-            © {currentYear} {profile.name || 'Academic Portfolio'}. All rights reserved.
-          </p>
-        </div>
+           © {currentYear} {profile.name || 'Academic Portfolio'}. All rights reserved.
+  </p>
+  <p className="text-center">
+    @
+    <a
+      href="https://rlabz.in"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="font-semibold hover:underline"
+    >
+      RLabZ
+    </a>
+  </p>
+</div>
       </div>
     </footer>
   );
