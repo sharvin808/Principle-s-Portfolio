@@ -6,8 +6,8 @@ import { getPersonSchema, getPublicationsSchema } from '@/lib/structured-data';
 import BackToTop from '@/components/ui/BackToTop';
 import InteractiveContent from '@/components/InteractiveContent';
 
-// Enable dynamic rendering
-export const dynamic = 'force-dynamic';
+// Rendered at build time (static export). Sheet data refreshes on each deploy.
+export const dynamic = 'force-static';
 
 export async function generateMetadata(): Promise<Metadata> {
   try {

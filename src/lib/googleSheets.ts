@@ -42,7 +42,7 @@ export async function fetchFromVisualizationAPI(sheetId: string, gid: string): P
 
   try {
     const response = await fetch(url, {
-      next: { revalidate: 3600 }, // ISR: revalidate every hour
+      cache: 'no-store', // always pull fresh sheet data at build time
     });
 
     if (!response.ok) {
